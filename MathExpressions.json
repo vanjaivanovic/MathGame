@@ -1,0 +1,15 @@
+{
+	"operators" : {
+		"addition" : "+",
+		"substraction" : "-",
+		"multiplication" : "*"
+	},
+
+	"mathExpressions" : {
+		"a" : "",
+		"b" : ""
+
+
+	}
+
+}
