@@ -1,27 +1,16 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import BubbleGame from './MathGames/BubbleGame.js';
-import ChooseGame from './GameChoice/characters.js';
-
+import Games from './GameChoice/Games.js';
+import 'bootstrap/dist/css/bootstrap.css';
 
 class App extends Component {
   
  render() {
-  
-  let GameChoice = <ChooseGame />;
-  let MathGameScreen = "";
-
-  if(this.props.additionButton){
-    MathGameScreen = <BubbleGame />;
-  }
-
 
    return (
-     <div>
-     {GameChoice}
-     {MathGameScreen}
-
+     <div className="container">
+      <Games />
      </div>
    );
  }

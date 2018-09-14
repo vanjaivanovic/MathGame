@@ -1,33 +1,27 @@
 import React, { Component } from 'react';
-import ChooseOperator from './Operators.js';
+import info from './info.json';
 
-class ChooseGame extends Component {
-  constructor(props){
-    super(props);
-  this.state = {
-    additionButton: false
-  }
+const ChooseCharacter = props => {
 
-   this.event = this.changetoTrue.bind(this);
+let CharacterInfo = info.personFact;
+
+const CharacterList = CharacterInfo.map(character => {
+	return (
+		<li key={character.id}>
+		  <div className="image col-xs-12">
+		  	<img src={require("../Images/mandela.jpg")} alt={character.name} onClick={props.event}/>
+		  </div>
+		  <p>{character.name}</p>
+		</li>
+		)
+	}
+)
+
+	 return( 
+			<ul className="characterContainer col-xs-12 col-sm-6">
+				{CharacterList}
+		    </ul>
+  );
 
 }
-
-changetoTrue(){
-    this.setState({
-      additionButton: true
-    })
-
-    console.log('hej');
-  }
-
-render(){
-  return(
-    <div>
-      <h1>Nelson Mandela</h1>
-      <ChooseOperator event={() => this.changetoTrue()} additionButton={this.state.additionButton} />
-    </div>
-  )
- }
-}
-
-export default ChooseGame;
+export default ChooseCharacter;

@@ -3,21 +3,20 @@ import React, { Component } from 'react';
 const BubbleAnswers = props => {
   return (
     <div>
-       <div className="stage">
-        <button className="ball" onClick={props.Answer}>{props.Result}</button>
-       </div>
-       <div className="stage">
-        <button className="ball">{props.WrongAnswer1}</button>
-       </div>
-       <div className="stage">
-        <button className="ball">{props.WrongAnswer2}</button>
-       </div>
-       <div className="stage">
-        <button className="ball">{props.WrongAnswer3}</button>
-       </div>
-       <div className="stage">
-        <button className="ball">{props.WrongAnswer4}</button>
-       </div>
+       <button className="bubble x1" onClick={props.Answer}>{props.Result}</button>
+       
+        <button className="bubble x2">{props.WrongAnswer1}</button>
+       
+      
+        <button className="bubble x4">{props.WrongAnswer3}</button>
+      
+        <button className="bubble x5">{props.WrongAnswer4}</button>
+  
+        <button className="bubble x6">{props.WrongAnswer4}</button>
+          
+        <button className="bubble x3" onClick={props.Answer}>{props.Result}</button>
+        
+        <button className="bubble x7">{props.WrongAnswer4}</button>
   </div>
   )
 };

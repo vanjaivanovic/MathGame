@@ -1,0 +1,86 @@
+{
+	"personFact": [
+		{
+			"id" : 0,
+			"name": "Nelson Mandela",
+			"personImage": "../Images/mandela.jpg",
+
+			"chapterOne": "Nelson Mandela föddes den 18 juli 1918 i provinsen Transkei i södra Sydafrika. 
+			Mandelas pappa var hövding över byn och arbetade som kunglig rådgivare åt Jongintaba Dalindyebo. 
+			Hans pappa dog när Mandela var 12år och då blev Mandela tvungen att lämna byn för att flytta till regenten Dalindyebo. 
+			Han hade lovat att ta hand om Mandela som tack för det arbete Mandelas fars gjort åt honom. 
+			Mandela fick börja i en ny större skola och han lärde sig snart att trivas lika bra där som han hade gjort tidigare. 
+			Han lärde också känna Dalindyebos son Justice, trots att de var mycket olika blev de goda vänner och förblev det länge.",
+			
+			"chapterTwo": "I Mandelas by bodde alla i runda lerhyddor med grästak och odlade sin egen mat. 
+			Mandela fick sitt första arbete när han var 5, då han blev herdepojke. 
+			Hans uppgift var att vakta familjens får och kalvar så de inte försvann ute bland fälten. 
+			När Mandela var sju fick han som första familjemedlem börja skolan. 
+			Där fick han sitt engelska namn Nelson av sin lärare. 
+			I byn hade han alltid haft det afrikanska namnet Rolihlahla. 
+			Det var i skolan som Nelson för första gången kom i kontakt med de vita människorna. 
+			De fick inte lära sig mycket om Afrika utan mest om England och om de vita. 
+			Mandela beundrade det han fick lära sig om England men samtidigt var han lite rädd och skeptisk mot dem.",
+
+			"chapterThree": "Mandela brukade se på och lyssna när alla hövdingar kom till byn för att ha möte med regenten. 
+			Hövdingarna samlades i byn och alla fick säga sina åsikter. 
+			Regenten satt tyst, även när hövdingarna kritiserade honom och först när alla fått säga sina åsikter talade han 
+			och försökte ena hövdingarna. Man slutade inte förens alla var överens och blev man inte det anordnade man ett nytt möte."
+		},
+
+			"id" : 1,
+			"name": "Dalai Lama",
+			"personImage": "../Images/dalaiLama.jpg",
+
+			"chapterOne": "Nelson Mandela föddes den 18 juli 1918 i provinsen Transkei i södra Sydafrika. 
+			Mandelas pappa var hövding över byn och arbetade som kunglig rådgivare åt Jongintaba Dalindyebo. 
+			Hans pappa dog när Mandela var 12år och då blev Mandela tvungen att lämna byn för att flytta till regenten Dalindyebo. 
+			Han hade lovat att ta hand om Mandela som tack för det arbete Mandelas fars gjort åt honom. 
+			Mandela fick börja i en ny större skola och han lärde sig snart att trivas lika bra där som han hade gjort tidigare. 
+			Han lärde också känna Dalindyebos son Justice, trots att de var mycket olika blev de goda vänner och förblev det länge.",
+			
+			"chapterTwo": "I Mandelas by bodde alla i runda lerhyddor med grästak och odlade sin egen mat. 
+			Mandela fick sitt första arbete när han var 5, då han blev herdepojke. 
+			Hans uppgift var att vakta familjens får och kalvar så de inte försvann ute bland fälten. 
+			När Mandela var sju fick han som första familjemedlem börja skolan. 
+			Där fick han sitt engelska namn Nelson av sin lärare. 
+			I byn hade han alltid haft det afrikanska namnet Rolihlahla. 
+			Det var i skolan som Nelson för första gången kom i kontakt med de vita människorna. 
+			De fick inte lära sig mycket om Afrika utan mest om England och om de vita. 
+			Mandela beundrade det han fick lära sig om England men samtidigt var han lite rädd och skeptisk mot dem.",
+
+			"chapterThree": "Mandela brukade se på och lyssna när alla hövdingar kom till byn för att ha möte med regenten. 
+			Hövdingarna samlades i byn och alla fick säga sina åsikter. 
+			Regenten satt tyst, även när hövdingarna kritiserade honom och först när alla fått säga sina åsikter talade han 
+			och försökte ena hövdingarna. Man slutade inte förens alla var överens och blev man inte det anordnade man ett nytt möte."
+		},
+
+			"id" : 2,
+			"name": "Coco Chanel",
+			"personImage": "../Images/cocoChanel.jpg",
+
+			"chapterOne": "Nelson Mandela föddes den 18 juli 1918 i provinsen Transkei i södra Sydafrika. 
+			Mandelas pappa var hövding över byn och arbetade som kunglig rådgivare åt Jongintaba Dalindyebo. 
+			Hans pappa dog när Mandela var 12år och då blev Mandela tvungen att lämna byn för att flytta till regenten Dalindyebo. 
+			Han hade lovat att ta hand om Mandela som tack för det arbete Mandelas fars gjort åt honom. 
+			Mandela fick börja i en ny större skola och han lärde sig snart att trivas lika bra där som han hade gjort tidigare. 
+			Han lärde också känna Dalindyebos son Justice, trots att de var mycket olika blev de goda vänner och förblev det länge.",
+			
+			"chapterTwo": "I Mandelas by bodde alla i runda lerhyddor med grästak och odlade sin egen mat. 
+			Mandela fick sitt första arbete när han var 5, då han blev herdepojke. 
+			Hans uppgift var att vakta familjens får och kalvar så de inte försvann ute bland fälten. 
+			När Mandela var sju fick han som första familjemedlem börja skolan. 
+			Där fick han sitt engelska namn Nelson av sin lärare. 
+			I byn hade han alltid haft det afrikanska namnet Rolihlahla. 
+			Det var i skolan som Nelson för första gången kom i kontakt med de vita människorna. 
+			De fick inte lära sig mycket om Afrika utan mest om England och om de vita. 
+			Mandela beundrade det han fick lära sig om England men samtidigt var han lite rädd och skeptisk mot dem.",
+
+			"chapterThree": "Mandela brukade se på och lyssna när alla hövdingar kom till byn för att ha möte med regenten. 
+			Hövdingarna samlades i byn och alla fick säga sina åsikter. 
+			Regenten satt tyst, även när hövdingarna kritiserade honom och först när alla fått säga sina åsikter talade han 
+			och försökte ena hövdingarna. Man slutade inte förens alla var överens och blev man inte det anordnade man ett nytt möte."
+		}
+
+	]
+}
