@@ -3,6 +3,7 @@ import BubbleGame from '../MathGames/BubbleGame.js';
 import ChooseCharacter from './Characters.js';
 import ChooseOperator from './Operators.js';
 import Chapter from '../Chapters/Chapter.js';
+import { Container, Row, Col } from 'reactstrap';
 
 class Games extends Component {
   constructor(props){
