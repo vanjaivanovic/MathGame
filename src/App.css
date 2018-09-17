@@ -3,9 +3,6 @@ body {
   color: #2c3e50;
 }
 
-*{
-  font-size: 70px;
-}
 .App {
   text-align: center;
 }
@@ -32,6 +29,7 @@ body {
 
 .operatorsWrapper {
   margin-top: 150px;
+  font-size: 70px;
 }
 
 .operatorButton {
@@ -100,7 +98,6 @@ $border-radius: 5px;
   padding: 10px 20px;
   outline: none;
   border: none;
-  box-shadow: $box-shadow;
   overflow: hidden;
   border-radius: $border-radius;
   transition: $transition;

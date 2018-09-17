@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
+import Characters from '../GameChoice/Stories.json';
 
-const Chapter = props => { 
-  return(
-    <h1>CHAPTER ONE</h1>
+class Chapter extends Component { 
+  render () {
+    let array = Characters.CharcterInfo;
+    let CharacterStory = array[0].chapterOne;
+   
+    return(
+      <div>
+        <p>{CharacterStory}</p>
+      </div>
     )
+  }
 }
 
 export default Chapter;

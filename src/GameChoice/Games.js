@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import BubbleGame from '../MathGames/BubbleGame.js';
+import CharacterList from './CharacterList.js';
 import ChooseCharacter from './Characters.js';
 import ChooseOperator from './Operators.js';
 import Chapter from '../Chapters/Chapter.js';
@@ -11,10 +12,11 @@ class Games extends Component {
    this.state = { 
     additionButton : false,
     characterChoice : false,
-    ChooseCharacter: <ChooseCharacter event={() => this.characterChoiceisClicked()} />,
-    ChooseOperator: <ChooseOperator event={() => this.additionButtonisClicked()} />,
-    Chapter: <Chapter />
    }
+
+   this.characterChoiceisClicked = this.characterChoiceisClicked.bind(this);
+   this.event = this.additionButtonisClicked.bind(this);
+   this.finishedGame = this.finishedGame.bind(this);
 }
 
 
@@ -30,26 +32,33 @@ characterChoiceisClicked(){
     });
 }
 
+finishedGame(count){
+  if(count === 3){
+    console.log('hej');
+  }
+}
+
   render(){
    
    let Game = "";
-   let ChooseCharacter = this.state.ChooseCharacter;
-   let ChooseOperator = this.state.ChooseOperator;
-   let Chapter = "";
+   let character = <ChooseCharacter characterChoiceisClicked={this.characterChoiceisClicked} />;
+   let operator = <ChooseOperator event={() => this.additionButtonisClicked()} />;
+   let chapter = <Chapter />;
 
 
    if(this.state.additionButton && this.state.characterChoice){
-    Game = <BubbleGame />
-    ChooseCharacter = "";
-    ChooseOperator = "";
+    Game = <BubbleGame finishedGame={this.finishedGame} />;
+    character = "";
+    operator = "";
+
   }
 
   return(
-      <div className="row">    
-        {ChooseCharacter}
-        {ChooseOperator}
+      <div className="row">  
+        {character}
+        {operator}
         {Game}
-        {Chapter}
+        {chapter}
       </div>
     )
   }
