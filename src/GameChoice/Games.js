@@ -5,6 +5,7 @@ import ChooseCharacter from './Characters.js';
 import ChooseOperator from './Operators.js';
 import Chapter from '../Chapters/Chapter.js';
 import { Container, Row, Col } from 'reactstrap';
+import TeacherGame from '../MathGames/TeacherGameComponents/TeacherGame.js';
 
 class Games extends Component {
   constructor(props){
@@ -12,13 +13,16 @@ class Games extends Component {
    this.state = { 
     additionButton : false,
     characterChoice : false,
-    chapter: false
+    chapter: false,
+    newGame: false,
+    games: [<TeacherGame/> , <BubbleGame />]
 
    }
 
    this.characterChoiceisClicked = this.characterChoiceisClicked.bind(this);
    this.event = this.additionButtonisClicked.bind(this);
    this.finishedGame = this.finishedGame.bind(this);
+   this.newGame = this.newGame.bind(this);
 }
 
 
@@ -42,8 +46,14 @@ finishedGame(count){
   }
 }
 
+newGame(){
+    this.setState({
+      newGame : true
+    });
+  }
+
   render(){
-   
+   let allGames = this.state.games;
    let Game = "";
    let character = <ChooseCharacter characterChoiceisClicked={this.characterChoiceisClicked} />;
    let operator = <ChooseOperator event={() => this.additionButtonisClicked()} />;
@@ -57,8 +67,13 @@ finishedGame(count){
   }
 
   if(this.state.chapter){
-    chapter = <Chapter />;
+    chapter = <Chapter newGame={this.newGame}/>;
     Game= "";
+  }
+
+  if(this.state.newGame){
+       chapter = "";
+       Game = allGames[0];
   }
 
   return(
