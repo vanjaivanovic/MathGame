@@ -329,6 +329,20 @@ $border-radius: 5px;
   width: 200px;
 }
 
+.chapter {
+  margin: auto;
+  margin-top: 30%;
+  font-size: 1.4em;
+  border: 2px solid #dcb7ff;
+  box-shadow: 10px 10px 5px #dcb7ff;
+  border-radius: 15px;
+}
+
+.chapter p{
+  margin: 10%;
+}
+
+
 
 
     

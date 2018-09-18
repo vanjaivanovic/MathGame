@@ -4,6 +4,8 @@
 			"id" : 0,
 			"name": "Nelson Mandela",
 			"personImage": "../Images/mandela.jpg",
+			"chapter": "Kapitel 1",
+			"storyTitle": "Mandelas barndom",
 
 			"chapterOne": "Nelson Mandela föddes den 18 juli 1918 i provinsen Transkei i södra Sydafrika. 
 			Mandelas pappa var hövding över byn och arbetade som kunglig rådgivare åt Jongintaba Dalindyebo. 

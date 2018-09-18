@@ -14,7 +14,8 @@ constructor(props) {
      wrongAnswer2: "",
      wrongAnswer3: "",
      wrongAnswer4: "",
-     count: 0
+     wrongAnswer5: "",
+     count: 1
    };
 
    this.setRandomNumber = this.setRandomNumber.bind(this);
@@ -34,10 +35,6 @@ componentDidMount(){
    this.setState({
      a: this.generateNumbers(),
      b: this.generateNumbers(),
-     wrongAnswer1: this.generateNumbers(),
-     wrongAnswer2: this.generateNumbers(),
-     wrongAnswer3: this.generateNumbers(),
-     wrongAnswer4: this.generateNumbers(),
      answerBox: "",
    });
  }
@@ -47,9 +44,25 @@ componentDidMount(){
    return Math.floor(Math.random() * 11);
  }
 
+ wrongAnswerNumber() {
+  let wrongAnswerNumber = Math.floor(Math.random() * 15);
+  let correctAnswerNumber = this.state.result;
+
+  if(wrongAnswerNumber === correctAnswerNumber){
+  	wrongAnswerNumber = wrongAnswerNumber + 1;
+  }
+
+  return wrongAnswerNumber;
+ }
+
  calc(){
    this.setState({
-     result: this.state.a + this.state.b
+     result: this.state.a + this.state.b,
+     wrongAnswer1: this.wrongAnswerNumber(),
+     wrongAnswer2: this.wrongAnswerNumber(),
+     wrongAnswer3: this.wrongAnswerNumber(),
+     wrongAnswer4: this.wrongAnswerNumber(),
+     wrongAnswer5: this.wrongAnswerNumber(),
    });
  }
 
@@ -64,12 +77,17 @@ componentDidMount(){
         this.setRandomNumber();
         this.calc();
     }.bind(this), 2500) 
+
+    this.callFinishedGame();
+}
+
+callFinishedGame(){	
+   const { finishedGame } = this.props;
+  	let count = this.state.count;
+  	finishedGame(count);
 }
 
   render() {
-  	const { finishedGame } = this.props;
-  	let count = this.state.count;
-  	finishedGame(count);
 
    return (
     <div id="wrapper">
@@ -80,6 +98,7 @@ componentDidMount(){
             WrongAnswer2={this.state.wrongAnswer2}
             WrongAnswer3={this.state.wrongAnswer3}
             WrongAnswer4={this.state.wrongAnswer4}
+            WrongAnswer5={this.state.wrongAnswer5}
          /> 
     </div>
   )};

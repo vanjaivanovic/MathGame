@@ -12,6 +12,8 @@ class Games extends Component {
    this.state = { 
     additionButton : false,
     characterChoice : false,
+    chapter: false
+
    }
 
    this.characterChoiceisClicked = this.characterChoiceisClicked.bind(this);
@@ -33,8 +35,10 @@ characterChoiceisClicked(){
 }
 
 finishedGame(count){
-  if(count === 3){
-    console.log('hej');
+  if(count === 1){
+    this.setState({
+      chapter : true
+    });
   }
 }
 
@@ -43,14 +47,18 @@ finishedGame(count){
    let Game = "";
    let character = <ChooseCharacter characterChoiceisClicked={this.characterChoiceisClicked} />;
    let operator = <ChooseOperator event={() => this.additionButtonisClicked()} />;
-   let chapter = <Chapter />;
-
+   let chapter = "";
 
    if(this.state.additionButton && this.state.characterChoice){
     Game = <BubbleGame finishedGame={this.finishedGame} />;
     character = "";
     operator = "";
 
+  }
+
+  if(this.state.chapter){
+    chapter = <Chapter />;
+    Game= "";
   }
 
   return(
