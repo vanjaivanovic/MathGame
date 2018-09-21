@@ -4,21 +4,34 @@ import Characters from '../GameChoice/Stories.json';
 class Chapter extends Component { 
 constructor(props) {
     super(props);
+    this.state = {
+      arrayIndex: 0,
+    }
+
     this.callNewGame = this.callNewGame.bind(this);
+    this.newChapter = this.newChapter.bind(this);
   }
 
      callNewGame(){
       const { newGame } = this.props
-      newGame();
+      newGame(this.state.arrayIndex);
+      this.newChapter(this.state.arrayIndex);
+
+    }
+
+    newChapter(index){
+      this.setState({
+        arrayIndex: index + 1,
+      })
     }
     
 
   render () {
-  	let index = 0;
+  	let chapterIndex = 0;
     let array = Characters.CharcterInfo;
-    let CharacterStory = array[index].chapterOne;
-    let ChapterTitle = array[index].chapter;
-    let StoryTitle = array[index].storyTitle;
+    let CharacterStory = array[chapterIndex].chapter;
+    let ChapterTitle = array[chapterIndex].title;
+    let StoryTitle = array[chapterIndex].storyTitle;
    
     return(
       	<div className="chapter col-12 col-sm-8">

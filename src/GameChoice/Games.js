@@ -15,7 +15,9 @@ class Games extends Component {
     characterChoice : false,
     chapter: false,
     newGame: false,
-    games: [<TeacherGame/> , <BubbleGame />]
+    nextGame: 0,
+    newChapter: "",
+    games: []
 
    }
 
@@ -23,12 +25,14 @@ class Games extends Component {
    this.event = this.additionButtonisClicked.bind(this);
    this.finishedGame = this.finishedGame.bind(this);
    this.newGame = this.newGame.bind(this);
+   this.test = this.test.bind(this);
 }
 
 
 additionButtonisClicked(){
     this.setState({
-      additionButton : true
+      additionButton : true,
+      newChapter: "vanja"
     });
    }
 
@@ -41,15 +45,27 @@ characterChoiceisClicked(){
 finishedGame(count){
   if(count === 1){
     this.setState({
-      chapter : true
+      chapter : true,
     });
   }
 }
 
-newGame(){
-    this.setState({
-      newGame : true
-    });
+test(){
+  console.log('HEJ');
+}
+
+newGame(chapters){
+    if(chapters < 10){
+
+        this.setState({
+        chapter: false,
+        newGame : true,
+        nextGame : chapters + 1,
+        games: [<BubbleGame />, <TeacherGame testing={this.test} /> , <BubbleGame />]
+      });
+    } else {
+      console.log("game over");
+    }
   }
 
   render(){
@@ -58,6 +74,7 @@ newGame(){
    let character = <ChooseCharacter characterChoiceisClicked={this.characterChoiceisClicked} />;
    let operator = <ChooseOperator event={() => this.additionButtonisClicked()} />;
    let chapter = "";
+
 
    if(this.state.additionButton && this.state.characterChoice){
     Game = <BubbleGame finishedGame={this.finishedGame} />;
@@ -72,8 +89,13 @@ newGame(){
   }
 
   if(this.state.newGame){
+    let nextGame = this.state.nextGame;
+
        chapter = "";
-       Game = allGames[0];
+       Game = allGames[this.state.nextGame];
+
+
+
   }
 
   return(
