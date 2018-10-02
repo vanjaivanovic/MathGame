@@ -6,105 +6,302 @@ import ChooseOperator from './Operators.js';
 import Chapter from '../Chapters/Chapter.js';
 import { Container, Row, Col } from 'reactstrap';
 import TeacherGame from '../MathGames/TeacherGameComponents/TeacherGame.js';
+import DragAndDropGame from '../MathGames/DragAndDropGameComponents/DragAndDropGame.js';
+import Hint from '../Helpers/Components/Hint.js';
+import HintButton from '../Helpers/Components/HintButton.js';
+import ProfileButton from '../Helpers/Components/ProfileButton.js';
+import EndOfGame from '../Helpers/Components/EndOfGame/EndOfGame.js';
+import FinishButton from '../Helpers/Components/FinishButton.js';
+import PopUp from '../Helpers/Components/popUp.js';
+import StartPage from '../StartPage/StartPage.js';
+import StartGameButton from './StartGameButton.js';
+import JumpRopeGame from '../MathGames/GameActivitiesComponents/JumpRope.js';
 
 class Games extends Component {
   constructor(props){
    super(props);
    this.state = { 
-    additionButton : false,
+    operatorButton: false,
+    operator: "",
     characterChoice : false,
+    characterChosen: "",
+    startGameButton: false,
     chapter: false,
     newGame: false,
     nextGame: 0,
-    newChapter: "",
-    games: []
-
+    nextChapter: 0,
+    game: 0,
+    games: [],
+    hint: "",
+    hintButton: false,
+    gameChoice: false,
+    endOfGame: false,
+    popUpDiv: "",
+    bubblegame: false,
+    startPage: true
    }
 
-   this.characterChoiceisClicked = this.characterChoiceisClicked.bind(this);
-   this.event = this.additionButtonisClicked.bind(this);
+   this.characterChoiceIsClicked = this.characterChoiceIsClicked.bind(this);
+   this.operatorButtonIsClicked = this.operatorButtonIsClicked.bind(this);
+   this.startGameButtonIsClicked = this.startGameButtonIsClicked.bind(this);
    this.finishedGame = this.finishedGame.bind(this);
-   this.newGame = this.newGame.bind(this);
-   this.test = this.test.bind(this);
+   this.finishedGameOfFive = this.finishedGameOfFive.bind(this);
+   this.newGameNewChapter = this.newGameNewChapter.bind(this);
+   this.showHint = this.showHint.bind(this);
+   this.gameOfChoice = this.gameOfChoice.bind(this);
+   this.showProfile = this.showProfile.bind(this);
+   this.showStartPage = this.showStartPage.bind(this);
+   this.popUp = this.popUp.bind(this);
+   this.backToChapter = this.backToChapter.bind(this);
 }
 
+gameArray(chosenOperator){
+   this.setState({
+    games: [  
+    <JumpRopeGame finishedGame={this.finishedGame} operator={chosenOperator} />,
+               <TeacherGame finishedGameOfFive={this.finishedGameOfFive} operator={chosenOperator} />, 
+              <DragAndDropGame finishedGameOfFive={this.finishedGameOfFive} operator={chosenOperator} />,
+              <BubbleGame finishedGame={this.finishedGame} operator={chosenOperator} />, 
+              
+              <TeacherGame finishedGameOfFive={this.finishedGameOfFive} />,
+              <TeacherGame finishedGameOfFive={this.finishedGameOfFive} />,
+              <TeacherGame finishedGameOfFive={this.finishedGameOfFive} />
+          ],
 
-additionButtonisClicked(){
+    hintButton: <HintButton showHint={this.showHint}/>
+   }) 
+}
+
+operatorButtonIsClicked(operator){
+  if(operator === "+"){
     this.setState({
-      additionButton : true,
-      newChapter: "vanja"
+      operatorButton: true,
+      operator: operator,
     });
    }
 
-characterChoiceisClicked(){
-  this.setState({
-      characterChoice : true
+  if(operator === "-"){
+    this.setState({
+      operatorButton: true,
+      operator: operator,
     });
+   }
+
+  if(operator === "*"){
+    this.setState({
+      operatorButton: true,
+      operator: operator,
+    });
+   }
+
+   this.gameArray(operator);
+}
+
+characterChoiceIsClicked(character){
+  this.setState({
+      characterChoice : true,
+      characterChosen: character,
+    });
+}
+
+startGameButtonIsClicked(){
+  this.setState({
+    startGameButton: true
+  });
 }
 
 finishedGame(count){
   if(count === 1){
-    this.setState({
-      chapter : true,
-    });
+    setTimeout(function() { //Start the timer to get a new mathexpression after 1 second
+      this.setState({
+        chapter : true,
+        newGame: false
+      });
+    }.bind(this), 1000)  
   }
 }
 
-test(){
-  console.log('HEJ');
+finishedGameOfFive(correctAnswer){
+  if(correctAnswer === 1){
+    setTimeout(function() { //Start the timer to get a new mathexpression after 1 second
+      this.setState({
+        chapter : true,
+        newGame: false
+      });
+    }.bind(this), 1000)  
+  }
 }
 
-newGame(chapters){
-    if(chapters < 10){
+newGameNewChapter(GameAndChapterIndex){
+    if(this.state.nextChapter < 4){
 
         this.setState({
         chapter: false,
         newGame : true,
-        nextGame : chapters + 1,
-        games: [<BubbleGame />, <TeacherGame testing={this.test} /> , <BubbleGame />]
+        game : GameAndChapterIndex + 1,
+        nextChapter: GameAndChapterIndex + 1,
+        games: [
+          <BubbleGame finishedGame={this.finishedGame} operator={this.state.operator} />, 
+          <JumpRopeGame finishedGame={this.finishedGame} />,
+          <TeacherGame finishedGameOfFive={this.finishedGameOfFive} />, 
+          <DragAndDropGame finishedGameOfFive={this.finishedGameOfFive} operator={this.state.operator} />,
+          <TeacherGame finishedGameOfFive={this.finishedGameOfFive} />,
+          <TeacherGame finishedGameOfFive={this.finishedGameOfFive} />,
+          <TeacherGame finishedGameOfFive={this.finishedGameOfFive} /> 
+        ],
+
+   
       });
+
     } else {
-      console.log("game over");
+      this.setState({
+        endOfGame: true
+      });
+
+      console.log('end of game');
     }
   }
 
+  showHint(){
+    this.setState({
+      hint:  <Hint />,
+    });
+  }
+
+  gameOfChoice(){
+    this.setState({
+      startPage: false,
+      gameChoice: true
+    });
+  }
+
+  showProfile(){
+     this.setState({
+      gameChoice: true,
+      chapter: false,
+      operatorButton: false,
+      characterChoice: false,
+      popUpDiv: false,
+      endOfGame: false
+
+    });
+  }
+
+    showStartPage(){
+     this.setState({
+      gameChoice: false,
+      startPage: true,
+      chapter: false,
+      operatorButton: false,
+      characterChoice: false,
+      popUpDiv: false,
+      endOfGame: false
+
+    });
+  }
+
+  popUp(){
+    this.setState({
+      popUpDiv: <PopUp backToChapter={this.backToChapter} showProfile={this.showProfile}/>,
+      chapter: false,
+      games: false,
+      hintButton: false,
+      hint: false
+    });
+  }
+
+  backToChapter(){
+     this.setState({
+      popUpDiv: false,
+      chapter: true,
+      games: true,
+      hint: true,
+      hintButton: <HintButton showHint={this.showHint}/>
+    });
+  }
+
   render(){
-   let allGames = this.state.games;
+   let allGamesArray = this.state.games;
    let Game = "";
-   let character = <ChooseCharacter characterChoiceisClicked={this.characterChoiceisClicked} />;
-   let operator = <ChooseOperator event={() => this.additionButtonisClicked()} />;
+   let character = "";
+   let operator = "";
+   let startGameButton = "";
    let chapter = "";
+   let hintButton = "";
+   let profileButton = "";
+   let finishButton =  "";
+   let endOfGame = "";
+   let startPage = "";
 
 
-   if(this.state.additionButton && this.state.characterChoice){
-    Game = <BubbleGame finishedGame={this.finishedGame} />;
+  if(this.state.startPage){
+    startPage = <StartPage gameOfChoice={this.gameOfChoice} />;
+  } else {
+    startPage = "";
+  }
+
+  if(this.state.gameChoice){
+    character = <ChooseCharacter characterChoiceIsClicked={this.characterChoiceIsClicked} characterButtonIsClickedStyle={this.state.characterButtonIsClickedStyle} />;
+    operator = <ChooseOperator operatorButtonIsClicked={this.operatorButtonIsClicked} />;
+    startGameButton = <StartGameButton startGameButtonIsClicked={this.startGameButtonIsClicked} />;
+    Game = "";
+    hintButton = "";
+  }   
+
+   if(this.state.operatorButton && this.state.characterChoice && this.state.startGameButton){
+    Game = allGamesArray[this.state.game];
+    hintButton =  this.state.hintButton ;
     character = "";
     operator = "";
-
+    startGameButton = "";
   }
 
   if(this.state.chapter){
-    chapter = <Chapter newGame={this.newGame}/>;
+    chapter = <Chapter newGameNewChapter={this.newGameNewChapter} chapter={this.state.nextChapter} storyToTell={this.state.characterChosen} />;
     Game= "";
+    profileButton = <ProfileButton showProfile={this.showProfile} />;
+    finishButton = <FinishButton popUp={this.popUp} />;
+    hintButton = "";
+
   }
 
   if(this.state.newGame){
-    let nextGame = this.state.nextGame;
-
-       chapter = "";
-       Game = allGames[this.state.nextGame];
-
-
-
+     chapter = "";
+     Game = allGamesArray[this.state.game];
+     hintButton =  this.state.hintButton;
+     profileButton = "";
   }
 
+  if(this.state.endOfGame){
+    endOfGame = <EndOfGame showProfile={this.showProfile} showStartPage={this.showStartPage} />;
+    chapter = ""; 
+    profileButton = "";
+    finishButton = "";
+  }
+
+
   return(
-      <div className="row">  
-        {character}
-        {operator}
-        {Game}
-        {chapter}
-      </div>
+    <div>
+     <header>
+        {hintButton}
+        {profileButton}
+        {finishButton}
+      </header>
+
+      <main>
+        <div className="row">  
+          {this.state.popUpDiv}            
+          {character}
+          {operator}
+          {startGameButton}
+          {Game}
+          {chapter}
+          {this.state.hint}      
+          {endOfGame}  
+          {startPage}
+         </div>             
+      </main>
+    </div>
     )
   }
 }

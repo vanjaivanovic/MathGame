@@ -1,0 +1,22 @@
+{
+	"JumpRopeGame": [
+		{
+			"partOne" : "Om du hoppar",
+			"partTwo" : "gånger hopprep och din lillasyster",
+			"partThree" : "gånger. Hur många gånger har ni hoppat tillsammans?"
+		},
+
+		{
+			"partOne" : "Om en elefant hoppar",
+			"partTwo" : "gånger hopprep och en liten mus utmanar elefantent att hoppa",
+			"partThree" : "gånger till. Hur många gånger har elefanten hoppat då?"
+		},
+
+			{
+			"partOne" : "Du och en känguru är ett team i en stafett tävling. Kängurun börjar först och hoppar",
+			"partTwo" : "gånger framåt. Sen tar du över stafetten och hoppar",
+			"partThree" : "gånger. Hur många hopp har hoppat tillsammans som ett team?"
+		}
+
+	]
+}

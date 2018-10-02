@@ -5,33 +5,40 @@ class Chapter extends Component {
 constructor(props) {
     super(props);
     this.state = {
-      arrayIndex: 0,
+      chapterIndex: 0,
+      storyToTell: ""
+
     }
 
     this.callNewGame = this.callNewGame.bind(this);
-    this.newChapter = this.newChapter.bind(this);
   }
 
-     callNewGame(){
-      const { newGame } = this.props
-      newGame(this.state.arrayIndex);
-      this.newChapter(this.state.arrayIndex);
+  componentWillMount(){
+    const { chapter } = this.props;
 
-    }
+    const { storyToTell } = this.props;
 
-    newChapter(index){
       this.setState({
-        arrayIndex: index + 1,
+        chapterIndex: chapter,
+        storyToTell: storyToTell
       })
-    }
-    
+
+  }
+     callNewGame(){
+      const { newGameNewChapter } = this.props
+
+      newGameNewChapter(this.state.chapterIndex);
+  }
 
   render () {
-  	let chapterIndex = 0;
+
+    let index = this.state.chapterIndex;
+    let characterIndex = this.state.storyToTell;
+
     let array = Characters.CharcterInfo;
-    let CharacterStory = array[chapterIndex].chapter;
-    let ChapterTitle = array[chapterIndex].title;
-    let StoryTitle = array[chapterIndex].storyTitle;
+    let CharacterStory = array[characterIndex][index].chapter;
+    let ChapterTitle = array[characterIndex][index].title;
+    let StoryTitle = array[characterIndex][index].storyTitle;
    
     return(
       	<div className="chapter col-12 col-sm-8">

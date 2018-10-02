@@ -19,11 +19,9 @@ constructor(props) {
      result2: "",
      wrongAnswer1: "",
      wrongAnswer2: "",
-     wrongAnswer3: "",
-     wrongAnswer4: "",
-     wrongAnswer5: "",
      count: 1,
-     styleShake: ""
+     styleShake: "",
+     operator: ""
    };
 
    this.setRandomNumber = this.setRandomNumber.bind(this);
@@ -31,13 +29,32 @@ constructor(props) {
    this.calc = this.calc.bind(this);
    this.correctAnswer = this.correctAnswer.bind(this);
    this.wrongAnswer = this.wrongAnswer.bind(this);
-   this.callFinishedGame = this.callFinishedGame.bind(this);
  }
 
 componentDidMount(){
-  this.calc();
+  this.calc(this.state.operator);
 }
+
  componentWillMount(){
+  const { operator } = this.props;
+
+  if(operator === "+"){
+    this.setState({
+    operator: operator, 
+    });
+  }
+   if(operator === "-"){
+    this.setState({
+    operator: operator, 
+    });
+  }
+
+   if(operator === "*"){
+    this.setState({
+    operator: operator, 
+    });
+  }
+  
    this.setRandomNumber();
  }
 
@@ -59,50 +76,103 @@ componentDidMount(){
 
 /*Generates random number between 0-10 to A*/
  generateNumbers(){
-   return Math.floor(Math.random() * 11);
+   return Math.floor(Math.random() * 15);
  }
 
  wrongAnswerNumber() {
-  let wrongAnswerNumber = Math.floor(Math.random() * 15);
-  let correctAnswerNumber = this.state.result;
-
-  if(wrongAnswerNumber === correctAnswerNumber){
-  	wrongAnswerNumber = wrongAnswerNumber + 1;
-  }
-
+  let wrongAnswerNumber = this.state.wrongAnswer1 + 3
   return wrongAnswerNumber;
  }
 
- calc(){
-   this.setState({
-     result: this.state.a + this.state.b,
-     result1: this.state.e + this.state.f,
-     result2: this.state.g + this.state.h,
-     wrongAnswer1: this.wrongAnswerNumber(),
-     wrongAnswer2: this.wrongAnswerNumber(),
-     wrongAnswer3: this.wrongAnswerNumber(),
-     wrongAnswer4: this.wrongAnswerNumber(),
-     wrongAnswer5: this.wrongAnswerNumber(),
-   });
+  wrongAnswerNumberTwo() {
+  let wrongAnswerNumber = this.state.wrongAnswer2 + 3
+  return wrongAnswerNumber;
  }
+
+ calc(operator){
+if(operator === "+"){
+   this.setState({
+       result: this.state.a + this.state.b,
+       result1: this.state.e + this.state.f,
+       result2: this.state.g + this.state.h,
+       wrongAnswer1: this.state.c + this.state.d,
+       wrongAnswer2: this.state.i + this.state.j
+     });
+  }
+
+  if(operator === "*"){
+    this.setState({
+     result: this.state.a * this.state.b,
+     result1: this.state.e * this.state.f,
+     result2: this.state.g * this.state.h,
+     wrongAnswer1: this.state.c * this.state.d,
+     wrongAnswer2: this.state.i * this.state.j
+   });
+  }  
+
+   if(operator === "-"){
+
+    if(this.state.a < this.state.b){
+      let a = this.state.a;
+      this.state.a = this.state.b;
+      this.state.b = a;
+    }
+
+    if(this.state.c < this.state.d){
+      let c = this.state.c;
+      this.state.c = this.state.d;
+      this.state.d = c;
+    }
+
+    if(this.state.e < this.state.f){
+      let e = this.state.e;
+      this.state.e = this.state.f;
+      this.state.f = e;
+    }
+
+    if(this.state.g < this.state.h){
+      let g = this.state.g;
+      this.state.g = this.state.h;
+      this.state.h = g;
+    }
+
+     if(this.state.i < this.state.j){
+      let i = this.state.j;
+      this.state.i = this.state.j;
+      this.state.j = i;
+    }
+
+     
+
+
+         this.setState({
+           result: this.state.a - this.state.b,
+           result1: this.state.e - this.state.f,
+           result2: this.state.g - this.state.h,
+           wrongAnswer1: this.state.c - this.state.d,
+           wrongAnswer2: this.state.i - this.state.j
+        });
+    } 
+ }
+
+
 
 /* Display answer for the 'Equals to' */
 
  correctAnswer(){
-  console.log('rätt!!')
+ 	this.setState({
+ 		count: this.state.count + 1
+ 	})
+	
+	const { finishedGameOfFive } = this.props;
+
+	finishedGameOfFive(this.state.count);
 }
 
 wrongAnswer(){
-	console.log('shake')
 	this.setState({
 		styleShake: "shake"
 	})
-}
-
-callFinishedGame(){
-	const { test } = this.props;
-
-	test();
 }
 
   render() {
@@ -111,7 +181,7 @@ callFinishedGame(){
       <div className="row">
 
           <div className="col-sm-6">
-            <p> {this.state.a} + {this.state.b} = {this.state.result} </p>
+            <p> {this.state.a} {this.state.operator} {this.state.b} = {this.state.result} </p>
            </div>
 
             <div className="col-sm-3">
@@ -128,7 +198,7 @@ callFinishedGame(){
        <div className="row">
 
           <div className="col-sm-6">
-            <p> {this.state.c} + {this.state.d} = {this.state.wrongAnswer1} </p>
+            <p> {this.state.c} {this.state.operator} {this.state.d} = {this.wrongAnswerNumber} </p>
            </div>
 
             <div className="col-sm-3">
@@ -145,7 +215,7 @@ callFinishedGame(){
        <div className="row">
 
           <div className="col-sm-6">
-            <p> {this.state.e} + {this.state.f} = {this.state.result1} </p>
+            <p> {this.state.e} {this.state.operator} {this.state.f} = {this.state.result1} </p>
            </div>
 
             <div className="col-sm-3">
@@ -162,7 +232,7 @@ callFinishedGame(){
        <div className="row">
 
           <div className="col-sm-6">
-            <p> {this.state.g} + {this.state.h} = {this.state.result2} </p>
+            <p> {this.state.g} {this.state.operator} {this.state.h} = {this.state.result2} </p>
            </div>
 
             <div className="col-sm-3">
@@ -179,7 +249,7 @@ callFinishedGame(){
        <div className="row">
 
           <div className="col-sm-6">
-            <p> {this.state.i} + {this.state.j} = {this.state.wrongAnswer2} </p>
+            <p> {this.state.i} {this.state.operator} {this.state.j} = {this.wrongAnswerNumberTwo} </p>
            </div>
 
             <div className="col-sm-3">
@@ -192,9 +262,6 @@ callFinishedGame(){
 
   
        </div>
-
-
-       <button onClick={this.callFinishedGame}>Teacher Game</button>
 	</div>
       )
   }

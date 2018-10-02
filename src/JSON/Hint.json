@@ -1,0 +1,21 @@
+{ 
+    "HintInfo": [
+         [
+         	{
+         		"id": "1",
+         		"hint": "Använd din livlina"
+         	},
+
+         	{
+         		"id": "2",
+         		"hint": "Fråga mamma"
+         	},
+
+         	{
+         		"id": "3",
+         		"hint": "Ring mormor"
+         	}
+
+         ]
+     ]
+}

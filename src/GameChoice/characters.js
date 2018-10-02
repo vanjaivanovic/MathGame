@@ -4,19 +4,42 @@ import CharacterList from './CharacterList.js';
 class ChooseCharacter extends Component {
 	constructor(props) {
 		super(props);
+		this.state = {
+			selected: [],
+			id: ""
+		}
+
 		this.CharacterWasClicked = this.CharacterWasClicked.bind(this);
 	}
 
-	CharacterWasClicked(event) {
-		event.preventDefault()
-		const { characterChoiceisClicked } = this.props
-		characterChoiceisClicked();
+	CharacterWasClicked(id, character) {
+		const { characterChoiceIsClicked } = this.props
+
+		this.setState({
+			id: id
+		})
+
+
+
+		let selected = this.state.selected;
+
+     if(selected.indexOf(id) == -1){
+			selected.push(id);
+	     this.setState({selected: selected});
+
+	     console.log(this.state.selected)
+     } 
+
+		characterChoiceIsClicked(character);
+
+				
 	}
 
 	render () {
 		return ( 
 				<ul className="characterContainer col-xs-12 sm-offset-2 col-sm-6">
-					<CharacterList CharacterWasClicked={this.CharacterWasClicked} />
+
+					<CharacterList CharacterClass={(this.state.selected.indexOf(this.state.id) !== -1) ? "selected":"not-selected"} CharacterWasClicked={this.CharacterWasClicked} />
 			  </ul>
   	)
 	}
