@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
-import CharacterInfo from './info.json';
+import CharacterInfoJson from './info.json';
 
 class CharacterList extends Component {
   constructor(props){
     super(props);
-    
+    Character: []
   }
 
+  componentWillMount(){
+      this.setState({
+       Character: CharacterInfoJson
+      });
+  }
 
   render(){
 
@@ -15,11 +20,12 @@ class CharacterList extends Component {
 
     return (
       <div>
-        {CharacterInfo.map((CharacterDetail, index) => {
+        {this.state.Character.map((CharacterDetail, index) => {
           return (
-             <li key={index} className={CharacterClass} >
+             <li key={CharacterDetail.id}>
                <div className="image col-12 col-sm-10">
-                  <img src={require(`../Images/${CharacterDetail.personImage}`)} alt={CharacterDetail.name} onClick={() => CharacterWasClicked(CharacterDetail.id, index)} />
+                  <img  className={CharacterDetail.selected ? 'characterIsSelected' : '' } src={require(`../Images/${CharacterDetail.personImage}`)}
+                   alt={CharacterDetail.name} onClick={() => CharacterWasClicked(this.state.Character, index)} />
                 </div>
                 <p className="characterList">{CharacterDetail.name}</p>
               </li>

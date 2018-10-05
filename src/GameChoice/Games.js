@@ -16,6 +16,7 @@ import PopUp from '../Helpers/Components/popUp.js';
 import StartPage from '../StartPage/StartPage.js';
 import StartGameButton from './StartGameButton.js';
 import JumpRopeGame from '../MathGames/GameActivitiesComponents/JumpRope.js';
+import ThrowDice from '../MathGames/GameActivitiesComponents/ThrowDice.js';
 
 class Games extends Component {
   constructor(props){
@@ -46,6 +47,7 @@ class Games extends Component {
    this.startGameButtonIsClicked = this.startGameButtonIsClicked.bind(this);
    this.finishedGame = this.finishedGame.bind(this);
    this.finishedGameOfFive = this.finishedGameOfFive.bind(this);
+   this.finishedThrowDiceGame = this.finishedThrowDiceGame.bind(this);
    this.newGameNewChapter = this.newGameNewChapter.bind(this);
    this.showHint = this.showHint.bind(this);
    this.gameOfChoice = this.gameOfChoice.bind(this);
@@ -57,16 +59,16 @@ class Games extends Component {
 
 gameArray(chosenOperator){
    this.setState({
-    games: [  
-    <JumpRopeGame finishedGame={this.finishedGame} operator={chosenOperator} />,
-               <TeacherGame finishedGameOfFive={this.finishedGameOfFive} operator={chosenOperator} />, 
-              <DragAndDropGame finishedGameOfFive={this.finishedGameOfFive} operator={chosenOperator} />,
-              <BubbleGame finishedGame={this.finishedGame} operator={chosenOperator} />, 
-              
-              <TeacherGame finishedGameOfFive={this.finishedGameOfFive} />,
-              <TeacherGame finishedGameOfFive={this.finishedGameOfFive} />,
-              <TeacherGame finishedGameOfFive={this.finishedGameOfFive} />
-          ],
+    games: [ 
+      <ThrowDice finishedThrowDiceGame={this.finishedThrowDiceGame} />,
+      <BubbleGame finishedGame={this.finishedGame} operator={chosenOperator} />,  
+      <JumpRopeGame finishedGame={this.finishedGame} operator={chosenOperator} />,  
+      <TeacherGame finishedGameOfFive={this.finishedGameOfFive} operator={chosenOperator} />, 
+      <DragAndDropGame finishedGameOfFive={this.finishedGameOfFive} operator={chosenOperator} />,  
+      <TeacherGame finishedGameOfFive={this.finishedGameOfFive} />,
+      <TeacherGame finishedGameOfFive={this.finishedGameOfFive} />,
+      <TeacherGame finishedGameOfFive={this.finishedGameOfFive} />
+    ],
 
     hintButton: <HintButton showHint={this.showHint}/>
    }) 
@@ -110,8 +112,17 @@ startGameButtonIsClicked(){
   });
 }
 
+finishedThrowDiceGame(){
+  setTimeout(function() { //Start the timer to get a new mathexpression after 1 second
+      this.setState({
+        chapter : true,
+        newGame: false
+      });
+    }.bind(this), 1000)
+}
+
 finishedGame(count){
-  if(count === 1){
+  if(count === 3){
     setTimeout(function() { //Start the timer to get a new mathexpression after 1 second
       this.setState({
         chapter : true,
@@ -134,24 +145,12 @@ finishedGameOfFive(correctAnswer){
 
 newGameNewChapter(GameAndChapterIndex){
     if(this.state.nextChapter < 4){
-
         this.setState({
-        chapter: false,
-        newGame : true,
-        game : GameAndChapterIndex + 1,
-        nextChapter: GameAndChapterIndex + 1,
-        games: [
-          <BubbleGame finishedGame={this.finishedGame} operator={this.state.operator} />, 
-          <JumpRopeGame finishedGame={this.finishedGame} />,
-          <TeacherGame finishedGameOfFive={this.finishedGameOfFive} />, 
-          <DragAndDropGame finishedGameOfFive={this.finishedGameOfFive} operator={this.state.operator} />,
-          <TeacherGame finishedGameOfFive={this.finishedGameOfFive} />,
-          <TeacherGame finishedGameOfFive={this.finishedGameOfFive} />,
-          <TeacherGame finishedGameOfFive={this.finishedGameOfFive} /> 
-        ],
-
-   
-      });
+          chapter: false,
+          newGame : true,
+          game : GameAndChapterIndex + 1,
+          nextChapter: GameAndChapterIndex + 1
+        });
 
     } else {
       this.setState({

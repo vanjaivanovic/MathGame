@@ -5,42 +5,29 @@ class ChooseCharacter extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			selected: [],
-			id: ""
+		 condition: false,
+		 selected: []
 		}
 
 		this.CharacterWasClicked = this.CharacterWasClicked.bind(this);
 	}
 
-	CharacterWasClicked(id, character) {
+	CharacterWasClicked(characters, characterIndex) {
 		const { characterChoiceIsClicked } = this.props
+		characterChoiceIsClicked(characterIndex);
 
-		this.setState({
-			id: id
-		})
+		for(let i=0; i < characters.length; i++) {
+			characters[i].selected = false;
+		}
 
-
-
-		let selected = this.state.selected;
-
-     if(selected.indexOf(id) == -1){
-			selected.push(id);
-	     this.setState({selected: selected});
-
-	     console.log(this.state.selected)
-     } 
-
-		characterChoiceIsClicked(character);
-
-				
+		characters[characterIndex].selected = true ;
 	}
 
-	render () {
+	render (){	
 		return ( 
-				<ul className="characterContainer col-xs-12 sm-offset-2 col-sm-6">
-
-					<CharacterList CharacterClass={(this.state.selected.indexOf(this.state.id) !== -1) ? "selected":"not-selected"} CharacterWasClicked={this.CharacterWasClicked} />
-			  </ul>
+			<ul className="characterContainer col-xs-12 sm-offset-2 col-sm-6">
+				<CharacterList CharacterWasClicked={this.CharacterWasClicked} />
+			 </ul>
   	)
 	}
 }

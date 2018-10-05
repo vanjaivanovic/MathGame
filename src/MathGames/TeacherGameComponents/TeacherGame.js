@@ -198,7 +198,7 @@ wrongAnswer(){
        <div className="row">
 
           <div className="col-sm-6">
-            <p> {this.state.c} {this.state.operator} {this.state.d} = {this.wrongAnswerNumber} </p>
+            <p> {this.state.c} {this.state.operator} {this.state.d} = {this.wrongAnswerNumber()} </p>
            </div>
 
             <div className="col-sm-3">
@@ -249,7 +249,7 @@ wrongAnswer(){
        <div className="row">
 
           <div className="col-sm-6">
-            <p> {this.state.i} {this.state.operator} {this.state.j} = {this.wrongAnswerNumberTwo} </p>
+            <p> {this.state.i} {this.state.operator} {this.state.j} = {this.wrongAnswerNumberTwo()} </p>
            </div>
 
             <div className="col-sm-3">

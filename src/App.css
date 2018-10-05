@@ -473,7 +473,7 @@ margin-top: 5px;
   text-align: center;
 }
 
-#buttonIsClicked{
+#buttonIsClicked, .characterIsSelected{
   border: 3px solid blue;
 }
 
