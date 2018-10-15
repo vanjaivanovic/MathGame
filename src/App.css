@@ -1,19 +1,11 @@
 body {
   background-color: #edc9af59 !important;
   color: #2c3e50;
+  font-family: 'Mali', cursive !important;
 }
 
 header{
   margin-top: 3%;
-}
-
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
 }
 
 .App-header {
@@ -385,8 +377,31 @@ ul {
 }
 
 
-.shake{
-  color: red;
+.shake {
+  background: red !important;
+  outline: none;
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
 }
 
 #div1 {
@@ -545,6 +560,12 @@ margin-top: 5px;
   text-align: center;
   padding: 40px;
   margin-bottom: 10%;
+  width: 700px;
+  margin-left: 3%;
+}
+
+.jumpDiv{
+  margin: 0 auto;
 }
 
 .inputone {
@@ -574,6 +595,275 @@ margin-top: 5px;
 
 
 
-    
+.checkbox {
+  position: relative;
+  width: 300px;
+  margin: 0 auto;
+  margin-bottom: 5px;
+}
+
+.checkbox input[type="checkbox"] {
+  visibility: hidden;
+}
+
+.checkbox label {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  left: 10px;
+  cursor: pointer;
+} 
+
+.checkbox label:before {
+  content: '';
+  width: 40px;
+  height: 20px;
+  border: 5px solid #fff;
+  position: absolute;
+  border-top: none;
+  border-right: none;
+  transform: rotate(-45deg);
+  top: 25px;
+  left: 18px;
+  opacity: 0;
+}
+
+.checkbox input[type="checkbox"]:checked + label:before {
+  opacity: 1; 
+}
+
+.checkbox input[type="checkbox"]:checked + label {
+  background-color: #42f4d9;
+}
+
+.teacherBtn {
+   height: 80px;
+   width: 150px;
+   font-size: 1.5em;
+   margin-bottom: 10px;
+}
+
+.teacherBtn button {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background: #f9b7ffd9;
+}
+
+.teacherMathExpressionOne, .teacherMathExpressionTwo, .teacherMathExpressionThree, .teacherMathExpressionFour, .teacherMathExpressionFive{
+  height: 80px;
+  font-size: 2em;
+  border: 1px solid grey;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+  word-spacing: 15px;
+  padding-top: 10px;
+ 
+ 
+}
+
+
+.teacherMathExpressionOne {
+    background: #00FA9A; 
+}
+
+.teacherMathExpressionTwo {
+    background: #FF1493; 
+}
+
+.teacherMathExpressionThree {
+    background: #ADFF2F; 
+}
+
+.teacherMathExpressionFour {
+    background: #00BFFF; 
+}
+
+.teacherMathExpressionFive {
+    background: #FFFF00; 
+}
+
+#dice {
+  font-size: 6rem;
+  background: #FF69B4;
+}
+
+.diceGame {
+  text-align: center;
+ }
+
+ .dice{
+  text-align: center; 
+  margin-bottom: 30px;
+ }
+
+.title h1{
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+
+.title img{
+  height: 250px;
+  width: 100%;
+  border-radius: 10px;
+}
+
+#diceCount{
+  padding-left: 10px;
+  padding-right: 10px;
+  background: #FFFFE0;
+  border-radius: 5px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  outline-style: none;
+  width: 60px;
+  font-size: 1.5em;
+  
+}
+
+.diceBtn{
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background: #00FFFF;
+  border-radius: 25px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  outline-style: none;
+  font-size: 2em;
+}
+
+.inputDice {
+  border-radius: 15px;
+  font-size: 2em;
+  text-align: center; 
+}
+
+.operatorStyle {
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 2em;
+}
+
+.operatorEquale{
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 2em;
+
+}
+
+.titleTotalDice {
+  font-size: 1.8em;
+}
+
+.check {
+  position: relative;
+  background: yellow;
+  line-height: 0;
+  perspective: 400px;
+  height: 5rem;
+}
+
+.check input[type="checkbox"],
+.check label,
+.check label::before,
+.check label::after,
+.check {
+  appearance: none;
+  display: inline-block;
+  border-radius: 2.2rem;
+  border: 0;
+  transition: .40s ease-in-out;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.check label {
+  width: 15rem;
+  height: 5rem;
+  background: linear-gradient(90deg, #f19af3, #f099b5);
+  overflow: hidden;
+  margin: 0;
+}
+
+.check input[type="checkbox"] {
+  position: absolute;
+  z-index: 1;
+  width: 4.2rem;
+  height: 4.2rem;
+  top: .4rem;
+  left: .1rem;
+  background: linear-gradient(45deg, #dedede, #ffffff);
+  box-shadow: 0 6px 7px rgba(0,0,0,0.3);
+  outline: none;
+}
+
+.check input[type="checkbox"]:checked {
+  left: 12rem;
+}
+
+.check input[type="checkbox"]:checked + label {
+  background: transparent;
+}
+
+.check label::before,
+.check label::after {
+  content: "· ·";
+  position: absolute;
+  overflow: hidden;
+  left: 0.005rem;
+  top: 2.5rem;
+  height: 1rem;
+  letter-spacing: -.55rem;
+  color: #9b9b9b;
+  font-family: "Times New Roman", serif;
+  z-index: 2;
+  font-size: 5rem;
+  border-radius: 0;
+  transform-origin: 0 0 -.5rem;
+  backface-visibility: hidden;
+}
+
+.check label::after {
+  content: "●";
+  top: 3.3rem;
+  left: 1.3rem;
+  height: 1.1rem;
+  width: 1.95rem;
+  font-size: 1.2rem;
+  transform-origin: 0 0 -.4rem;
+}
+
+.check input[type="checkbox"]:checked + label::before,
+.check input[type="checkbox"]:checked + label::after {
+  left: 12.55rem;
+  top: 1.4rem;
+  line-height: 1.1rem;
+  transform: rotateY(360deg);
+}
+
+.check input[type="checkbox"]:checked + label::after {
+  height: 1.16rem;
+  top: 2.60rem;
+  left: 13.3rem;
+  font-size: 3.65rem;
+  line-height: 0;
+}
+
+.happy {
+  margin: 0 auto;
+  margin-top: 15%;
+}
+
+.happy h1 {
+  text-align: center;
+}
+
+
+
+
+
 
 

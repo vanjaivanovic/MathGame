@@ -7,34 +7,82 @@ class ThrowDice extends Component {
   	indexPlayerOne: 0,
   	indexPlayerTwo: 0,
 
-    a: [0],
+    a: [],
     resultPlayerOne: "",
     scorePlayerOne: [],
 
-    c: [0],
+    c: [],
     resultPlayerTwo: "",
     scorePlayerTwo: [],
 
-    winner: ""
+    winner: "Vem blir vinnaren?",
+    operator: "",
+    disabled: "disabled"
   }
 
   this.compareFinalScores = this.compareFinalScores.bind(this);
 }
 
+componentDidMount(){
+  const { operator } = this.props;
+
+  if(operator === "+"){
+    this.setState({
+    operator: operator,
+    a: [0],
+    c: [0]
+    });
+  }
+   if(operator === "-"){
+    this.setState({
+    operator: operator, 
+    a: [20],
+    c: [20]
+    });
+  }
+
+   if(operator === "*"){
+    this.setState({
+    operator: operator, 
+    a: [1],
+    c: [1]
+    });
+  }
+
+  this.rollTheDice();
+
+}
 
 handleChangePlayerOne(event){
 let b = parseInt(event.target.value); 
 let index = this.state.indexPlayerOne ++ ;
 
-	this.setState({
-		resultPlayerOne: this.state.a[index] + b
-	});
+  if(this.state.operator === "+"){
+    this.setState({
+        resultPlayerOne: this.state.a[index] + b
+      });
 
+  }
+
+  if(this.state.operator === "-"){
+     this.setState({
+        resultPlayerOne: this.state.a[index] - b
+      });
+  }
+
+
+  if(this.state.operator === "*"){
+     this.setState({
+        resultPlayerOne: this.state.a[index] * b
+      });
+  }
 }
 
 compareAnswerWithResultPlayerOne(event){
-	let answer = parseInt(event.target.value);
+	let answer = parseInt(event.target.value); 
+
 	if(answer === this.state.resultPlayerOne){
+    
 		let a = this.state.a
 		a.push(this.state.resultPlayerOne);
 
@@ -58,9 +106,25 @@ handleChangePlayerTwo(event){
 let d = parseInt(event.target.value); 
 let index = this.state.indexPlayerTwo ++ ;
 
-	this.setState({
-		resultPlayerTwo: this.state.c[index] + d
-	});
+	if(this.state.operator === "+"){
+    this.setState({
+        resultPlayerTwo: this.state.c[index] + d
+      });
+
+  }
+
+  if(this.state.operator === "-"){
+     this.setState({
+        resultPlayerTwo: this.state.c[index] - d
+      });
+  }
+
+
+  if(this.state.operator === "*"){
+     this.setState({
+        resultPlayerTwo: this.state.c[index] * d
+      });
+  }
 
 }
 
@@ -129,116 +193,154 @@ showTheWinner(){
 }
 
 compareFinalScores(){
-	if(this.state.resultPlayerOne > this.state.resultPlayerTwo){
+	if(this.state.totalResultPlayerOne > this.state.totalResultPlayerTwo){
 		this.setState({
-			winner: "Spelare 1"
+			winner: "Vinnaren är Spelare 1"
 		});
 
-	} else {
+	} if(this.state.totalResultPlayerOne < this.state.totalResultPlayerTwo) {
 		this.setState({
-			winner: "Spelare 2"
+			winner: "Vinnaren är Spelare 2"
 		});
-	}
+
+	} if(this.state.totalResultPlayerOne === this.state.totalResultPlayerTwo) {
+    this.setState({
+      winner: "Det är oavgjort"
+    });
+  }
 
 		const { finishedThrowDiceGame } = this.props;
 		finishedThrowDiceGame(); 
 
 }
 
+rollTheDice() {
+    let i,
+        faceValue,
+        output = '',
+        diceCount = document.getElementById('diceCount').value || 1;
+    for (i = 0; i < diceCount; i++) {
+        faceValue = Math.floor(Math.random() * 6);
+        output += "&#x268" + faceValue + "; ";
+    }
+    document.getElementById('dice').innerHTML = output;
+}
+
+
   render() {
 
     return(
-      <div className="row col-12">
-        <div className="dice col-12 col-sm-6">
-            <h1>Spelare 1</h1>
-            <h2>Resultat: {this.state.totalResultPlayerOne} </h2>
-          
-          <div className="row">
-            <form className="col-12">
-              <label>
-                <input className="col-2" type="number" placeholder={this.state.a[0]} /> 
-                +
-                <input className="col-2" type="number" onChange={this.handleChangePlayerOne.bind(this)} />
-                =
-                <input className="col-2" type="number" onChange={this.compareAnswerWithResultPlayerOne.bind(this)} />  
-              </label>
-            </form>   
-          </div>
-
-
-
-          <div className="row">
-             <form className="col-12">
-              <label>
-                <input className="col-2" type="number" placeholder={this.state.a[1]} /> 
-                +
-                <input className="col-2" type="number" onChange={this.handleChangePlayerOne.bind(this)} />
-                =
-                <input className="col-2" type="number" onChange={this.compareAnswerWithResultPlayerOne.bind(this)} />  
-              </label> 
-            </form>
-          </div>
-
-
-          <div className="row">
-            <form className="col-12">
-              <label>
-                <input className="col-2" type="number" placeholder={this.state.a[2]} /> 
-                +
-                <input className="col-2" type="number" onChange={this.handleChangePlayerOne.bind(this)} />
-                =
-                <input className="col-2" type="number" onChange={this.compareAnswerWithResultPlayerOne.bind(this)} />  
-              </label> 
-            </form>
-          </div>
-
-
+      <div>
+        <div className="row title col-12">
+          <h1> {this.state.winner} </h1>
         </div>
 
-        <div className="dice col-12 col-sm-6">
-            <h1>Spelare 2</h1>
-            <h2>Resultat: {this.state.totalResultPlayerTwo}</h2>
+         <div className="row title offset-4 col-4">
+          <img src={require("../../Images/winner.jpg")} />
+        </div>
 
-             <div className="row">
-            <form className="col-12">
-              <label>
-                <input className="col-2" type="number" placeholder={this.state.c[0]} /> 
-                +
-                <input className="col-2" type="number" onChange={this.handleChangePlayerTwo.bind(this)} />
-                =
-                <input className="col-2" type="number" onChange={this.compareAnswerWithResultPlayerTwo.bind(this)} />  
-              </label> 
-            </form>   
+        <div className="row col-12 diceGame">
+          <div className="dice col-12 col-sm-6">
+              <h1>Spelare 1</h1>
+              <h2>Resultat: {this.state.totalResultPlayerOne} </h2>
+            
+            <div className="row">
+              <form className="col-12">
+                <label>
+                  <input className="col-2 inputDice" type="number" placeholder={this.state.a[0]} /> 
+                  <span className="operatorStyle">{this.state.operator}</span>
+                  <input className="col-2 inputDice" type="number" onChange={this.handleChangePlayerOne.bind(this)} />
+                  <span className="operatorEquale">=</span>
+                  <input className="col-2 inputDice" type="number" onChange={this.compareAnswerWithResultPlayerOne.bind(this)} />  
+                </label>
+              </form>   
+            </div>
+
+
+
+            <div className="row">
+               <form className="col-12">
+                <label>
+                  <input className="col-2 inputDice" type="number" placeholder={this.state.a[1]} /> 
+                  <span className="operatorStyle">{this.state.operator}</span>
+                  <input className="col-2 inputDice" type="number" onChange={this.handleChangePlayerOne.bind(this)} />
+                  <span className="operatorEquale">=</span>
+                  <input className="col-2 inputDice" type="number" onChange={this.compareAnswerWithResultPlayerOne.bind(this)} />  
+                </label> 
+              </form>
+            </div>
+
+
+            <div className="row">
+              <form className="col-12">
+                <label>
+                  <input className="col-2 inputDice" type="number" placeholder={this.state.a[2]} /> 
+                  <span className="operatorStyle">{this.state.operator}</span>
+                  <input className="col-2 inputDice" type="number" onChange={this.handleChangePlayerOne.bind(this)} />
+                  <span className="operatorEquale">=</span>
+                  <input className="col-2 inputDice" type="number" onChange={this.compareAnswerWithResultPlayerOne.bind(this)} />  
+                </label> 
+              </form>
+            </div>
+
+
           </div>
 
+          <div className="dice col-12 col-sm-6">
+              <h1>Spelare 2</h1>
+              <h2>Resultat: {this.state.totalResultPlayerTwo}</h2>
+
+               <div className="row">
+              <form className="col-12">
+                <label>
+                  <input className="col-2 inputDice" type="number" placeholder={this.state.c[0]} /> 
+                  <span className="operatorStyle">{this.state.operator}</span>
+                  <input className="col-2 inputDice" type="number" onChange={this.handleChangePlayerTwo.bind(this)} />
+                  <span className="operatorEquale">=</span>
+                  <input className="col-2 inputDice" type="number" onChange={this.compareAnswerWithResultPlayerTwo.bind(this)} />  
+                </label> 
+              </form>   
+            </div>
 
 
-          <div className="row">
-             <form className="col-12">
-              <label>
-                <input className="col-2" type="number" placeholder={this.state.c[1]} /> 
-                +
-                <input className="col-2" type="number" onChange={this.handleChangePlayerTwo.bind(this)} />
-                =
-                <input className="col-2" type="number" onChange={this.compareAnswerWithResultPlayerTwo.bind(this)} />  
-              </label> 
-            </form>
+
+            <div className="row">
+               <form className="col-12">
+                <label>
+                  <input className="col-2 inputDice" type="number" placeholder={this.state.c[1]} /> 
+                  <span className="operatorStyle">{this.state.operator}</span>
+                  <input className="col-2 inputDice" type="number" onChange={this.handleChangePlayerTwo.bind(this)} />
+                  <span className="operatorEquale">=</span>
+                  <input className="col-2 inputDice" type="number" onChange={this.compareAnswerWithResultPlayerTwo.bind(this)} />  
+                </label> 
+              </form>
+            </div>
+
+
+            <div className="row">
+              <form className="col-12">
+                <label>
+                  <input className="col-2 inputDice" type="number" placeholder={this.state.c[2]} /> 
+                  <span className="operatorStyle">{this.state.operator}</span>
+                  <input className="col-2 inputDice" type="number" onChange={this.handleChangePlayerTwo.bind(this)} />
+                  <span className="operatorEquale">=</span>
+                  <input className="col-2 inputDice" type="number" onChange={this.compareAnswerWithResultPlayerTwo.bind(this)} />  
+                </label> 
+              </form>
+            </div>
+    
+
+
           </div>
-
-
-          <div className="row">
-            <form className="col-12">
-              <label>
-                <input className="col-2" type="number" placeholder={this.state.c[2]} /> 
-                +
-                <input className="col-2" type="number" onChange={this.handleChangePlayerTwo.bind(this)} />
-                =
-                <input className="col-2" type="number" onChange={this.compareAnswerWithResultPlayerTwo.bind(this)} />  
-              </label> 
-            </form>
-          </div>
-          <h1>Vinnaren är: {this.state.winner} </h1>
-
+           <div className="row col-12">
+          <div className="dice offset-3 col-6">
+           <label className="titleTotalDice">Antal tärningar: </label>
+           <input id="diceCount"type="number" min="1" max="4" /> 
+           <input className="diceBtn" type="button" value="Kasta tärning" onClick={this.rollTheDice} />
+            <div id="dice">
+            </div>
+            </div>
+            </div>
         </div>
       </div>
 

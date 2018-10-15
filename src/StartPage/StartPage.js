@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 class StartPage extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      welcomeMessage: "zzzZ..."
+    }
   
     this.callGameChoice = this.callGameChoice.bind(this);
   }
@@ -10,18 +13,27 @@ class StartPage extends Component {
 callGameChoice(){
   const { gameOfChoice } = this.props;
 
-  gameOfChoice();
+  this.setState({
+    welcomeMessage: "Hellooo!"
+  })
+
+  setTimeout(function() { 
+      gameOfChoice();
+     }.bind(this), 1600)
 }
 
 render(){
   return(
-    <div>
-      <h1>Start Page</h1>
-      <button className="startPageButton" onClick={this.callGameChoice}>Start your game</button>
+    <div className="happy">
+      <h1>{this.state.welcomeMessage}</h1>
+      <div className="col-12 check">
+        <input id="check" type="checkbox" onClick={this.callGameChoice} />
+        <label for="check"></label>
+      </div>
     </div>
   )
  }
 }
 
 
-  export default StartPage;
+export default StartPage;

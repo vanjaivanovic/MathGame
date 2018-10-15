@@ -10,7 +10,9 @@ constructor(props){
     result: "",
     value: "",
     count: 1,
-    index: 0
+    index: 0,
+    operatorIndex: 0,
+    operator: ""
   }
 
   this.handleChange = this.handleChange.bind(this);
@@ -19,29 +21,71 @@ constructor(props){
 
 
 componentDidMount(){
-  this.calc();
+  const { operator } = this.props;
+
+    this.setState({
+      operator: operator
+    })
+
+    if(operator === "-"){
+      this.setState({
+        operatorIndex: 1
+      })
+    }
+
+  this.calc(operator);
 }
  componentWillMount(){
-   this.setRandomNumber();
+  const { operator } = this.props;
+
+   this.setRandomNumber(operator);
+
  }
 
 
-setRandomNumber(){
+setRandomNumber(operator){
    this.setState({
-     a: this.generateNumbers(),
-     b: this.generateNumbers()
+     a: this.generateNumbers(operator),
+     b: this.generateNumbers(operator)
    });
  }
 
-/*Generates random number between 0-10 to A*/
- generateNumbers(){
-   return Math.floor(Math.random() * 11);
+/*Generates random number between 1-10 to A*/
+ generateNumbers(operator){
+  let randomNumber = "";
+  
+  if(operator === "*"){
+   randomNumber = Math.floor(Math.random() * 3) + 1; 
+  } else {
+  randomNumber = Math.floor(Math.random() * 11) + 1;
+  }
+
+  return randomNumber;
  }
 
- calc(){
-   this.setState({
-     result: this.state.a + this.state.b
-   });
+ calc(operator){
+  if(operator === "+"){
+    this.setState({
+         result: this.state.a + this.state.b
+       });  
+  }
+
+   if(operator === "*"){
+    this.setState({
+         result: this.state.a * this.state.b
+       });  
+  }
+
+   if(operator === "-"){
+     if(this.state.a < this.state.b){
+        let a = this.state.a;
+        this.state.a = this.state.b;
+        this.state.b = a;
+      }
+           this.setState({
+             result: this.state.a - this.state.b,
+           });
+      }
  }
 
  handleChange(event){
@@ -54,25 +98,26 @@ setRandomNumber(){
  }
 
  handleSubmit(event){
-   if(this.state.result == this.state.value && this.state.index < 2){
+   if(this.state.result == this.state.value){
       this.setState({
         count: this.state.count + 1
       });
-        setTimeout(function() { //Start the timer to get a new mathexpression after 2,5 seconds
-          this.setState({
-            index: this.state.index + 1,
-            value: ""
-          });
-          this.setRandomNumber();
-          this.calc();
-        }.bind(this), 1000);
-
-        this.callFinishedGame();
+        if(this.state.index < 2){
+          setTimeout(function() { //Start the timer to get a new mathexpression after 2,5 seconds
+            this.setState({
+              index: this.state.index + 1,
+              value: ""
+            });
+            this.setRandomNumber(this.state.operator);
+            this.calc(this.state.operator);
+          }.bind(this), 1000);
+      }
     } else {
 
     console.log('fel svar, försök igen');
     }
 
+  this.callFinishedGame();
   event.preventDefault();
  
  }
@@ -86,17 +131,19 @@ callFinishedGame(){
 
   render(){
     let index = this.state.index;
+    let operatorIndex = this.state.operatorIndex;
+
     let JumpRopeGameArray = JumpRope.JumpRopeGame;
-    let SectionOne = JumpRopeGameArray[index].partOne;
-    let SectionTwo = JumpRopeGameArray[index].partTwo;
-    let SectionThree = JumpRopeGameArray[index].partThree;
+    let SectionOne = JumpRopeGameArray[operatorIndex][index].partOne;
+    let SectionTwo = JumpRopeGameArray[operatorIndex][index].partTwo;
+    let SectionThree = JumpRopeGameArray[operatorIndex][index].partThree;
     let a = this.state.a;
     let b = this.state.b;
 
     console.log(JumpRopeGameArray);
 
     return(
-      <div>
+      <div className="jumpDiv">
         <p className="jumpRope">{SectionOne} {a} {SectionTwo} {b} {SectionThree} </p>
         <form onSubmit={this.handleSubmit}>
           <label>

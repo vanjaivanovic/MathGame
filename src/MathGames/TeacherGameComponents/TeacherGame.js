@@ -20,8 +20,17 @@ constructor(props) {
      wrongAnswer1: "",
      wrongAnswer2: "",
      count: 1,
-     styleShake: "",
-     operator: ""
+     styleShakeOne: "",
+     styleShakeTwo: "",
+     styleShakeThree: "",
+     styleShakeFour: "",
+     styleShakeFive: "",
+     operator: "",
+     checkedOne: "",
+     checkedTwo: "",
+     checkedThree: "",
+     checkedFour: "",
+     checkedFive: ""
    };
 
    this.setRandomNumber = this.setRandomNumber.bind(this);
@@ -143,8 +152,6 @@ if(operator === "+"){
     }
 
      
-
-
          this.setState({
            result: this.state.a - this.state.b,
            result1: this.state.e - this.state.f,
@@ -157,22 +164,86 @@ if(operator === "+"){
 
 
 
+
+
 /* Display answer for the 'Equals to' */
 
- correctAnswer(){
+ correctAnswer(answerToCheck){
  	this.setState({
- 		count: this.state.count + 1
+ 		count: this.state.count + 1,
  	})
+
+  if(answerToCheck === 1){
+    this.setState({
+      checkedOne: "checked",
+      styleShakeOne: ""
+    })
+  }
+
+    if(answerToCheck === 2){
+    this.setState({
+      checkedTwo: "checked",
+      styleShakeTwo: ""
+    })
+  }
+
+    if(answerToCheck === 3){
+    this.setState({
+      checkedThree: "checked",
+      styleShakeThree: ""
+    })
+  }
+
+    if(answerToCheck === 4){
+    this.setState({
+      checkedFour: "checked",
+      styleShakeFour: ""
+    })
+  }
+
+    if(answerToCheck === 5){
+    this.setState({
+      checkedFive: "checked",
+      styleShakeFive: ""
+    })
+  }
 	
 	const { finishedGameOfFive } = this.props;
 
 	finishedGameOfFive(this.state.count);
 }
 
-wrongAnswer(){
-	this.setState({
-		styleShake: "shake"
-	})
+wrongAnswer(shakeWrongAnswer){
+  if(shakeWrongAnswer === 1){
+    this.setState({
+        styleShakeOne: "shake"
+      })  
+  }
+
+   if(shakeWrongAnswer === 2){
+    this.setState({
+        styleShakeTwo: "shake"
+      })  
+  }
+
+   if(shakeWrongAnswer === 3){
+    this.setState({
+        styleShakeThree: "shake"
+      })  
+  }
+
+   if(shakeWrongAnswer === 4){
+    this.setState({
+        styleShakeFour: "shake"
+      })  
+  }
+
+   if(shakeWrongAnswer === 5){
+    this.setState({
+        styleShakeFive: "shake"
+      })  
+  }
+	
 }
 
   render() {
@@ -180,86 +251,106 @@ wrongAnswer(){
     <div className="container">
       <div className="row">
 
-          <div className="col-sm-6">
+          <div className="offset-2 col-sm-4 teacherMathExpressionOne">
             <p> {this.state.a} {this.state.operator} {this.state.b} = {this.state.result} </p>
            </div>
 
-            <div className="col-sm-3">
-              <button onClick={this.correctAnswer}> Rätt </button>
+            <div className="col-sm-2 teacherBtn">
+              <button onClick={() => this.correctAnswer(1)}> Rätt </button>
             </div>
 
-            <div className="col-sm-3">
-              <button onClick={this.wrongAnswer}> Fel </button>
+            <div className="col-sm-2 teacherBtn">
+              <button className={this.state.styleShakeOne} onClick={() => this.wrongAnswer(1)}> Fel </button>
             </div>
 
+              <div className="checkbox col-sm-2">
+                <input type="checkbox" id="checkbox1" checked={this.state.checkedOne} />
+                <label for="checkbox1"></label>
+              </div>
   
        </div>
 
        <div className="row">
 
-          <div className="col-sm-6">
+          <div className="offset-2 col-sm-4 teacherMathExpressionTwo">
             <p> {this.state.c} {this.state.operator} {this.state.d} = {this.wrongAnswerNumber()} </p>
            </div>
 
-            <div className="col-sm-3">
-              <button className={this.state.styleShake} onClick={this.wrongAnswer}> Rätt </button>
+            <div className="col-sm-2 teacherBtn">
+              <button className={this.state.styleShakeTwo} onClick={() => this.wrongAnswer(2)}> Rätt </button>
             </div>
 
-            <div className="col-sm-3">
-              <button onClick={this.correctAnswer}> Fel </button>
+            <div className="col-sm-2 teacherBtn">
+              <button onClick={() => this.correctAnswer(2)}> Fel </button>
             </div>
 
+            <div className="checkbox col-sm-2">
+                <input type="checkbox" id="checkbox1" checked={this.state.checkedTwo} />
+                <label for="checkbox1"></label>
+            </div>
   
        </div>
 
        <div className="row">
 
-          <div className="col-sm-6">
+          <div className="offset-2 col-sm-4 teacherMathExpressionThree">
             <p> {this.state.e} {this.state.operator} {this.state.f} = {this.state.result1} </p>
            </div>
 
-            <div className="col-sm-3">
-              <button onClick={this.correctAnswer}> Rätt </button>
+            <div className="col-sm-2 teacherBtn">
+              <button onClick={() => this.correctAnswer(3)}> Rätt </button>
             </div>
 
-            <div className="col-sm-3">
-              <button onClick={this.wrongAnswer}> Fel </button>
+            <div className="col-sm-2 teacherBtn">
+              <button className={this.state.styleShakeThree} onClick={() => this.wrongAnswer(3)}> Fel </button>
             </div>
 
+            <div className="checkbox col-sm-2">
+                <input type="checkbox" id="checkbox1" checked={this.state.checkedThree} />
+                <label for="checkbox1"></label>
+            </div>
   
        </div>
 
        <div className="row">
 
-          <div className="col-sm-6">
+          <div className="offset-2 col-sm-4  teacherMathExpressionFour">
             <p> {this.state.g} {this.state.operator} {this.state.h} = {this.state.result2} </p>
            </div>
 
-            <div className="col-sm-3">
-              <button onClick={this.correctAnswer}> Rätt </button>
+            <div className="col-sm-2 teacherBtn">
+              <button onClick={() => this.correctAnswer(4)}> Rätt </button>
             </div>
 
-            <div className="col-sm-3">
-              <button onClick={this.wrongAnswer}> Fel </button>
+            <div className="col-sm-2 teacherBtn">
+              <button className={this.state.styleShakeFour} onClick={() => this.wrongAnswer(4)}> Fel </button>
             </div>
 
+            <div className="checkbox col-sm-2">
+                <input type="checkbox" id="checkbox1" checked={this.state.checkedFour} />
+                <label for="checkbox1"></label>
+            </div>
   
        </div>
 
        <div className="row">
 
-          <div className="col-sm-6">
+          <div className="offset-2 col-sm-4 teacherMathExpressionFive">
             <p> {this.state.i} {this.state.operator} {this.state.j} = {this.wrongAnswerNumberTwo()} </p>
            </div>
 
-            <div className="col-sm-3">
-              <button onClick={this.wrongAnswer}> Rätt </button>
+            <div className="col-sm-2 teacherBtn">
+              <button className={this.state.styleShakeFive} onClick={() => this.wrongAnswer(5)}> Rätt </button>
             </div>
 
-            <div className="col-sm-3">
-              <button onClick={this.correctAnswer}> Fel </button>
+            <div className="col-sm-2 teacherBtn">
+              <button onClick={() => this.correctAnswer(5)}> Fel </button>
             </div>
 
+            <div className="checkbox col-sm-2">
+                <input type="checkbox" id="checkbox1" checked={this.state.checkedFive} />
+                <label for="checkbox1"></label>
+            </div>
   
        </div>
 	</div>

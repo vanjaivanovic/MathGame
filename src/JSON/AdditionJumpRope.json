@@ -1,22 +1,48 @@
 {
 	"JumpRopeGame": [
-		{
-			"partOne" : "Om du hoppar",
-			"partTwo" : "gånger hopprep och din lillasyster",
-			"partThree" : "gånger. Hur många gånger har ni hoppat tillsammans?"
-		},
 
-		{
-			"partOne" : "Om en elefant hoppar",
-			"partTwo" : "gånger hopprep och en liten mus utmanar elefantent att hoppa",
-			"partThree" : "gånger till. Hur många gånger har elefanten hoppat då?"
-		},
+		[
+			{
+				"partOne" : "Om du hoppar",
+				"partTwo" : "gånger hopprep och din lillasyster",
+				"partThree" : "gånger. Hur många gånger har ni hoppat tillsammans?"
+			},
 
 			{
-			"partOne" : "Du och en känguru är ett team i en stafett tävling. Kängurun börjar först och hoppar",
-			"partTwo" : "gånger framåt. Sen tar du över stafetten och hoppar",
-			"partThree" : "gånger. Hur många hopp har hoppat tillsammans som ett team?"
-		}
+				"partOne" : "Om en elefant hoppar",
+				"partTwo" : "gånger hopprep och en liten mus utmanar elefantent att hoppa",
+				"partThree" : "gånger till. Hur många gånger har elefanten hoppat då?"
+			},
+
+				{
+				"partOne" : "Du och en känguru är ett team i en stafett tävling. Kängurun börjar först och hoppar",
+				"partTwo" : "gånger framåt. Sen tar du över stafetten och hoppar",
+				"partThree" : "gånger till. Hur många hopp har ni hoppat tillsammans?"
+			}
+
+		],
+
+		[
+
+			{
+				"partOne" : "Om din lillasyster hoppar",
+				"partTwo" : "gånger och du ska hoppa",
+				"partThree" : "hopp mindre. Hur många gånger ska du hoppa?"
+			},
+
+			{
+				"partOne" : "Om en giraff hoppar",
+				"partTwo" : "gånger hopprep och en liten apa hoppar",
+				"partThree" : "gånger färre. Hur många gånger har den lilla apan hoppat då?"
+			},
+
+				{
+				"partOne" : "Du och en kompis ska leka Röda Lyktan Stopp med hopprep. Din kompis räknar och du hoppar. Du hinner hoppa",
+				"partTwo" : "gånger framåt innan hon vänder sig om. Men hon ser dig innan du hinner stanna och då får du hoppa",
+				"partThree" : "hopp bakåt. Hur många hopp framåt hann du med?"
+			}
+
+		]		
 
 	]
 }
