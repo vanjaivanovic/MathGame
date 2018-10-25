@@ -15,9 +15,7 @@ class StartGameButton extends Component {
 
   render(){
     return(
-      <div className="col-sm-5 offset-7">
-        <button className="col-sm-12 startGameButton" onClick={this.startGame}>Börja spela</button>
-      </div>
+          <button className="col-12 offset-2 col-sm-8 startGameButton" onClick={this.startGame}>Börja spela</button>
     )
   }
 }

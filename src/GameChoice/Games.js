@@ -14,14 +14,16 @@ import EndOfGame from '../Helpers/Components/EndOfGame/EndOfGame.js';
 import FinishButton from '../Helpers/Components/FinishButton.js';
 import PopUp from '../Helpers/Components/popUp.js';
 import StartPage from '../StartPage/StartPage.js';
-import StartGameButton from './StartGameButton.js';
 import JumpRopeGame from '../MathGames/GameActivitiesComponents/JumpRope.js';
 import ThrowDice from '../MathGames/GameActivitiesComponents/ThrowDice.js';
+import HeaderTitle from '../Helpers/Components/HeaderTitle.js';
 
 class Games extends Component {
   constructor(props){
    super(props);
    this.state = { 
+    startPageBackground: "startPageSleep",
+    gameAndChapterBackground: ["dragAndDropGameBackground", "chapterBackground", "diceGameBackground", "chapterBackground", "jumpRopeGameBackground",  "chapterBackground", "bubbleGameBackground",  "chapterBackground", "teacherGameBackground", "chapterBackground", "jumpRopeGameBackground"],
     operatorButton: false,
     operator: "",
     characterChoice : false,
@@ -32,6 +34,7 @@ class Games extends Component {
     nextGame: 0,
     nextChapter: 0,
     game: 0,
+    gameAndChapterBackgroundIndex: 0,
     games: [],
     hint: "",
     hintButton: false,
@@ -42,12 +45,14 @@ class Games extends Component {
     startPage: true
    }
 
+   this.changeStartPageBackground = this.changeStartPageBackground.bind(this);
    this.characterChoiceIsClicked = this.characterChoiceIsClicked.bind(this);
    this.operatorButtonIsClicked = this.operatorButtonIsClicked.bind(this);
    this.startGameButtonIsClicked = this.startGameButtonIsClicked.bind(this);
    this.finishedGame = this.finishedGame.bind(this);
    this.finishedGameOfFive = this.finishedGameOfFive.bind(this);
    this.finishedThrowDiceGame = this.finishedThrowDiceGame.bind(this);
+   this.finishedGameDragAndDrop = this.finishedGameDragAndDrop.bind(this);
    this.newGameNewChapter = this.newGameNewChapter.bind(this);
    this.showHint = this.showHint.bind(this);
    this.closeHint = this.closeHint.bind(this);
@@ -60,17 +65,18 @@ class Games extends Component {
 
 gameArray(chosenOperator){
    this.setState({
-    games: [ 
+    games: [
+      <DragAndDropGame finishedGameDragAndDrop={this.finishedGameDragAndDrop} operator={chosenOperator} />,  
+      <ThrowDice finishedThrowDiceGame={this.finishedThrowDiceGame} operator={chosenOperator} />,  
       <JumpRopeGame finishedGame={this.finishedGame} operator={chosenOperator} />,
       <BubbleGame finishedGame={this.finishedGame} operator={chosenOperator} />,
+      <TeacherGame finishedGameOfFive={this.finishedGameOfFive} operator={chosenOperator} />,
+      
+      
+      <TeacherGame finishedGameOfFive={this.finishedGameOfFive} operator={chosenOperator} />,
       <ThrowDice finishedThrowDiceGame={this.finishedThrowDiceGame} operator={chosenOperator} />,
-      <TeacherGame finishedGameOfFive={this.finishedGameOfFive} operator={chosenOperator} />, 
-      <TeacherGame finishedGameOfFive={this.finishedGameOfFive} operator={chosenOperator} />,  
-      <DragAndDropGame finishedGameOfFive={this.finishedGameOfFive} operator={chosenOperator} />,  
-      <TeacherGame finishedGameOfFive={this.finishedGameOfFive} operator={chosenOperator} />, 
-      <ThrowDice finishedThrowDiceGame={this.finishedThrowDiceGame} operator={chosenOperator} />,
-      <TeacherGame finishedGameOfFive={this.finishedGameOfFive} operator={chosenOperator} />, 
-      <TeacherGame finishedGameOfFive={this.finishedGameOfFive} operator={chosenOperator} /> 
+      <TeacherGame finishedGameOfFive={this.finishedGameOfFive} operator={chosenOperator} />,    
+      <TeacherGame finishedGameOfFive={this.finishedGameOfFive} operator={chosenOperator} />   
     ],
 
     hintButton: <HintButton showHint={this.showHint}/>
@@ -119,17 +125,21 @@ finishedThrowDiceGame(){
   setTimeout(function() { //Start the timer to get a new mathexpression after 1 second
       this.setState({
         chapter : true,
-        newGame: false
+        newGame: false,
+        hint: "",
+        gameAndChapterBackgroundIndex : this.state.gameAndChapterBackgroundIndex + 1,
       });
     }.bind(this), 3000)
 }
 
 finishedGame(count){
-  if(count === 3){
+  if(count === 2){
     setTimeout(function() { //Start the timer to get a new mathexpression after 1 second
       this.setState({
         chapter : true,
-        newGame: false
+        newGame: false,
+        hint: "",
+        gameAndChapterBackgroundIndex : this.state.gameAndChapterBackgroundIndex + 1,
       });
     }.bind(this), 1000)  
   }
@@ -140,18 +150,34 @@ finishedGameOfFive(correctAnswer){
     setTimeout(function() { //Start the timer to get a new mathexpression after 1 second
       this.setState({
         chapter : true,
-        newGame: false
+        newGame: false,
+        hint: "",
+        gameAndChapterBackgroundIndex : this.state.gameAndChapterBackgroundIndex + 1,
+      });
+    }.bind(this), 1000)  
+  }
+}
+
+finishedGameDragAndDrop(correctAnswer){
+  if(correctAnswer === 1){
+    setTimeout(function() { //Start the timer to get a new mathexpression after 1 second
+      this.setState({
+        chapter : true,
+        newGame: false,
+        hint: "",
+        gameAndChapterBackgroundIndex : this.state.gameAndChapterBackgroundIndex + 1,
       });
     }.bind(this), 1000)  
   }
 }
 
 newGameNewChapter(GameAndChapterIndex){
-    if(this.state.nextChapter < 4){
+    if(this.state.nextChapter < 5){
         this.setState({
           chapter: false,
           newGame : true,
           game : GameAndChapterIndex + 1,
+          gameAndChapterBackgroundIndex : this.state.gameAndChapterBackgroundIndex + 1,
           nextChapter: GameAndChapterIndex + 1
         });
 
@@ -176,10 +202,17 @@ newGameNewChapter(GameAndChapterIndex){
     });
   }
 
+  changeStartPageBackground(){
+    this.setState({
+      startPageBackground: "startPageAwake"
+    })
+  }
+
   gameOfChoice(){
     this.setState({
       startPage: false,
-      gameChoice: true
+      gameChoice: true,
+      startPageBackground: false
     });
   }
 
@@ -189,6 +222,7 @@ newGameNewChapter(GameAndChapterIndex){
       chapter: false,
       operatorButton: false,
       characterChoice: false,
+      startGameButton: false,
       popUpDiv: false,
       endOfGame: false
 
@@ -230,30 +264,32 @@ newGameNewChapter(GameAndChapterIndex){
 
   render(){
    let allGamesArray = this.state.games;
+   let allGameAndChapterBackgrounds = this.state.gameAndChapterBackground;
+   let gameAndChapterBackground = "";
    let Game = "";
    let character = "";
    let operator = "";
-   let startGameButton = "";
    let chapter = "";
    let hintButton = "";
    let profileButton = "";
    let finishButton =  "";
    let endOfGame = "";
    let startPage = "";
+   let headerTitleGameChoice = "";
 
 
   if(this.state.startPage){
-    startPage = <StartPage gameOfChoice={this.gameOfChoice} />;
+    startPage = <StartPage gameOfChoice={this.gameOfChoice} changeStartPageBackground={this.changeStartPageBackground} />;
   } else {
     startPage = "";
   }
 
   if(this.state.gameChoice){
     character = <ChooseCharacter characterChoiceIsClicked={this.characterChoiceIsClicked} characterButtonIsClickedStyle={this.state.characterButtonIsClickedStyle} />;
-    operator = <ChooseOperator operatorButtonIsClicked={this.operatorButtonIsClicked} />;
-    startGameButton = <StartGameButton startGameButtonIsClicked={this.startGameButtonIsClicked} />;
+    operator = <ChooseOperator operatorButtonIsClicked={this.operatorButtonIsClicked} startGameButtonIsClicked={this.startGameButtonIsClicked} />;
     Game = "";
     hintButton = "";
+    headerTitleGameChoice = <HeaderTitle />;
   }   
 
    if(this.state.operatorButton && this.state.characterChoice && this.state.startGameButton){
@@ -261,7 +297,8 @@ newGameNewChapter(GameAndChapterIndex){
     hintButton =  this.state.hintButton ;
     character = "";
     operator = "";
-    startGameButton = "";
+    headerTitleGameChoice = "";
+    gameAndChapterBackground= allGameAndChapterBackgrounds[this.state.gameAndChapterBackgroundIndex];
   }
 
   if(this.state.chapter){
@@ -278,6 +315,7 @@ newGameNewChapter(GameAndChapterIndex){
      Game = allGamesArray[this.state.game];
      hintButton =  this.state.hintButton;
      profileButton = "";
+     gameAndChapterBackground = allGameAndChapterBackgrounds[this.state.gameAndChapterBackgroundIndex];
   }
 
   if(this.state.endOfGame){
@@ -289,20 +327,21 @@ newGameNewChapter(GameAndChapterIndex){
 
 
   return(
-    <div>
-     <header>
+    <div id={gameAndChapterBackground} className={this.state.startPageBackground}>
+    <main>
+       <div className="row">  
+        {headerTitleGameChoice}
         {hintButton}
         {profileButton}
         {finishButton}
-        {this.state.hint}   
-      </header>
+        {this.state.hint} 
+        </div>  
 
-      <main>
+
         <div className="row">  
           {this.state.popUpDiv}            
           {character}
           {operator}
-          {startGameButton}
           {Game}
           {chapter}   
           {endOfGame}  

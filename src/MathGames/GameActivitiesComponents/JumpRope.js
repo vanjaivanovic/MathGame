@@ -9,10 +9,13 @@ constructor(props){
     b: "",
     result: "",
     value: "",
-    count: 1,
+    count: 0,
     index: 0,
     operatorIndex: 0,
-    operator: ""
+    operator: "",
+    placeHolderMessage: "Skriv ditt svar",
+    jumpRopeAnswerButton: "jumpRopeAnswerButton",
+    expression: []
   }
 
   this.handleChange = this.handleChange.bind(this);
@@ -50,14 +53,13 @@ setRandomNumber(operator){
    });
  }
 
-/*Generates random number between 1-10 to A*/
  generateNumbers(operator){
   let randomNumber = "";
   
   if(operator === "*"){
-   randomNumber = Math.floor(Math.random() * 3) + 1; 
+   randomNumber = Math.floor(Math.random() * 3) + 2; 
   } else {
-  randomNumber = Math.floor(Math.random() * 11) + 1;
+  randomNumber = Math.floor(Math.random() * 11) + 2;
   }
 
   return randomNumber;
@@ -100,25 +102,49 @@ setRandomNumber(operator){
  handleSubmit(event){
    if(this.state.result == this.state.value){
       this.setState({
-        count: this.state.count + 1
+        count: this.state.count + 1,
+        AnswerIcon: false,
+        rightAnswerIcon: true,
+        placeHolderMessage: "Skriv ditt svar",
+        jumpRopeAnswerButton: "jumpRopeAnswerButton jumpRopeRightAnswer",
+        expression: [this.state.a, this.state.operator, this.state.b, "=", this.state.result]
+
       });
         if(this.state.index < 2){
           setTimeout(function() { //Start the timer to get a new mathexpression after 2,5 seconds
             this.setState({
               index: this.state.index + 1,
-              value: ""
+              value: "",
+              rightAnswerIcon: false,
+              AnswerIcon: true,
+              jumpRopeAnswerButton: "jumpRopeAnswerButton",
+              expression: false
             });
             this.setRandomNumber(this.state.operator);
             this.calc(this.state.operator);
           }.bind(this), 1000);
       }
-    } else {
 
-    console.log('fel svar, försök igen');
+    } else {
+    this.setState({
+      wrongAnswerIcon: true,
+      AnswerIcon: false,
+      jumpRopeAnswerButton: "jumpRopeAnswerButton jumpRopeWrongAnswer"
+    })
+
+    setTimeout(function() {
+       this.setState({
+        wrongAnswerIcon: false,
+        AnswerIcon: true,
+        value: "",
+        placeHolderMessage: "Försök igen",
+        jumpRopeAnswerButton: "jumpRopeAnswerButton"
+      })
+      }.bind(this), 2000);
     }
 
-  this.callFinishedGame();
   event.preventDefault();
+   this.callFinishedGame();
  
  }
 
@@ -139,18 +165,32 @@ callFinishedGame(){
     let SectionThree = JumpRopeGameArray[operatorIndex][index].partThree;
     let a = this.state.a;
     let b = this.state.b;
+    let AnswerIcon = "Rätta";
 
-    console.log(JumpRopeGameArray);
+    if(this.state.rightAnswerIcon){
+      AnswerIcon = <i class="fas fa-check"></i>;
+    }
+
+    if(this.state.wrongAnswerIcon){
+      AnswerIcon = <i class="fas fa-times"></i>;
+    }
+
+    if(this.state.AnswerIcon){
+      AnswerIcon = "Rätta";
+    }
 
     return(
-      <div className="jumpDiv">
+      <div className="jumpDiv col-5">
         <p className="jumpRope">{SectionOne} {a} {SectionTwo} {b} {SectionThree} </p>
         <form onSubmit={this.handleSubmit}>
-          <label>
-          <input className="inputone" value={this.state.value} placeholder="Skriv ditt svar" type="number" onChange={this.handleChange} />
+           <div className="row">
+           <label>
+          <input className="inputone" value={this.state.value} placeholder={this.state.placeHolderMessage} type="number" onChange={this.handleChange} />
           </label>
-          <input className="inputtwo" type="submit" value="Submit"/>
+          <button className={this.state.jumpRopeAnswerButton} type="submit">{AnswerIcon}</button>
+          </div>
         </form>
+        <p>{this.state.expression}</p>
       </div>
     )
   }

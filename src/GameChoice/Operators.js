@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import StartGameButton from './StartGameButton.js';
 
 class ChooseOperator extends Component {
   constructor(props) {
@@ -40,16 +41,21 @@ class ChooseOperator extends Component {
   }
 
 render(){
+  const { startGameButtonIsClicked } = this.props;
+
   return(
-      <div className="operatorsWrapper col-12 col-sm-5 offset-sm-1">
+      <div className="operatorsWrapper col-12 col-sm-6">
         <div className="row">
-          <button id={this.state.additionButtonIsClickedStyle} className="plus operatorButton col-12 col-sm-12" onClick={() => this.operatorIsChosen("+")}><i className="fas fa-plus"></i></button>
+          <button id={this.state.additionButtonIsClickedStyle} className="plus operatorButton col-12 offset-2 col-sm-8" onClick={() => this.operatorIsChosen("+")}><i className="fas fa-plus"></i></button>
         </div>
         <div className="row">
-          <button id={this.state.substractionButtonIsClickedStyle} className="minus  operatorButton col-12" onClick={() => this.operatorIsChosen("-")}><i className="fas fa-minus"></i></button>
+          <button id={this.state.substractionButtonIsClickedStyle} className="minus  operatorButton col-12 offset-2 col-sm-8" onClick={() => this.operatorIsChosen("-")}><i className="fas fa-minus"></i></button>
         </div>
         <div className="row">
-          <button id={this.state.multiplicationButtonIsClickedStyle} className="multiplication operatorButton col-12" onClick={() => this.operatorIsChosen("*")}><i className="fas fa-times"></i></button>
+          <button id={this.state.multiplicationButtonIsClickedStyle} className="multiplication operatorButton col-12 offset-2 col-sm-8" onClick={() => this.operatorIsChosen("*")}><i className="fas fa-times"></i></button>
+        </div>
+        <div className="row">
+         <StartGameButton startGameButtonIsClicked={startGameButtonIsClicked} />
         </div>
       </div>
     )

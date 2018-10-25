@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import CharacterList from './CharacterList.js';
+import PerfectScrollbar from 'react-perfect-scrollbar'
+import PropTypes from 'prop-types';
+import 'react-perfect-scrollbar/dist/css/styles.css';
 
 class ChooseCharacter extends Component {
 	constructor(props) {
@@ -26,8 +29,11 @@ class ChooseCharacter extends Component {
 	render (){	
 		return ( 
 			<ul className="characterContainer col-xs-12 sm-offset-2 col-sm-6">
+			<PerfectScrollbar ref = {(ref) => { this._scrollBarRef = ref; }}>
 				<CharacterList CharacterWasClicked={this.CharacterWasClicked} />
+			</PerfectScrollbar>
 			 </ul>
+			
   	)
 	}
 }

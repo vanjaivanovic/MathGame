@@ -7,17 +7,16 @@ class ThrowDice extends Component {
   	indexPlayerOne: 0,
   	indexPlayerTwo: 0,
 
-    a: [],
+    a: [0],
     resultPlayerOne: "",
     scorePlayerOne: [],
 
-    c: [],
+    c: [0],
     resultPlayerTwo: "",
     scorePlayerTwo: [],
 
     winner: "Vem blir vinnaren?",
-    operator: "",
-    disabled: "disabled"
+    operator: ""
   }
 
   this.compareFinalScores = this.compareFinalScores.bind(this);
@@ -54,28 +53,28 @@ componentDidMount(){
 }
 
 handleChangePlayerOne(event){
-let b = parseInt(event.target.value); 
-let index = this.state.indexPlayerOne ++ ;
+
+let b = parseInt(event.target.value);
 
   if(this.state.operator === "+"){
     this.setState({
-        resultPlayerOne: this.state.a[index] + b
+        resultPlayerOne: this.state.a[this.state.indexPlayerOne] + b,
       });
 
   }
 
   if(this.state.operator === "-"){
      this.setState({
-        resultPlayerOne: this.state.a[index] - b
+        resultPlayerOne: this.state.a[this.state.indexPlayerOne] - b,
       });
   }
 
 
   if(this.state.operator === "*"){
      this.setState({
-        resultPlayerOne: this.state.a[index] * b
+        resultPlayerOne: this.state.a[this.state.indexPlayerOne] * b,
       });
-  }
+  } 
 }
 
 compareAnswerWithResultPlayerOne(event){
@@ -92,7 +91,8 @@ compareAnswerWithResultPlayerOne(event){
 		console.log('rätt');
 		this.setState({
 			a: a,
-			scorePlayerOne: score
+			scorePlayerOne: score,
+      indexPlayerOne: this.state.indexPlayerOne + 1
 		});
 	
 		this.calcScorePlayerOne();
@@ -104,25 +104,24 @@ compareAnswerWithResultPlayerOne(event){
 
 handleChangePlayerTwo(event){
 let d = parseInt(event.target.value); 
-let index = this.state.indexPlayerTwo ++ ;
 
 	if(this.state.operator === "+"){
     this.setState({
-        resultPlayerTwo: this.state.c[index] + d
+        resultPlayerTwo: this.state.c[this.state.indexPlayerTwo] + d
       });
 
   }
 
   if(this.state.operator === "-"){
      this.setState({
-        resultPlayerTwo: this.state.c[index] - d
+        resultPlayerTwo: this.state.c[this.state.indexPlayerTwo] - d
       });
   }
 
 
   if(this.state.operator === "*"){
      this.setState({
-        resultPlayerTwo: this.state.c[index] * d
+        resultPlayerTwo: this.state.c[this.state.indexPlayerTwo] * d
       });
   }
 
@@ -139,7 +138,8 @@ compareAnswerWithResultPlayerTwo(event){
 
 		this.setState({
 			c: c,
-			scorePlayerTwo: score
+			scorePlayerTwo: score,
+      indexPlayerTwo: this.state.indexPlayerTwo + 1
 		});
 
 		this.calcScorePlayerTwo();
@@ -235,10 +235,6 @@ rollTheDice() {
           <h1> {this.state.winner} </h1>
         </div>
 
-         <div className="row title offset-4 col-4">
-          <img src={require("../../Images/winner.jpg")} />
-        </div>
-
         <div className="row col-12 diceGame">
           <div className="dice col-12 col-sm-6">
               <h1>Spelare 1</h1>
@@ -332,8 +328,8 @@ rollTheDice() {
 
 
           </div>
-           <div className="row col-12">
-          <div className="dice offset-3 col-6">
+           <div className="row">
+          <div className="dice col-12">
            <label className="titleTotalDice">Antal tärningar: </label>
            <input id="diceCount"type="number" min="1" max="4" /> 
            <input className="diceBtn" type="button" value="Kasta tärning" onClick={this.rollTheDice} />

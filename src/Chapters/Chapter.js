@@ -48,8 +48,7 @@ constructor(props) {
           </div>
           <p>{CharacterStory}</p>
           <button className="next" onClick={this.callNewGame}><span>Nästa</span></button>
-        </div>
-     
+        </div>  
     )
   }
 }

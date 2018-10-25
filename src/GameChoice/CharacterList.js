@@ -22,12 +22,13 @@ class CharacterList extends Component {
       <div>
         {this.state.Character.map((CharacterDetail, index) => {
           return (
-             <li key={CharacterDetail.id}>
-               <div className="image col-12 col-sm-10">
-                  <img  className={CharacterDetail.selected ? 'characterIsSelected' : '' } src={require(`../Images/${CharacterDetail.personImage}`)}
-                   alt={CharacterDetail.name} onClick={() => CharacterWasClicked(this.state.Character, index)} />
+            <li key={CharacterDetail.id}>
+              <div className={CharacterDetail.selected ? 'characterIsSelected characterList col-12 col-sm-10' : 'characterList col-12 col-sm-10' }>
+                    <img src={require(`../Images/${CharacterDetail.personImage}`)}
+                     alt={CharacterDetail.name} onClick={() => CharacterWasClicked(this.state.Character, index)}/>
+                
+                    <p className="characterNames" onClick={() => CharacterWasClicked(this.state.Character, index)}>{CharacterDetail.name}</p>      
                 </div>
-                <p className="characterList">{CharacterDetail.name}</p>
               </li>
           )
         })}

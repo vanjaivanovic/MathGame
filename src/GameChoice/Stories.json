@@ -1,6 +1,78 @@
 { 
     "CharcterInfo": [
          [
+            {
+              "id":"1",
+              "title": "",
+              "storyTitle": "Visste du att",
+              "chapter": "Nelson Mandela kämpade för rättvisa"
+            },
+
+            {
+              "id":"2",
+              "title": "",
+              "storyTitle": "Visste du att",
+              "chapter": "Dalai Lama lär om kärlek och fred på jorden"
+            },
+
+            {
+              "id":"3",
+              "title": "",
+              "storyTitle": "Visste du att",
+              "chapter": "Coco Chanel förändrade modevärlden genom att sy de första byxor för kvinnor"
+            },
+
+            {
+              "id":"4",
+              "title": "",
+              "storyTitle": "Visste du att",
+              "chapter": "Nelson Mandela kämpade för rättvisa"
+            },
+
+            {
+              "id":"5",
+              "title": "",
+              "storyTitle": "Visste du att",
+              "chapter": "Dalai Lama lär om kärlek och fred på jorden"
+            },
+
+            {
+              "id":"6",
+              "title": "",
+              "storyTitle": "Visste du att",
+              "chapter": "Coco Chanel förändrade modevärlden genom att sy de första byxor för kvinnor"
+            },
+
+            {
+              "id":"7",
+              "title": "",
+              "storyTitle": "Visste du att",
+              "chapter": "Nelson Mandela kämpade för rättvisa"
+            },
+
+            {
+              "id":"8",
+              "title": "",
+              "storyTitle": "Visste du att",
+              "chapter": "Dalai Lama lär om kärlek och fred på jorden"
+            },
+
+            {
+              "id":"9",
+              "title": "",
+              "storyTitle": "Visste du att",
+              "chapter": "Coco Chanel förändrade modevärlden genom att sy de första byxor för kvinnor"
+            },
+
+             {
+              "id":"10",
+              "title": "",
+              "storyTitle": "Visste du att",
+              "chapter": "Coco Chanel förändrade modevärlden genom att sy de första byxor för kvinnor"
+            }
+         ],
+
+         [
          {
             "id": "1",
             "title": "Kapitel 1",

@@ -12,6 +12,8 @@ class StartPage extends Component {
 
 callGameChoice(){
   const { gameOfChoice } = this.props;
+  const { changeStartPageBackground } = this.props;
+  changeStartPageBackground();
 
   this.setState({
     welcomeMessage: "Hellooo!"
@@ -19,7 +21,7 @@ callGameChoice(){
 
   setTimeout(function() { 
       gameOfChoice();
-     }.bind(this), 1600)
+     }.bind(this), 2000)
 }
 
 render(){
@@ -28,7 +30,7 @@ render(){
       <h1>{this.state.welcomeMessage}</h1>
       <div className="col-12 check">
         <input id="check" type="checkbox" onClick={this.callGameChoice} />
-        <label for="check"></label>
+        <label htmlFor="check"></label>
       </div>
     </div>
   )

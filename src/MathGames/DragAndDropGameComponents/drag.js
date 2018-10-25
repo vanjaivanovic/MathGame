@@ -1,31 +1,42 @@
 import React, { Component } from 'react';
+import { DragSource } from 'react-dnd';
 
+
+const itemSource = {
+    beginDrag(props) {
+    return props.mathProblem;
+    },
+
+    endDrag(props, monitor, component) {
+        
+        if(!monitor.didDrop()) {
+            return;
+        } 
+
+        return props.handleDrop(props.mathProblem.id);
+     }
+ }
+
+function collect(connect, monitor){
+    return {
+        connectDragSource: connect.dragSource(),
+        connectDragPreview: connect.dragPreview(),
+        isDragging: monitor.isDragging(),
+    }
+}
 
 class Drag extends Component {
-     allowDrop(ev) {
-    ev.preventDefault();
-}
 
- drag(ev) {
-    ev.dataTransfer.setData("text", ev.target.id);
-}
-
- drop(ev) {
-    ev.preventDefault();
-    var data = ev.dataTransfer.getData("text");
-    ev.target.appendChild(document.getElementById(data));
-}
     render() {
-        return ( 
-            <div>
-            <div className="col-sm-3" id="div1" onDrop={this.drop} onDragOver={this.allowDrop}></div>
-            
-            <button className="col-sm-3" id="drag1" draggable="true" onDragStart={this.drag} width="50" height="50">3</button>
-            
+const { isDragging, connectDragSource, mathProblem} = this.props;
+
+        return connectDragSource( 
+            <div className="offset-sm-2 col-sm-2 item">
+                <button className="dragBtn">{mathProblem.random}</button>
             </div>
         );
     }
 }
 
-export default Drag;
+export default DragSource('item', itemSource, collect)(Drag);
 

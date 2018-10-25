@@ -39,7 +39,7 @@ generateRandomNumber(){
 	            </div>
 	    	
 	    		<div className="row">
-			    	<div className="finalQuestion col-12 col-sm-8">
+			    	<div className="finalQuestion col-12 offset-sm-2 col-sm-8">
 			           <p>Vill du höra mer spännande historier om andra modiga personer?</p>
 			           
 			            <button className="quoteBtn1" onClick={this.callShowProfileFunction}>Gärna</button>

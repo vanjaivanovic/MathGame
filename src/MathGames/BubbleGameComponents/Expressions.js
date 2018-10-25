@@ -15,7 +15,7 @@ render(){
            <span style={{minWidth: "40px"}}>{Operator}</span>
            <span ref="num2">{NumberTwo}</span>
            <button className="btn" id="equal">=</button>
-           <span>{AnswerBox}</span>
+           <span className="bubbleGamesAnswer">{AnswerBox}</span>
 
         </div>
   )

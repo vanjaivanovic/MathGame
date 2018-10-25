@@ -251,7 +251,7 @@ wrongAnswer(shakeWrongAnswer){
     <div className="container">
       <div className="row">
 
-          <div className="offset-2 col-sm-4 teacherMathExpressionOne">
+          <div className="offset-1 col-sm-5 teacherMathExpressionOne">
             <p> {this.state.a} {this.state.operator} {this.state.b} = {this.state.result} </p>
            </div>
 
@@ -272,7 +272,7 @@ wrongAnswer(shakeWrongAnswer){
 
        <div className="row">
 
-          <div className="offset-2 col-sm-4 teacherMathExpressionTwo">
+          <div className="offset-1 col-sm-5 teacherMathExpressionTwo">
             <p> {this.state.c} {this.state.operator} {this.state.d} = {this.wrongAnswerNumber()} </p>
            </div>
 
@@ -293,7 +293,7 @@ wrongAnswer(shakeWrongAnswer){
 
        <div className="row">
 
-          <div className="offset-2 col-sm-4 teacherMathExpressionThree">
+          <div className="offset-1 col-sm-5 teacherMathExpressionThree">
             <p> {this.state.e} {this.state.operator} {this.state.f} = {this.state.result1} </p>
            </div>
 
@@ -314,7 +314,7 @@ wrongAnswer(shakeWrongAnswer){
 
        <div className="row">
 
-          <div className="offset-2 col-sm-4  teacherMathExpressionFour">
+          <div className="offset-1 col-sm-5  teacherMathExpressionFour">
             <p> {this.state.g} {this.state.operator} {this.state.h} = {this.state.result2} </p>
            </div>
 
@@ -335,7 +335,7 @@ wrongAnswer(shakeWrongAnswer){
 
        <div className="row">
 
-          <div className="offset-2 col-sm-4 teacherMathExpressionFive">
+          <div className="offset-1 col-sm-5 teacherMathExpressionFive">
             <p> {this.state.i} {this.state.operator} {this.state.j} = {this.wrongAnswerNumberTwo()} </p>
            </div>
 

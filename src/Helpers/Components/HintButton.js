@@ -29,7 +29,7 @@ class HintButton extends Component {
 
   render(){
     return(
-      <button className="hintButton" onClick={this.callShowHintFunction}><i className="fab fa-reddit-alien fa-3x"></i></button>
+      <button className="col-2 hintButton" onClick={this.callShowHintFunction}><img src={require('../../Images/helpHeart.png')}/><p>Behöver du en ledtråd?</p></button>
     )
   }
 }
