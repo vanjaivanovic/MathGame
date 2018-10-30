@@ -248,7 +248,7 @@ wrongAnswer(shakeWrongAnswer){
 
   render() {
     return(
-    <div className="container">
+    <div className="container teacherGameDiv">
       <div className="row">
 
           <div className="offset-1 col-sm-5 teacherMathExpressionOne">

@@ -215,18 +215,14 @@ wrongAnswer(){
 
   render(){
     return(
-      <div>
-        <div className="items">
+        <div className="col-sm-6 items">
           {this.state.mathProblems.map((mathProblem, index) => (
-            <div className="row">
+            <div className="row dragAndDropExpression">
               <Drop mathProblem={mathProblem} result={mathProblem} />
               <Drag key={mathProblem.id} mathProblem={mathProblem} handleDrop={() => this.dropedAnswerItem(mathProblem.random, index)} />
             </div>
           ))}
         </div>
-
-        
-      </div>
     )
   }
 }

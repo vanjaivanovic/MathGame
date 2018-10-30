@@ -25,10 +25,9 @@ class Hint extends Component {
     let HintContent = allHints[operatorHintIndex][hintIndex].hint;
 
     return(
-      <div className="hint col-12 col-sm-8">
-
-            <h1>{HintContent}</h1>
-            <span onClick={() => closeHint()}>X</span>
+      <div className="hintBubble col-12 col-sm-8">
+        <span className="closeHint" onClick={() => closeHint()}>&times;</span>
+        <p>{HintContent}</p>
       </div>
 
       )

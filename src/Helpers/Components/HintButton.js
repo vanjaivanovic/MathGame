@@ -29,7 +29,9 @@ class HintButton extends Component {
 
   render(){
     return(
-      <button className="col-2 hintButton" onClick={this.callShowHintFunction}><img src={require('../../Images/helpHeart.png')}/><p>Behöver du en ledtråd?</p></button>
+      <button className="col-2 hintButton" onClick={this.callShowHintFunction}>
+      <img src={require('../../Images/dorisHint2.png')}/>
+      <p className="hintBtnTitle">Behöver du en ledtråd?</p></button>
     )
   }
 }

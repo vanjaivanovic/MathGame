@@ -20,6 +20,7 @@ class ThrowDice extends Component {
   }
 
   this.compareFinalScores = this.compareFinalScores.bind(this);
+  this.rollTheDice = this.rollTheDice.bind(this);
 }
 
 componentDidMount(){
@@ -215,28 +216,26 @@ compareFinalScores(){
 }
 
 rollTheDice() {
-    let i,
-        faceValue,
-        output = '',
-        diceCount = document.getElementById('diceCount').value || 1;
-    for (i = 0; i < diceCount; i++) {
-        faceValue = Math.floor(Math.random() * 6);
-        output += "&#x268" + faceValue + "; ";
-    }
+  
+      let faceValue = Math.floor(Math.random() * 6);
+      let output = "&#x268" + faceValue + "; ";
+
     document.getElementById('dice').innerHTML = output;
 }
 
-
   render() {
+
+    const { showHint } = this.props;
 
     return(
       <div>
-        <div className="row title col-12">
-          <h1> {this.state.winner} </h1>
-        </div>
-
-        <div className="row col-12 diceGame">
-          <div className="dice col-12 col-sm-6">
+           <div className="row title">
+          <h1 className="col-12"> {this.state.winner} </h1>
+         </div>
+ 
+      <div className="row diceGame">
+     
+          <div className="dice col-12 offset-3 col-sm-4">
               <h1>Spelare 1</h1>
               <h2>Resultat: {this.state.totalResultPlayerOne} </h2>
             
@@ -279,10 +278,12 @@ rollTheDice() {
               </form>
             </div>
 
+            <div id="dice">
+            </div>
 
           </div>
 
-          <div className="dice col-12 col-sm-6">
+          <div className="dice col-12 col-sm-4">
               <h1>Spelare 2</h1>
               <h2>Resultat: {this.state.totalResultPlayerTwo}</h2>
 
@@ -323,20 +324,13 @@ rollTheDice() {
                   <input className="col-2 inputDice" type="number" onChange={this.compareAnswerWithResultPlayerTwo.bind(this)} />  
                 </label> 
               </form>
-            </div>
-    
-
-
           </div>
-           <div className="row">
-          <div className="dice col-12">
-           <label className="titleTotalDice">Antal tärningar: </label>
-           <input id="diceCount"type="number" min="1" max="4" /> 
-           <input className="diceBtn" type="button" value="Kasta tärning" onClick={this.rollTheDice} />
-            <div id="dice">
-            </div>
-            </div>
-            </div>
+
+           <div className="col-4 rollDice">
+               <button className="diceBtn" onClick={this.rollTheDice}><p>Kasta<br/>tärning</p></button>
+          </div>
+       </div>
+           
         </div>
       </div>
 

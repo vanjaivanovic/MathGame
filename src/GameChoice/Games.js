@@ -17,13 +17,26 @@ import StartPage from '../StartPage/StartPage.js';
 import JumpRopeGame from '../MathGames/GameActivitiesComponents/JumpRope.js';
 import ThrowDice from '../MathGames/GameActivitiesComponents/ThrowDice.js';
 import HeaderTitle from '../Helpers/Components/HeaderTitle.js';
+import GameChoiceTitle from './GameChoiceTitle.js';
 
 class Games extends Component {
   constructor(props){
    super(props);
    this.state = { 
     startPageBackground: "startPageSleep",
-    gameAndChapterBackground: ["dragAndDropGameBackground", "chapterBackground", "diceGameBackground", "chapterBackground", "jumpRopeGameBackground",  "chapterBackground", "bubbleGameBackground",  "chapterBackground", "teacherGameBackground", "chapterBackground", "jumpRopeGameBackground"],
+    gameAndChapterBackground: 
+      [  
+      "bubbleGameBackground", "chapterBackground",
+      "jumpRopeGameBackground", "chapterBackground",
+      "diceGameBackground", "chapterBackground", 
+      "teacherGameBackground", "chapterBackground", 
+      "dragAndDropGameBackground", "chapterBackground",
+      "dragAndDropGameBackground", "chapterBackground",
+        "dragAndDropGameBackground", "chapterBackground",
+      "teacherGameBackground", "chapterBackground", 
+      "dragAndDropGameBackground", "chapterBackground",
+      ],
+
     operatorButton: false,
     operator: "",
     characterChoice : false,
@@ -65,18 +78,17 @@ class Games extends Component {
 
 gameArray(chosenOperator){
    this.setState({
-    games: [
-      <DragAndDropGame finishedGameDragAndDrop={this.finishedGameDragAndDrop} operator={chosenOperator} />,  
+    games: [  
+    <TeacherGame finishedGameOfFive={this.finishedGameOfFive} operator={chosenOperator} />,
+    <JumpRopeGame finishedGame={this.finishedGame} operator={chosenOperator} />,
+    <BubbleGame finishedGame={this.finishedGame} operator={chosenOperator} />,
+      <ThrowDice finishedThrowDiceGame={this.finishedThrowDiceGame} operator={chosenOperator} />,   
+      <DragAndDropGame finishedGameDragAndDrop={this.finishedGameDragAndDrop} operator={chosenOperator} />, 
       <ThrowDice finishedThrowDiceGame={this.finishedThrowDiceGame} operator={chosenOperator} />,  
-      <JumpRopeGame finishedGame={this.finishedGame} operator={chosenOperator} />,
       <BubbleGame finishedGame={this.finishedGame} operator={chosenOperator} />,
       <TeacherGame finishedGameOfFive={this.finishedGameOfFive} operator={chosenOperator} />,
-      
-      
       <TeacherGame finishedGameOfFive={this.finishedGameOfFive} operator={chosenOperator} />,
-      <ThrowDice finishedThrowDiceGame={this.finishedThrowDiceGame} operator={chosenOperator} />,
-      <TeacherGame finishedGameOfFive={this.finishedGameOfFive} operator={chosenOperator} />,    
-      <TeacherGame finishedGameOfFive={this.finishedGameOfFive} operator={chosenOperator} />   
+      <ThrowDice finishedThrowDiceGame={this.finishedThrowDiceGame} operator={chosenOperator} />,  
     ],
 
     hintButton: <HintButton showHint={this.showHint}/>
@@ -133,7 +145,7 @@ finishedThrowDiceGame(){
 }
 
 finishedGame(count){
-  if(count === 2){
+  if(count === 3){
     setTimeout(function() { //Start the timer to get a new mathexpression after 1 second
       this.setState({
         chapter : true,
@@ -224,7 +236,8 @@ newGameNewChapter(GameAndChapterIndex){
       characterChoice: false,
       startGameButton: false,
       popUpDiv: false,
-      endOfGame: false
+      endOfGame: false,
+      gameAndChapterBackgroundIndex: 0
 
     });
   }
@@ -276,6 +289,7 @@ newGameNewChapter(GameAndChapterIndex){
    let endOfGame = "";
    let startPage = "";
    let headerTitleGameChoice = "";
+   let gameChoiceTitle = "";
 
 
   if(this.state.startPage){
@@ -290,6 +304,7 @@ newGameNewChapter(GameAndChapterIndex){
     Game = "";
     hintButton = "";
     headerTitleGameChoice = <HeaderTitle />;
+    gameChoiceTitle = <GameChoiceTitle />;
   }   
 
    if(this.state.operatorButton && this.state.characterChoice && this.state.startGameButton){
@@ -298,6 +313,7 @@ newGameNewChapter(GameAndChapterIndex){
     character = "";
     operator = "";
     headerTitleGameChoice = "";
+    gameChoiceTitle = "";
     gameAndChapterBackground= allGameAndChapterBackgrounds[this.state.gameAndChapterBackgroundIndex];
   }
 
@@ -330,23 +346,25 @@ newGameNewChapter(GameAndChapterIndex){
     <div id={gameAndChapterBackground} className={this.state.startPageBackground}>
     <main>
        <div className="row">  
+        {gameChoiceTitle}
         {headerTitleGameChoice}
         {hintButton}
         {profileButton}
-        {finishButton}
-        {this.state.hint} 
+        {finishButton}      
+        {this.state.hint}  
         </div>  
 
 
         <div className="row">  
-          {this.state.popUpDiv}            
+          {this.state.popUpDiv}  
+              
           {character}
           {operator}
           {Game}
           {chapter}   
           {endOfGame}  
           {startPage}
-         </div>             
+         </div>           
       </main>
     </div>
     )

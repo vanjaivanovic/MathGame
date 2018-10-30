@@ -11,12 +11,19 @@ class FinishButton extends Component {
 callpopUp(){
   const { popUp } = this.props;
 
-  popUp();
+  setTimeout(function() { 
+    popUp()
+    }.bind(this), 1000)  
 }
 
   render(){
     return(
-        <button className="start offset-8 col-2" onClick={this.callpopUp}><span>Avsluta spelet</span></button>
+      <div className="offset-7 col-1">
+      <div className="FinishButtonCheck">
+        <input id="FinishButtonCheck" type="checkbox" onClick={this.callpopUp} placeHolder="Avsluta spelet" />
+        <label htmlFor="FinishButtonCheck"></label>
+      </div>
+    </div>
       )
   }
 }

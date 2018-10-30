@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import JumpRope from '../../JSON/AdditionJumpRope.json';
+import JumpRopeInput from './JumpRopeInput.js';
+import CorrectMathExpression from './JumpRopeMathExpression.js';
 
 class JumpRopeGame extends Component {
 constructor(props){
@@ -14,8 +16,9 @@ constructor(props){
     operatorIndex: 0,
     operator: "",
     placeHolderMessage: "Skriv ditt svar",
-    jumpRopeAnswerButton: "jumpRopeAnswerButton",
-    expression: []
+    jumpRopeAnswerButton: "col-2 jumpRopeAnswerButton",
+    expression: [],
+    jumpRopeInput: true
   }
 
   this.handleChange = this.handleChange.bind(this);
@@ -100,13 +103,15 @@ setRandomNumber(operator){
  }
 
  handleSubmit(event){
+
    if(this.state.result == this.state.value){
       this.setState({
+        jumpRopeInput: false,
         count: this.state.count + 1,
         AnswerIcon: false,
         rightAnswerIcon: true,
         placeHolderMessage: "Skriv ditt svar",
-        jumpRopeAnswerButton: "jumpRopeAnswerButton jumpRopeRightAnswer",
+        jumpRopeAnswerButton: "col-2 jumpRopeAnswerButton jumpRopeRightAnswer",
         expression: [this.state.a, this.state.operator, this.state.b, "=", this.state.result]
 
       });
@@ -115,21 +120,22 @@ setRandomNumber(operator){
             this.setState({
               index: this.state.index + 1,
               value: "",
+              jumpRopeInput: true,
               rightAnswerIcon: false,
               AnswerIcon: true,
-              jumpRopeAnswerButton: "jumpRopeAnswerButton",
-              expression: false
+              jumpRopeAnswerButton: "col-2 jumpRopeAnswerButton",
+          
             });
             this.setRandomNumber(this.state.operator);
             this.calc(this.state.operator);
-          }.bind(this), 1000);
+          }.bind(this), 2000);
       }
 
     } else {
     this.setState({
       wrongAnswerIcon: true,
       AnswerIcon: false,
-      jumpRopeAnswerButton: "jumpRopeAnswerButton jumpRopeWrongAnswer"
+      jumpRopeAnswerButton: "col-2 jumpRopeAnswerButton jumpRopeWrongAnswer"
     })
 
     setTimeout(function() {
@@ -138,7 +144,7 @@ setRandomNumber(operator){
         AnswerIcon: true,
         value: "",
         placeHolderMessage: "Försök igen",
-        jumpRopeAnswerButton: "jumpRopeAnswerButton"
+        jumpRopeAnswerButton: "col-2 jumpRopeAnswerButton"
       })
       }.bind(this), 2000);
     }
@@ -156,6 +162,8 @@ callFinishedGame(){
 
 
   render(){
+    this.callFinishedGame();
+    
     let index = this.state.index;
     let operatorIndex = this.state.operatorIndex;
 
@@ -168,29 +176,38 @@ callFinishedGame(){
     let AnswerIcon = "Rätta";
 
     if(this.state.rightAnswerIcon){
-      AnswerIcon = <i class="fas fa-check"></i>;
-    }
+        AnswerIcon = <i class="fas fa-check"></i>;
+      }
 
-    if(this.state.wrongAnswerIcon){
-      AnswerIcon = <i class="fas fa-times"></i>;
-    }
+      if(this.state.wrongAnswerIcon){
+        AnswerIcon = <i class="fas fa-times"></i>;
+      }
 
-    if(this.state.AnswerIcon){
-      AnswerIcon = "Rätta";
-    }
+      if(this.state.AnswerIcon){
+        AnswerIcon = "Rätta";
+      }
 
+
+    let jumpRopeInput = <JumpRopeInput AnswerIcon={AnswerIcon} 
+    jumpRopeAnswerButton={this.state.jumpRopeAnswerButton} 
+    value={this.state.value} placeholder={this.state.placeHolderMessage} 
+    onChange={this.handleChange} handleSubmit={this.handleSubmit} />;
+
+    let correctMathExpression = "";
+
+    if(!this.state.jumpRopeInput) {
+        jumpRopeInput = "";
+        correctMathExpression= <CorrectMathExpression expression={this.state.expression} />
+      }
+
+  
     return(
-      <div className="jumpDiv col-5">
-        <p className="jumpRope">{SectionOne} {a} {SectionTwo} {b} {SectionThree} </p>
-        <form onSubmit={this.handleSubmit}>
-           <div className="row">
-           <label>
-          <input className="inputone" value={this.state.value} placeholder={this.state.placeHolderMessage} type="number" onChange={this.handleChange} />
-          </label>
-          <button className={this.state.jumpRopeAnswerButton} type="submit">{AnswerIcon}</button>
-          </div>
-        </form>
-        <p>{this.state.expression}</p>
+      <div className="row">
+        <div className="jumpDiv offset-1 col-10">
+          <p className="jumpRope">{SectionOne} {a} {SectionTwo} {b} {SectionThree} </p>    
+            {jumpRopeInput}          
+            {correctMathExpression}
+        </div>
       </div>
     )
   }

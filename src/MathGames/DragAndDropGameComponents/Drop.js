@@ -17,7 +17,7 @@ class Drop extends Component {
     return connectDropTarget(
       <div className="col-sm-8">
         <p> {mathProblem.a} {mathProblem.operator} {mathProblem.b} = 
-        <span className="dropBox" style={{ background: backgroundColor}}>{mathProblem.result}</span>
+        <span className="col-sm-2 dropBox" style={{ background: backgroundColor}}>{mathProblem.result}</span>
         </p>    
       </div>
     )
