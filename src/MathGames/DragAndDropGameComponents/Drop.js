@@ -6,6 +6,7 @@ function collect(connect, monitor){
     connectDropTarget: connect.dropTarget(),
     hovered: monitor.isOver(),
     item: monitor.getItem(),
+
   }
 }
 
@@ -15,10 +16,11 @@ class Drop extends Component {
     const { connectDropTarget, hovered, mathProblem } = this.props;
     const backgroundColor = hovered ? 'lightgreen' : 'white';
     return connectDropTarget(
-      <div className="col-sm-8">
-        <p> {mathProblem.a} {mathProblem.operator} {mathProblem.b} = 
-        <span className="col-sm-2 dropBox" style={{ background: backgroundColor}}>{mathProblem.result}</span>
-        </p>    
+      <div className="col-sm-6 dropArea">
+      <div className="row">
+        <p className="offset-sm-1 col-sm-6"> {mathProblem.a} {mathProblem.operator} {mathProblem.b} = </p> 
+        <div className="col-sm-3 dropBox" style={{ background: backgroundColor}}>{mathProblem.result}</div> 
+        </div>
       </div>
     )
   }

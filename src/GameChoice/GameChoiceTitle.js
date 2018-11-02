@@ -8,10 +8,7 @@ class GameChoiceTitle extends Component {
   
   render(){
     return(
-      <h1 className="gameChoiceTitle offset-2"><span style={{color: "rgba(79, 0, 255, 1)"}}>Välj</span><span style={{color: "rgba(20, 197, 192, 1)"}}>en</span>
-      <span style={{color: "rgba(234, 22, 234, 0.97)"}}>person</span>
-      <span style={{color: "red"}}>och</span><span style={{color: "orange"}}>ett</span> 
-      <span style={{color: "rgba(23, 218, 23, 1)"}}>räknesätt</span></h1>
+      <h1 className="gameChoiceTitle col-12">Välj en person och ett räknesätt</h1>
     )
   }
 }

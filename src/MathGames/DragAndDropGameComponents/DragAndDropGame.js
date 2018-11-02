@@ -38,7 +38,6 @@ constructor(props) {
 
  }
 
-
 dropedAnswerItem = (result, id) => {
     console.log(result, id);
     let resultArray= this.state.result;
@@ -215,11 +214,12 @@ wrongAnswer(){
 
   render(){
     return(
-        <div className="col-sm-6 items">
+        <div className="offset-1 col-sm-9 items">
           {this.state.mathProblems.map((mathProblem, index) => (
             <div className="row dragAndDropExpression">
               <Drop mathProblem={mathProblem} result={mathProblem} />
-              <Drag key={mathProblem.id} mathProblem={mathProblem} handleDrop={() => this.dropedAnswerItem(mathProblem.random, index)} />
+              <Drag key={mathProblem.id} mathProblem={mathProblem} 
+              handleDrop={() => this.dropedAnswerItem(mathProblem.random, index)}/>
             </div>
           ))}
         </div>

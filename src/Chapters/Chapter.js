@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import Characters from '../GameChoice/Stories.json';
+import PerfectScrollbar from 'react-perfect-scrollbar'
+import PropTypes from 'prop-types';
+import 'react-perfect-scrollbar/dist/css/styles.css';
 
 class Chapter extends Component { 
 constructor(props) {
@@ -46,8 +49,13 @@ constructor(props) {
             <h1>{ChapterTitle}</h1>
             <h2>{StoryTitle}</h2>
           </div>
+          <div className="chapterContainer">
+          <PerfectScrollbar ref = {(ref) => { this._scrollBarRef = ref; }}>
           <p>{CharacterStory}</p>
           <button className="next" onClick={this.callNewGame}><span>Nästa</span></button>
+          </PerfectScrollbar>
+          </div>
+          
         </div>  
     )
   }

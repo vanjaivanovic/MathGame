@@ -78,12 +78,17 @@ class Games extends Component {
 
 gameArray(chosenOperator){
    this.setState({
-    games: [  
+    games: [ 
+   
     <TeacherGame finishedGameOfFive={this.finishedGameOfFive} operator={chosenOperator} />,
-    <JumpRopeGame finishedGame={this.finishedGame} operator={chosenOperator} />,
     <BubbleGame finishedGame={this.finishedGame} operator={chosenOperator} />,
-      <ThrowDice finishedThrowDiceGame={this.finishedThrowDiceGame} operator={chosenOperator} />,   
-      <DragAndDropGame finishedGameDragAndDrop={this.finishedGameDragAndDrop} operator={chosenOperator} />, 
+    
+    <JumpRopeGame finishedGame={this.finishedGame} operator={chosenOperator} />,
+     <ThrowDice finishedThrowDiceGame={this.finishedThrowDiceGame} operator={chosenOperator} />, 
+    <DragAndDropGame finishedGameDragAndDrop={this.finishedGameDragAndDrop} operator={chosenOperator} finishedGame={this.finishedGame} />,
+    
+  
+        
       <ThrowDice finishedThrowDiceGame={this.finishedThrowDiceGame} operator={chosenOperator} />,  
       <BubbleGame finishedGame={this.finishedGame} operator={chosenOperator} />,
       <TeacherGame finishedGameOfFive={this.finishedGameOfFive} operator={chosenOperator} />,
@@ -91,7 +96,7 @@ gameArray(chosenOperator){
       <ThrowDice finishedThrowDiceGame={this.finishedThrowDiceGame} operator={chosenOperator} />,  
     ],
 
-    hintButton: <HintButton showHint={this.showHint}/>
+    hintButton: <HintButton showHint={this.showHint} closeHint={this.closeHint} />
    }) 
 }
 
@@ -250,7 +255,8 @@ newGameNewChapter(GameAndChapterIndex){
       operatorButton: false,
       characterChoice: false,
       popUpDiv: false,
-      endOfGame: false
+      endOfGame: false,
+      startPageBackground: "startPageSleep"
 
     });
   }
@@ -266,10 +272,22 @@ newGameNewChapter(GameAndChapterIndex){
   }
 
   backToChapter(){
+    let chosenOperator = this.state.operator;
      this.setState({
       popUpDiv: false,
       chapter: true,
-      games: true,
+      games: [  
+          <TeacherGame finishedGameOfFive={this.finishedGameOfFive} operator={chosenOperator} />,
+          <JumpRopeGame finishedGame={this.finishedGame} operator={chosenOperator} />,
+          <BubbleGame finishedGame={this.finishedGame} operator={chosenOperator} />,
+          <ThrowDice finishedThrowDiceGame={this.finishedThrowDiceGame} operator={chosenOperator} />,   
+          <DragAndDropGame finishedGameDragAndDrop={this.finishedGameDragAndDrop} operator={chosenOperator} />, 
+          <ThrowDice finishedThrowDiceGame={this.finishedThrowDiceGame} operator={chosenOperator} />,  
+          <BubbleGame finishedGame={this.finishedGame} operator={chosenOperator} />,
+          <TeacherGame finishedGameOfFive={this.finishedGameOfFive} operator={chosenOperator} />,
+          <TeacherGame finishedGameOfFive={this.finishedGameOfFive} operator={chosenOperator} />,
+          <ThrowDice finishedThrowDiceGame={this.finishedThrowDiceGame} operator={chosenOperator} />,  
+      ],
       hint: true,
       hintButton: <HintButton showHint={this.showHint}/>
     });
@@ -345,13 +363,13 @@ newGameNewChapter(GameAndChapterIndex){
   return(
     <div id={gameAndChapterBackground} className={this.state.startPageBackground}>
     <main>
-       <div className="row">  
+       <div className="row header">  
         {gameChoiceTitle}
         {headerTitleGameChoice}
         {hintButton}
         {profileButton}
         {finishButton}      
-        {this.state.hint}  
+        {this.state.hint}
         </div>  
 
 

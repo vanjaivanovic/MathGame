@@ -31,7 +31,7 @@ class Drag extends Component {
 const { isDragging, connectDragSource, mathProblem} = this.props;
 
         return connectDragSource( 
-            <div className="offset-1 col-sm-2 item">
+            <div className="offset-3 col-sm-2 item">
                 <button className="dragBtn">{mathProblem.random}</button>
             </div>
         );

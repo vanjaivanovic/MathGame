@@ -2,8 +2,6 @@
 /************* TYPOGRAPHI *************/
 /**************************************/
 
-
-
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
@@ -48,6 +46,9 @@ ul {
   font-size: large;
 }
 
+.header {
+  max-height: 130px;
+}
 /*****************************************/
 /************* Animations ****************/
 /******************************************/
@@ -86,40 +87,69 @@ ul {
 /* The Modal (background) */
 .popUpMessage, .quotes {
   position: fixed;
-  text-align: center;
-  width: 100%; 
-  height: 100%; 
+  text-align: center; 
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgba(0,0,0,0.4); 
-  top: 50%;
+  background-color: rgba(0,0,0,0.6); 
   left:50%;
   transform: translate(-50%, 30%);
+  border-radius: 20px;
+}
+
+.quotes {
+  margin-top: -12%;
 }
 
 .finalQuestion{
   margin-left: 80px;
+  color: white;
 }
 
-.popUpContent, .quotesContent{
-  background-color: #dcb7ff;
-  margin: 15% auto; 
-  padding: 50px;
-  border: 1px solid #888;
+.finalQuestion p {
+   font-size: 1.4em;
+   font-weight: bold;
+}
+
+.quotesContent{  
   width: 90%; 
+  margin: 5% auto; 
+  background-color: #faf78c;
+  border-radius: 50px;
+  padding: 40px;
+  padding-top: 55px;
+  font-size: 1.6em;
+}
+
+.popUpMessage {
+  position: fixed;
+  text-align: center; 
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.6); 
+  transform: translate(-50%, 30%);
+  border-radius: 20px;
+  padding: 50px;
+  margin-top: -5%;
+}
+
+.popUpContent {
+  margin: 0 auto; 
   text-align: center;
+  color: white;
+}
+
+.popUpMessage img {
+  width: 35%;
+  height: 35%;
 }
 
 /*****************************************/
 /**************** Scroll ****************/
 /******************************************/
 .ps__thumb-y {
-  background-color: black !important;
-  width: 12px !important;
+  background-color: transparent !important;
 }
 
 .ps__rail-y, .ps__rail-y:hover {
-  background-color: #f8f9fa !important;
-  width: 12px !important;
+  background-color: transparent !important;
 }
 
 
@@ -135,7 +165,7 @@ ul {
 
 .startPageAwake {
   transition: background-image 0.7s ease-in-out ;
-  background-image: url("./Images/oceanStart.png");
+  background-image: url("./Images/bubbles.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   height: 700px;
@@ -197,20 +227,22 @@ ul {
 
 .operatorButton {
   width: 100%;
-  margin-top: 3%;
+  height: 76px;
+  margin-bottom: 5%;
   outline-style: none;
+  border: none;
 }
 
 .plus {
-  background-color: #00e2ff;
+  background-color: #ff00ff;
 }
 
 .minus {
-  background-color: #dcb7ff;
+  background-color: #00ccff;
 }
 
 .multiplication {
-  background-color: yellow;
+  background-color: #ffff00;
 }
 
 .btn:hover :active :focus {
@@ -223,36 +255,24 @@ ul {
   overflow: hidden;
 }
 
-.hintButton {
-    background-color: yellow;
-    border-radius: 50%;
+.hintButton, .profileButton  {
+    background-color: #f19af3;
+    border-radius: 20px;
     margin-left: 50px;
     margin-top: 2%;
+    text-transform: uppercase;
+    height: 5rem;
+    font-size: 20px;
 }
 
 .hintBubble {
   position: relative;
-  background: yellow;
-  border-radius: 0.5rem;
-  height: 100px;
-  z-index: 2;
-  margin-top: 20px;
-  margin-left: 38px;
-}
-
-.hintBubble:after {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 40%;
-  width: 0;
-  height: 0;
-  border: 40px solid transparent;
-  border-right-color: yellow;
-  border-left: 0;
-  border-bottom: 0;
-  margin-top: -22px;
-  margin-left: -40px;
+      background: yellow;
+    border-radius: 20px;
+    height: 100px;
+    z-index: 2;
+    margin-top: 10.2%;
+    margin-left: -43px;
 }
 
 .hintBubble p {
@@ -268,7 +288,9 @@ ul {
 }
 
 .hintBtnTitle {
-  font-size: 0.9em;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-top: 15px;
 }
 
 .hintButton img {
@@ -277,8 +299,8 @@ ul {
 }
 
 .next {
-  border-radius: 15px;
-  background-color: #2333af;
+  border-radius: 70px;
+  background-color: rgb(0, 123, 255);
   border: 2px solid rgb(255, 239, 140);
   color: #ffffff;
   text-align: center;
@@ -288,7 +310,8 @@ ul {
   transition: all 0.5s;
   cursor: pointer;
   margin-bottom: 30px;
-  margin-left: 63%;
+  margin: 0 auto;
+  margin-top: 2%;
 }
 
 .next span {
@@ -318,18 +341,23 @@ ul {
 }
 
 
-.popUpButton {
-  background-color: #dcb7ff;
-  color: black;
+.popUpButton, .popUpButton2 {
+  background: #007bff;
+  color: white;
   text-align: center;
-  font-size: 18px;
-  padding: 10px;
+  font-size: 1.3em;
+  font-weight: bold;
+  height: 60px;
   margin-top: 10px;
   width: 70%;
   transition: all 0.5s;
   cursor: pointer;
   border-radius: 15px;
   border: 1px solid black;
+}
+
+.popUpButton2 {
+   background: red;
 }
 
 .popUpButton:focus {
@@ -343,22 +371,38 @@ ul {
 .quoteBtn1 {
   margin-top: 3%;
   margin-bottom: 3%;
-  width: 100%;
+  width: 70%;
+  height: 60px;
   border-radius: 20px;
   text-align: center;
+  background: #007bff;
+  color: white;
+  font-size: 1.3em;
+  font-weight: bold;
+  border: 1px solid black;
 }
 
 .quoteBtn {
   margin-bottom: 10%;
-  width: 100%;
+  width: 70%;
+  height: 60px;
   border-radius: 20px;
   text-align: center;
+  background: red;
+  color: white;
+  font-size: 1.3em;
+  font-weight: bold;
+  border: 1px solid black;
 }
 
 #buttonIsClicked, .characterIsSelected{
-  border: 5px solid white;
-  transform: rotate(360deg);
-  transition: transform 1.3s ease-in-out;
+  box-shadow: 1px 3px 15px 10px #1FFFCB;
+
+}
+
+#operatorSpin {
+  transform: rotate(720deg);
+  transition: transform 1s ease-in-out;
 }
 
 .characterIsSelected{
@@ -366,32 +410,24 @@ ul {
   margin-bottom: 15px !important;
 }
 
-.selected{
-    border: 2px solid green;
-}
-
-.not-selected{
-    border: 2px solid transparent;
-}
 
 .startGameButton {
-  background-color: #67ebf7;
+  background-color: #1FFFCB;
   color: black;
   border: 2px solid black;
   text-align: center;
   font-size: 30px;
-  padding: 10px;
-  margin-top: 10%;
+  margin-top: 15%;
   transition: all 0.5s;
   cursor: pointer;
   border-radius: 70px;
   width: 300px;
-  height: 100px;
+  height: 80px;
 }
 
 .startPageButton {
-  background-color: #ff9900;
-  color: black;
+  background-color: #007bff;
+  border: 2px solid rgb(255, 239, 140);
   text-align: center;
   font-size: 20px;
   padding: 10px;
@@ -414,38 +450,11 @@ ul {
   height: 100px;
 }
 
-.profileButton {
-  border-radius: 15px;
-  margin-left: 50px;
-  margin-top: 2%;
-  background: rgb(255, 250, 152);
-  height: 100px;
-}
-
-.profileButton img{
-  width: 100%;
-  height: 50%;
-}
 
 .profileBtnTitle {
-  font-size: 0.9em;
+  font-size: 0.78em;
   margin-top: 7px;
-}
-
-.teacherBtn {
-   height: 80px;
-   width: 150px;
-   font-size: 1.5em;
-   margin-bottom: 10px;
-}
-
-.teacherBtn button {
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-  background: rgba(252, 74, 216, 1);  
-  color: white;
-  font-weight: bold;
+  text-transform: uppercase;
 }
 
 
@@ -490,7 +499,8 @@ ul {
   width: 4.2rem;
   height: 4.2rem;
   top: .4rem;
-  left: .1rem;
+  left:1.1rem;
+  
   background: linear-gradient(45deg, #dedede, #ffffff);
   box-shadow: 0 6px 7px rgba(0,0,0,0.3);
   outline: none;
@@ -509,7 +519,7 @@ ul {
   content: "· ·";
   position: absolute;
   overflow: hidden;
-  left: 0.005rem;
+  
   top: 2.5rem;
   height: 1rem;
   letter-spacing: -.55rem;
@@ -525,7 +535,7 @@ ul {
 .check label::after {
   content: "●";
   top: 3.3rem;
-  left: 1.3rem;
+  left: 2.3rem;
   height: 1.1rem;
   width: 1.95rem;
   font-size: 1.2rem;
@@ -569,12 +579,10 @@ ul {
   border-radius: 35px;
   width: 500px;
   text-align: center;
-  margin: 50px auto;
+  margin: 90px auto;
   padding: 20px 20px;
-  background-color: rgba(33,37,41,0.68);
+  background-color: rgba(0,0,0,0.6);
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-  border-radius: $border-radius;
-  border: 5px solid #ff6e00;
   font-weight: bold;
 }
 #q {
@@ -779,11 +787,12 @@ KEYFRAMES */
 /* OBJECTS */
 
 .bubble {
-  background-color: yellow;
+  color: #f8f9fa;
+  background-color: rgba(247, 12, 214, 0.88);
   font-size:70px;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
-  border-color: yellow;
+  border-color: black;
   
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
@@ -802,14 +811,11 @@ KEYFRAMES */
   position: relative;
   padding-top: 5%;
   padding-bottom: 5%;
-  background: linear-gradient(white, #f0027f);
+  background: linear-gradient(white, #FFC3FD, #4f00ff);
   height: 600px;
-  font-size: 70px;
+  
 }
 
-.characterContainer {
-  height: 700px;
-}
 
 /**************************************/
 /************* TeacherGame *************/
@@ -862,14 +868,13 @@ KEYFRAMES */
 }
 
 .teacherMathExpressionOne, .teacherMathExpressionTwo, .teacherMathExpressionThree, .teacherMathExpressionFour, .teacherMathExpressionFive{
-  height: 80px;
+  height: 70px;
   font-size: 2em;
   border: 1px solid grey;
   border-radius: 10px;
   text-align: center;
-  margin-bottom: 20px;
-  word-spacing: 15px;
-  padding-top: 10px;
+  word-spacing: 5px;
+  padding-top: 5px;  
 }
 
 .teacherMathExpressionOne {
@@ -893,9 +898,38 @@ KEYFRAMES */
 }
 
 .teacherGameDiv {
-  margin-left: 15% !important;
+  background: rgba(0,0,0,0.6);
+  border-radius: 20px;
+  padding: 40px;
+  margin-top: 8%;
+  margin-left: 13% !important;
 }
 
+.teacherBtn button {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  background: rgba(252, 74, 216, 1);  
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  height: 70px;
+  font-size: 1.3em;
+  outline-style: none;
+  margin-bottom: 10px;
+}
+.rightAnswerBtn {
+    margin-left: 20px;
+}
+
+#rightAnswerStyleOne button, 
+#rightAnswerStyleTwo button, 
+#rightAnswerStyleThree button, 
+#rightAnswerStyleFour button, 
+#rightAnswerStyleFive button {
+  background: #42f4d9;
+
+}
  
 /**************************************/
 /************* JumpRopeGame *************/
@@ -912,7 +946,7 @@ KEYFRAMES */
 }
 
 .jumpDiv {
-  margin-top: 5%;
+  margin-top: 8%;
   background: rgba(33,37,41,0.68);
   border-radius: 20px;
   padding-bottom: 20px;
@@ -935,7 +969,6 @@ KEYFRAMES */
   outline-style: none;
   margin-left: 22%;
   height: 60px;
-
   color: white;
   font-weight: bold;
 }
@@ -993,24 +1026,41 @@ KEYFRAMES */
   text-align: center;
  }
 
+ .dice h2, .dice2 h2 {
+  margin-bottom: 20px;
+ }
+
  .dice{
   text-align: center; 
-  background-color: rgba(0,0,0,0.3);
+  background-color: rgba(0,0,0,0.6);
   color: white !important;
   padding-top: 5%;
+  border-radius: 20px 0 0 20px;
+ }
+
+ .dice2 {
+  text-align: center; 
+  background-color: rgba(0,0,0,0.6);
+  color: white !important;
+  padding-top: 5%;
+  border-radius: 0 20px 20px 0;
  }
 
 .title {
   padding: 0;
   text-align: center;
-  margin-top: -16%;
+  margin-top: -6%;
 }
 
 .title h1{
-  margin-left: 8%;
-  color: yellow;
+  background: #fc4ad8;
+  margin-bottom: 1.5%;
+  padding: 10px;
+  color: white;
+  border-radius: 20px;
+  margin-left: 37%;
   font-weight: bold;
-  z-index: 1;
+  
 }
 
 .inputDice {
@@ -1036,51 +1086,37 @@ KEYFRAMES */
 
 .diceBtn{
   padding-top: 10px;
-  background: #01b1c2;
+  background: rgba(252, 74, 216, 1);  
   outline-style: none;
   color: white;
   margin-top: 65%;
   height: 100px;
   width: 100px;
-  font-size: 1em;
-  border-radius: 50%;
+  font-size: 0.87em;
+  border-radius: 20px;
   font-weight: bold;
-  border: 2px solid yellow;
+  border: 1.5px solid black;
+  line-height: 15px;
 }
 
+.diceBtn i {
+  margin-bottom: 5px;
+  font-size: 2.3em;
+}
 
 /*****************************************/
 /************* DragAndDropGame *************/
 /******************************************/
 
-#div1 {
-    width: 50px;
-    height: 50px;
-    border: 1px solid #aaaaaa;
-    border-radius: 8px;
-}
-
-#drag1 {
-height: 40px;
-border-radius: 5px;
-margin-left: 5px;
-margin-top: 5px;
-}
-
-.fab{
-  color: #42f4d9;
-}
-
 .items {
-  background-color: blue;
-  opacity: 0.8;
-  color: white
-  ;
+  background-color: rgba(33,37,41,0.68);
+  color: white;
   text-align: center; 
   font-size: 2.5em;
-  margin-left: 40px;
-  padding: 60px;
-  border-radius: 40px;
+  margin-top: 8%;
+  padding: 40px;
+  border-radius: 20px;
+  margin-left: 13% !important;
 }
 
 .dragBtn {
@@ -1092,31 +1128,33 @@ margin-top: 5px;
 
 .dragAndDropExpression{
   word-spacing: 5px;
-}    
-
-.dropBox {
-  padding: 0;
-  margin-left: 10px;
-  width: 100px;
 }
 
+.dropBox {
+  color: white;
+  width: 100%;
+  margin-bottom: 13px;
+ 
+}   
+
 /*****************************************/
-/************* Chapter Section *************/
+/************* Characters *************/
 /******************************************/
 
 .characterList {
   margin-bottom: 10%;
   margin: 0 auto;
+  padding: 0 !important;
 }
 
 .characterList img{
   height: 80%;
   width: 100%;
-  border: 10px solid white;
 }
 
 .characterNames {
   font-size: 20px;
+  font-weight: bold;
   background-color: white;
   padding-top: 5%;
   text-align: center;
@@ -1133,45 +1171,78 @@ margin-top: 5px;
 
 .characterContainer {
   position: relative;
-  padding-top: 5%;
   padding-bottom: 5%;
-  background: linear-gradient(white, #f0027f);
+  background: linear-gradient(white, #FFC3FD, #4f00ff);
   height: 600px;
+  padding-top: 28px;
+}
 
+.gameChoiceTitle {
+  background: linear-gradient(#FFC3FD, white);
+  text-align: center;
+  margin-bottom: 15px;
+  font-weight: bold; 
+  color: black;
+  padding-top: 75px;
+  top: -53px;
+  padding-left: 5% !important;
+  font-size: 2.4em;
+}
+
+.scrollbar-container li {
+  margin-top: 4%;
+  width: 90%;
+  padding-left: 22%;
+}
+
+/*****************************************/
+/************* Chapter Section *************/
+/******************************************/
+
+.chapterContainer {
+  position: relative;
+  padding-top: 4%;
+  padding-bottom: 5%;
+  height: 280px;
 }
 
 .chapter {
-  background: #212529;
+  background: rgba(0,0,0,0.6);
   color: white;
-  opacity: 0.8;
-  font-weight: bold;
-  font-size: 2em;
   text-align: center;
   margin: auto;
   border-radius: 15px;
   margin-top: 5%;
+  height: 500px;
 }
 
 .chapter p{
-  margin: 10%;
-  font-size: 1em;
+  margin: 4% 10%;
+  font-size: 1.4em;
+  text-align: left;
 }
 
 .storyTitle{
  text-align: center;
  margin-top: 10%;
  color: white !important;
- padding: 10px;
  padding-left: 15px;
  padding-right: 15px;
  border-radius: 15px;
- font-weight: bold;
 }
 
 .storyTitle h1 {
-  font-size: 1em;
+  font-size: 1.2em;
 }
 
+.storyTitle h2 {
+  font-size: 1.8em;
+}
+
+.fa-chevron-down  {
+  margin-top: 2%;
+  color: white;
+}
 
 .FinishButtonCheck {
   position: relative;
@@ -1197,11 +1268,12 @@ margin-top: 5px;
 }
 
 .FinishButtonCheck label {
-  width: 15rem;
+  width: 10rem;
   height: 5rem;
-  background: linear-gradient(90deg, #421eb1, #f099b5);
+  background: #f19af3;
   overflow: hidden;
   margin: 0;
+  border: 1px solid black;
 }
 
 .FinishButtonCheck input[type="checkbox"] {
@@ -1217,7 +1289,7 @@ margin-top: 5px;
 }
 
 .FinishButtonCheck input[type="checkbox"]:checked {
-  left: 12rem;
+  left: 5rem;
 }
 
 .FinishButtonCheck input[type="checkbox"]:checked + label {
@@ -1254,16 +1326,16 @@ margin-top: 5px;
 
 .FinishButtonCheck input[type="checkbox"]:checked + label::before,
 .FinishButtonCheck input[type="checkbox"]:checked + label::after {
-  left: 12.55rem;
+  left: 5.55rem;
   top: 1.4rem;
   line-height: 1.1rem;
   transform: rotateY(360deg);
 }
 
 .FinishButtonCheck input[type="checkbox"]:checked + label::after {
-  height: 1.16rem;
+  height: 2.8rem;
   top: 2.60rem;
-  left: 13.3rem;
+  left: 6.3rem;
   font-size: 3.65rem;
   line-height: 0;
 }

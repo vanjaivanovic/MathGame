@@ -15,6 +15,7 @@
     "react-gif": "^0.1.0",
     "react-perfect-scrollbar": "^1.4.0",
     "react-scripts": "1.1.5",
+    "react-touch": "^0.4.4",
     "reactstrap": "^6.4.0"
   },
   "scripts": {

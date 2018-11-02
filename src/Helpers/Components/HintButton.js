@@ -5,7 +5,8 @@ class HintButton extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      hintIndexCount: 0
+      hintIndexCount: 0,
+      hintShowing: false
     }
 
     this.callShowHintFunction = this.callShowHintFunction.bind(this);
@@ -22,16 +23,29 @@ class HintButton extends Component {
       })
     }
     
-    const { showHint } = this.props;
+    if(!this.state.hintShowing){
+      this.setState({
+        hintShowing:true
+      })
+      const { showHint } = this.props;
 
-    showHint(this.state.hintIndexCount);
+      showHint(this.state.hintIndexCount);    
+    } else {
+      this.setState({
+        hintShowing: false
+      })
+
+      const { closeHint } = this.props;
+
+      closeHint();
+    }
+    
   }
 
   render(){
     return(
       <button className="col-2 hintButton" onClick={this.callShowHintFunction}>
-      <img src={require('../../Images/dorisHint2.png')}/>
-      <p className="hintBtnTitle">Behöver du en ledtråd?</p></button>
+      <p className="hintBtnTitle">Ledtråd</p></button>
     )
   }
 }

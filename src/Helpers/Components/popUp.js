@@ -24,13 +24,13 @@ class PopUp extends Component {
 	render(){
     return(
      
-        <div className="popUpMessage col-10">
+        <div className="popUpMessage col-8">
           <img src={require("../../Images/brokenHeart.png")} className="col-8 col-offset-2 col-sm-6 popUpImg" alt="Broken heart" />
          <div className="popUpContent">
               <p className="popUpquestion">Vill du verkligen sluta?</p>
               <button className="popUpButton" onClick={this.callBackToChapter}>Nej, skojar bara!</button>
               <div>
-              <button className="popUpButton" onClick={this.callShowProfileFunction}>Ja</button>
+              <button className="popUpButton2" onClick={this.callShowProfileFunction}>Ja</button>
               </div>
          </div>
         </div>

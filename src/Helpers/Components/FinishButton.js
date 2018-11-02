@@ -20,7 +20,7 @@ callpopUp(){
     return(
       <div className="offset-7 col-1">
       <div className="FinishButtonCheck">
-        <input id="FinishButtonCheck" type="checkbox" onClick={this.callpopUp} placeHolder="Avsluta spelet" />
+        <input id="FinishButtonCheck" type="checkbox" onClick={this.callpopUp} />
         <label htmlFor="FinishButtonCheck"></label>
       </div>
     </div>

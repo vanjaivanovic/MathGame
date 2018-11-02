@@ -10,14 +10,15 @@ render(){
   const { value, placeholder, onChange, jumpRopeAnswerButton, AnswerIcon, handleSubmit } = this.props;
 	return(
 		<div>
-    <form onSubmit={handleSubmit}>
-             <div className="row">
-		  <label>
-          <input className="inputone" value={value} placeholder={placeholder} type="number" onChange={onChange} />
-        </label>
-         <button className={jumpRopeAnswerButton} type="submit">{AnswerIcon}</button>
+      <form onSubmit={handleSubmit}>
+         <div className="row">
+  		     <label>
+            <input className="inputone" value={value} placeholder={placeholder} type="number" onChange={onChange} />
+           </label>
+          
+          <button className={jumpRopeAnswerButton} type="submit">{AnswerIcon}</button>
          </div>
-          </form>
+      </form>
      </div>
 	)}
 }

@@ -28,7 +28,7 @@ class ChooseCharacter extends Component {
 
 	render (){	
 		return ( 
-			<ul className="characterContainer col-xs-12 sm-offset-2 col-sm-6">
+			<ul className="characterContainer col-xs-12 sm-offset-2 col-sm-7">
 			<PerfectScrollbar ref = {(ref) => { this._scrollBarRef = ref; }}>
 				<CharacterList CharacterWasClicked={this.CharacterWasClicked} />
 			</PerfectScrollbar>

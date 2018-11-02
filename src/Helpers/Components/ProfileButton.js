@@ -15,9 +15,7 @@ class ProfileButton extends Component {
 
   render(){
     return(
-      <button className="col-1 profileButton" onClick={this.callShowHintFunction}>
-      <img src={require('../../Images/profileIcon.svg')}/>
-      <p className="profileBtnTitle">Byt spel</p></button>
+      <button className="col-2 profileButton" onClick={this.callShowHintFunction}>Spelval</button>
     )
   }
 }
