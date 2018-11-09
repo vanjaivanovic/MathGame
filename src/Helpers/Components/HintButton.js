@@ -29,7 +29,8 @@ class HintButton extends Component {
       })
       const { showHint } = this.props;
 
-      showHint(this.state.hintIndexCount);    
+      showHint(this.state.hintIndexCount);  
+        
     } else {
       this.setState({
         hintShowing: false

@@ -18,6 +18,7 @@ import JumpRopeGame from '../MathGames/GameActivitiesComponents/JumpRope.js';
 import ThrowDice from '../MathGames/GameActivitiesComponents/ThrowDice.js';
 import HeaderTitle from '../Helpers/Components/HeaderTitle.js';
 import GameChoiceTitle from './GameChoiceTitle.js';
+import GameDescriptionPopUp from '../PopUp/GameDescriptionPopUp.js';
 
 class Games extends Component {
   constructor(props){
@@ -32,7 +33,7 @@ class Games extends Component {
       "teacherGameBackground", "chapterBackground", 
       "dragAndDropGameBackground", "chapterBackground",
       "dragAndDropGameBackground", "chapterBackground",
-        "dragAndDropGameBackground", "chapterBackground",
+      "dragAndDropGameBackground", "chapterBackground",
       "teacherGameBackground", "chapterBackground", 
       "dragAndDropGameBackground", "chapterBackground",
       ],
@@ -74,26 +75,23 @@ class Games extends Component {
    this.showStartPage = this.showStartPage.bind(this);
    this.popUp = this.popUp.bind(this);
    this.backToChapter = this.backToChapter.bind(this);
+   this.showGameDescription = this.showGameDescription.bind(this);
+   this.closeGameDescription = this.closeGameDescription.bind(this);
 }
 
 gameArray(chosenOperator){
    this.setState({
-    games: [ 
-   
-    <TeacherGame finishedGameOfFive={this.finishedGameOfFive} operator={chosenOperator} />,
-    <BubbleGame finishedGame={this.finishedGame} operator={chosenOperator} />,
-    
-    <JumpRopeGame finishedGame={this.finishedGame} operator={chosenOperator} />,
-     <ThrowDice finishedThrowDiceGame={this.finishedThrowDiceGame} operator={chosenOperator} />, 
-    <DragAndDropGame finishedGameDragAndDrop={this.finishedGameDragAndDrop} operator={chosenOperator} finishedGame={this.finishedGame} />,
-    
-  
-        
-      <ThrowDice finishedThrowDiceGame={this.finishedThrowDiceGame} operator={chosenOperator} />,  
+    games: [  
+      <DragAndDropGame finishedGameDragAndDrop={this.finishedGameDragAndDrop} operator={chosenOperator} finishedGameOfFive={this.finishedGameOfFive} showGameDescription={this.showGameDescription} />,
       <BubbleGame finishedGame={this.finishedGame} operator={chosenOperator} />,
       <TeacherGame finishedGameOfFive={this.finishedGameOfFive} operator={chosenOperator} />,
-      <TeacherGame finishedGameOfFive={this.finishedGameOfFive} operator={chosenOperator} />,
+      <JumpRopeGame finishedGame={this.finishedGame} operator={chosenOperator} />,
+      <ThrowDice finishedThrowDiceGame={this.finishedThrowDiceGame} operator={chosenOperator} />,     
+      <DragAndDropGame finishedGameDragAndDrop={this.finishedGameDragAndDrop} operator={chosenOperator} finishedGame={this.finishedGame} />,
+      <JumpRopeGame finishedGame={this.finishedGame} operator={chosenOperator} />,
       <ThrowDice finishedThrowDiceGame={this.finishedThrowDiceGame} operator={chosenOperator} />,  
+      <BubbleGame finishedGame={this.finishedGame} operator={chosenOperator} />,
+      <TeacherGame finishedGameOfFive={this.finishedGameOfFive} operator={chosenOperator} />, 
     ],
 
     hintButton: <HintButton showHint={this.showHint} closeHint={this.closeHint} />
@@ -209,13 +207,27 @@ newGameNewChapter(GameAndChapterIndex){
 
   showHint(index){
     this.setState({
-      hint:  <Hint hintIndex={index} closeHint={this.closeHint}/>,
+      hint: <Hint hintIndex={index} closeHint={this.closeHint}/>,
     });
   }
 
   closeHint(){
      this.setState({
       hint: ""
+    });
+  }
+
+  showGameDescription(){
+    let index = 0;
+
+    this.setState({
+      gameDescriptionPopUp: <GameDescriptionPopUp closeGameDescription={this.closeGameDescription} gameDescriptionIndex={index} />,
+    });
+  }
+
+  closeGameDescription(){
+     this.setState({
+      gameDescriptionPopUp: ""
     });
   }
 
@@ -276,20 +288,19 @@ newGameNewChapter(GameAndChapterIndex){
      this.setState({
       popUpDiv: false,
       chapter: true,
+      hintButton:  <HintButton showHint={this.showHint} closeHint={this.closeHint} />,
       games: [  
-          <TeacherGame finishedGameOfFive={this.finishedGameOfFive} operator={chosenOperator} />,
-          <JumpRopeGame finishedGame={this.finishedGame} operator={chosenOperator} />,
-          <BubbleGame finishedGame={this.finishedGame} operator={chosenOperator} />,
-          <ThrowDice finishedThrowDiceGame={this.finishedThrowDiceGame} operator={chosenOperator} />,   
-          <DragAndDropGame finishedGameDragAndDrop={this.finishedGameDragAndDrop} operator={chosenOperator} />, 
-          <ThrowDice finishedThrowDiceGame={this.finishedThrowDiceGame} operator={chosenOperator} />,  
-          <BubbleGame finishedGame={this.finishedGame} operator={chosenOperator} />,
-          <TeacherGame finishedGameOfFive={this.finishedGameOfFive} operator={chosenOperator} />,
-          <TeacherGame finishedGameOfFive={this.finishedGameOfFive} operator={chosenOperator} />,
-          <ThrowDice finishedThrowDiceGame={this.finishedThrowDiceGame} operator={chosenOperator} />,  
+      <TeacherGame finishedGameOfFive={this.finishedGameOfFive} operator={chosenOperator} />,
+      <DragAndDropGame finishedGameDragAndDrop={this.finishedGameDragAndDrop} operator={chosenOperator} finishedGameOfFive={this.finishedGameOfFive} showGameDescription={this.showGameDescription} />,
+      <BubbleGame finishedGame={this.finishedGame} operator={chosenOperator} />,
+      <ThrowDice finishedThrowDiceGame={this.finishedThrowDiceGame} operator={chosenOperator} />,
+      <JumpRopeGame finishedGame={this.finishedGame} operator={chosenOperator} />,
+      <DragAndDropGame finishedGameDragAndDrop={this.finishedGameDragAndDrop} operator={chosenOperator} finishedGame={this.finishedGame} />,
+      <JumpRopeGame finishedGame={this.finishedGame} operator={chosenOperator} />,
+  
       ],
-      hint: true,
-      hintButton: <HintButton showHint={this.showHint}/>
+     
+      
     });
   }
 
@@ -308,6 +319,7 @@ newGameNewChapter(GameAndChapterIndex){
    let startPage = "";
    let headerTitleGameChoice = "";
    let gameChoiceTitle = "";
+   let gameDescriptionPopUp = this.state.gameDescriptionPopUp;
 
 
   if(this.state.startPage){
@@ -341,6 +353,7 @@ newGameNewChapter(GameAndChapterIndex){
     profileButton = <ProfileButton showProfile={this.showProfile} />;
     finishButton = <FinishButton popUp={this.popUp} />;
     hintButton = "";
+    gameDescriptionPopUp = "";
 
   }
 
@@ -367,6 +380,7 @@ newGameNewChapter(GameAndChapterIndex){
         {gameChoiceTitle}
         {headerTitleGameChoice}
         {hintButton}
+        {gameDescriptionPopUp}
         {profileButton}
         {finishButton}      
         {this.state.hint}
@@ -374,8 +388,7 @@ newGameNewChapter(GameAndChapterIndex){
 
 
         <div className="row">  
-          {this.state.popUpDiv}  
-              
+          {this.state.popUpDiv}     
           {character}
           {operator}
           {Game}

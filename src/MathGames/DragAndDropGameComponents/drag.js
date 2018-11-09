@@ -1,21 +1,19 @@
 import React, { Component } from 'react';
 import { DragSource } from 'react-dnd';
 
-
 const itemSource = {
+    
     beginDrag(props) {
+        props.drag(props.mathProblem.random, props.mathProblem.id)
     return props.mathProblem;
     },
 
     endDrag(props, monitor, component) {
-        
         if(!monitor.didDrop()) {
             return;
-        } 
-
-        return props.handleDrop(props.mathProblem.id);
-     }
- }
+        }
+    } 
+}
 
 function collect(connect, monitor){
     return {
@@ -28,10 +26,10 @@ function collect(connect, monitor){
 class Drag extends Component {
 
     render() {
-const { isDragging, connectDragSource, mathProblem} = this.props;
-
+const { isDragging, connectDragSource, mathProblem } = this.props;
+const opacity = isDragging ? 0 : 1;
         return connectDragSource( 
-            <div className="offset-3 col-sm-2 item">
+            <div className="offset-3 col-sm-2 item" style={{ opacity }}>
                 <button className="dragBtn">{mathProblem.random}</button>
             </div>
         );
@@ -39,4 +37,3 @@ const { isDragging, connectDragSource, mathProblem} = this.props;
 }
 
 export default DragSource('item', itemSource, collect)(Drag);
-

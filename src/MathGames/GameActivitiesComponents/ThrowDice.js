@@ -190,7 +190,7 @@ showTheWinner(){
 	if(scoreArrayLengthPlayerOne && scoreArrayLengthPlayerTwo === 3){
 		 setTimeout(function() { 
 		 	this.compareFinalScores();
-		 }.bind(this), 5000)
+		 }.bind(this), 2000)
 	}
 }
 
@@ -236,17 +236,17 @@ rollTheDice() {
  
       <div className="row diceGame">
      
-          <div className="dice col-12 offset-3 col-sm-4">
+          <div className="dice col-12 col-sm-4">
               <h1>Spelare 1</h1>
-              <h2>Resultat: {this.state.totalResultPlayerOne} </h2>
+              <h2>Resultat: <span>{this.state.totalResultPlayerOne}</span></h2>
             
             <div className="row">
               <form className="col-12">
-                  <input className="col-2 inputDice" type="number" placeholder={this.state.a[0]} /> 
+                  <input className="inputDice" type="number" placeholder={this.state.a[0]} /> 
                   <span className="operatorStyle">{this.state.operator}</span>
-                  <input className="col-2 inputDice" type="number" onChange={this.handleChangePlayerOne.bind(this)} />
+                  <input className="inputDice" type="number" onChange={this.handleChangePlayerOne.bind(this)} />
                   <span className="operatorEquale">=</span>
-                  <input className="col-2 inputDice" type="number" onChange={this.compareAnswerWithResultPlayerOne.bind(this)} />  
+                  <input className="inputDice" type="number" onChange={this.compareAnswerWithResultPlayerOne.bind(this)} />  
               </form>   
             </div>
 
@@ -254,29 +254,35 @@ rollTheDice() {
 
             <div className="row">
                <form className="col-12">
-                  <input className="col-2 inputDice" type="number" placeholder={this.state.a[1]} /> 
+                  <input className="inputDice" type="number" placeholder={this.state.a[1]} /> 
                   <span className="operatorStyle">{this.state.operator}</span>
-                  <input className="col-2 inputDice" type="number" onChange={this.handleChangePlayerOne.bind(this)} />
+                  <input className="inputDice" type="number" onChange={this.handleChangePlayerOne.bind(this)} />
                   <span className="operatorEquale">=</span>
-                  <input className="col-2 inputDice" type="number" onChange={this.compareAnswerWithResultPlayerOne.bind(this)} />  
+                  <input className="inputDice" type="number" onChange={this.compareAnswerWithResultPlayerOne.bind(this)} />  
               </form>
             </div>
 
 
             <div className="row">
               <form className="col-12">
-                  <input className="col-2 inputDice" type="number" placeholder={this.state.a[2]} /> 
+                  <input className="inputDice" type="number" placeholder={this.state.a[2]} /> 
                   <span className="operatorStyle">{this.state.operator}</span>
-                  <input className="col-2 inputDice" type="number" onChange={this.handleChangePlayerOne.bind(this)} />
+                  <input className="inputDice" type="number" onChange={this.handleChangePlayerOne.bind(this)} />
                   <span className="operatorEquale">=</span>
-                  <input className="col-2 inputDice" type="number" onChange={this.compareAnswerWithResultPlayerOne.bind(this)} />  
+                  <input className="inputDice" type="number" onChange={this.compareAnswerWithResultPlayerOne.bind(this)} />  
               </form>
             </div>
 
+            </div>
+            
+          <div className="col-sm-3 diceButtons">
             <div id="dice">
             </div>
 
-          </div>
+            <div className="col-4 rollDice">
+               <button className="diceBtn" onClick={this.rollTheDice}><i class="fas fa-dice fa-2x"></i><p>Kasta tärning</p></button>
+            </div>
+         </div>
 
           <div className="dice2 col-12 col-sm-4">
               <h1>Spelare 2</h1>
@@ -284,11 +290,11 @@ rollTheDice() {
 
                <div className="row">
               <form className="col-12">
-                  <input className="col-2 inputDice" type="number" placeholder={this.state.c[0]} /> 
+                  <input className="inputDice" type="number" placeholder={this.state.c[0]} /> 
                   <span className="operatorStyle">{this.state.operator}</span>
-                  <input className="col-2 inputDice" type="number" onChange={this.handleChangePlayerTwo.bind(this)} />
+                  <input className="inputDice" type="number" onChange={this.handleChangePlayerTwo.bind(this)} />
                   <span className="operatorEquale">=</span>
-                  <input className="col-2 inputDice" type="number" onChange={this.compareAnswerWithResultPlayerTwo.bind(this)} />  
+                  <input className="inputDice" type="number" onChange={this.compareAnswerWithResultPlayerTwo.bind(this)} />  
               </form>   
             </div>
 
@@ -296,27 +302,23 @@ rollTheDice() {
 
             <div className="row">
                <form className="col-12">
-                  <input className="col-2 inputDice" type="number" placeholder={this.state.c[1]} /> 
+                  <input className="inputDice" type="number" placeholder={this.state.c[1]} /> 
                   <span className="operatorStyle">{this.state.operator}</span>
-                  <input className="col-2 inputDice" type="number" onChange={this.handleChangePlayerTwo.bind(this)} />
+                  <input className="inputDice" type="number" onChange={this.handleChangePlayerTwo.bind(this)} />
                   <span className="operatorEquale">=</span>
-                  <input className="col-2 inputDice" type="number" onChange={this.compareAnswerWithResultPlayerTwo.bind(this)} />  
+                  <input className="inputDice" type="number" onChange={this.compareAnswerWithResultPlayerTwo.bind(this)} />  
               </form>
             </div>
 
 
             <div className="row">
               <form className="col-12">
-                  <input className="col-2 inputDice" type="number" placeholder={this.state.c[2]} /> 
+                  <input className="inputDice" type="number" placeholder={this.state.c[2]} /> 
                   <span className="operatorStyle">{this.state.operator}</span>
-                  <input className="col-2 inputDice" type="number" onChange={this.handleChangePlayerTwo.bind(this)} />
+                  <input className="inputDice" type="number" onChange={this.handleChangePlayerTwo.bind(this)} />
                   <span className="operatorEquale">=</span>
-                  <input className="col-2 inputDice" type="number" onChange={this.compareAnswerWithResultPlayerTwo.bind(this)} />  
+                  <input className="inputDice" type="number" onChange={this.compareAnswerWithResultPlayerTwo.bind(this)} />  
               </form>
-          </div>
-
-           <div className="col-4 rollDice">
-               <button className="diceBtn" onClick={this.rollTheDice}><i class="fas fa-dice fa-2x"></i><p>Kasta tärning</p></button>
           </div>
        </div>
            

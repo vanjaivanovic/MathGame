@@ -23,6 +23,7 @@ constructor(props){
 
   this.handleChange = this.handleChange.bind(this);
   this.handleSubmit = this.handleSubmit.bind(this);
+  this.nextJumpRopeQuestion = this.nextJumpRopeQuestion.bind(this);
 }
 
 
@@ -115,22 +116,7 @@ setRandomNumber(operator){
         expression: [this.state.a, this.state.operator, this.state.b, "=", this.state.result]
 
       });
-        if(this.state.index < 2){
-          setTimeout(function() { //Start the timer to get a new mathexpression after 2,5 seconds
-            this.setState({
-              index: this.state.index + 1,
-              value: "",
-              jumpRopeInput: true,
-              rightAnswerIcon: false,
-              AnswerIcon: true,
-              jumpRopeAnswerButton: "col-2 jumpRopeAnswerButton",
-          
-            });
-            this.setRandomNumber(this.state.operator);
-            this.calc(this.state.operator);
-          }.bind(this), 2000);
-      }
-
+   
     } else {
     this.setState({
       wrongAnswerIcon: true,
@@ -152,6 +138,21 @@ setRandomNumber(operator){
   event.preventDefault();
    this.callFinishedGame();
  
+ }
+
+ nextJumpRopeQuestion(){
+  this.setRandomNumber(this.state.operator);
+  this.calc(this.state.operator);
+  if(this.state.index < 2){
+           this.setState({
+             index: this.state.index + 1,
+             value: "",
+             jumpRopeInput: true,
+             rightAnswerIcon: false,
+             AnswerIcon: true,
+             jumpRopeAnswerButton: "col-2 jumpRopeAnswerButton",
+           });
+     }
  }
 
 callFinishedGame(){ 
@@ -197,7 +198,7 @@ callFinishedGame(){
 
     if(!this.state.jumpRopeInput) {
         jumpRopeInput = "";
-        correctMathExpression= <CorrectMathExpression expression={this.state.expression} />
+        correctMathExpression= <CorrectMathExpression expression={this.state.expression} nextJumpRopeQuestion={this.nextJumpRopeQuestion}/>
       }
 
   

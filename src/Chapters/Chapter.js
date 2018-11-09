@@ -30,7 +30,9 @@ constructor(props) {
      callNewGame(){
       const { newGameNewChapter } = this.props
 
-      newGameNewChapter(this.state.chapterIndex);
+      setTimeout(function() {
+        newGameNewChapter(this.state.chapterIndex);
+      }.bind(this), 1000);  
   }
 
   render () {

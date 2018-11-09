@@ -9,9 +9,7 @@ class HeaderTitle extends Component {
 
   render (){  
     return ( 
-      <section className="wave">
-       
-      </section>
+      <section className="wave"></section>
       
     )
   }

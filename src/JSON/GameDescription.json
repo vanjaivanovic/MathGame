@@ -1,0 +1,32 @@
+{
+	"GameDescription": [
+
+			{
+				"gameTitle" : "Rätta Svaren",
+				"gameDescription" : "Nu är du läraren. Klicka på rätt eller fel knapp för att rätta svaren. Lycka till och spela igen så många gånger du vill."
+			},
+
+			{
+				"gameTitle" : "Spräcka Bubblan",
+				"gameDescription" : "Hmm, va tror du att man ska göra här då??? Spräck bubblan som har rätt svar."
+			},
+
+				{
+				"gameTitle" : "Hoppa Hopprep",
+				"gameDescription" : "Ta fram ditt hopprep och hoppa så många gånger det står att du ska. Att hoppa och räkna samtidigt är bra för kroppen men framförallt för knoppen."
+				
+			},
+
+			{
+				"gameTitle" : "Dra och Släpp Rätta Svaret",
+				"gameDescription" : "Här ska du dra det rätta svaret in i rätt låda för där finns det något att roligt skåda."
+				
+			},
+
+			{
+				"gameTitle" : "Kasta Tärning",
+				"gameDescription" : "Kasta tärning ska du först göra, den siffra du får ska du skriva in där sträcket står. Räkna ut vad det blir och fortsätt sedan till nästa gula färgfält och skriv in den nya siffran och räkna. "
+			}
+
+		]
+}
