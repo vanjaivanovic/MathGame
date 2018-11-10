@@ -51,6 +51,10 @@ constructor(props) {
  }
 
 componentDidMount(){
+  const { showGameDescription } = this.props;
+
+  showGameDescription(0);
+  
   this.calc(this.state.operator);
 }
 

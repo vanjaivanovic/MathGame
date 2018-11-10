@@ -93,7 +93,7 @@ targetAnswer(correctAnswer){
 componentDidMount(){
   const { showGameDescription } = this.props;
 
-  showGameDescription();
+  showGameDescription(1);
 
   this.calc(this.state.operator);
 }

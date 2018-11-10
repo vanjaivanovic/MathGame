@@ -28,6 +28,10 @@ constructor(props){
 
 
 componentDidMount(){
+  const { showGameDescription } = this.props;
+
+  showGameDescription(3);
+
   const { operator } = this.props;
 
     this.setState({
@@ -141,8 +145,6 @@ setRandomNumber(operator){
  }
 
  nextJumpRopeQuestion(){
-  this.setRandomNumber(this.state.operator);
-  this.calc(this.state.operator);
   if(this.state.index < 2){
            this.setState({
              index: this.state.index + 1,
@@ -153,6 +155,8 @@ setRandomNumber(operator){
              jumpRopeAnswerButton: "col-2 jumpRopeAnswerButton",
            });
      }
+  this.setRandomNumber(this.state.operator);
+  this.calc(this.state.operator);
  }
 
 callFinishedGame(){ 

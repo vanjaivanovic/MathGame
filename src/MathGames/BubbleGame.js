@@ -30,6 +30,10 @@ constructor(props) {
  }
 
 componentDidMount(){
+  const { showGameDescription } = this.props;
+
+  showGameDescription(2);
+
   this.calc(this.state.operator);
 }
 
