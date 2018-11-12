@@ -24,6 +24,7 @@ constructor(props){
   this.handleChange = this.handleChange.bind(this);
   this.handleSubmit = this.handleSubmit.bind(this);
   this.nextJumpRopeQuestion = this.nextJumpRopeQuestion.bind(this);
+  this.calc = this.calc.bind(this);
 }
 
 
@@ -77,7 +78,7 @@ setRandomNumber(operator){
   if(operator === "+"){
     this.setState({
          result: this.state.a + this.state.b
-       });  
+       });
   }
 
    if(operator === "*"){
@@ -108,8 +109,12 @@ setRandomNumber(operator){
  }
 
  handleSubmit(event){
+  event.preventDefault();
 
    if(this.state.result == this.state.value){
+    document.getElementById("jumpRopeQuestionInvisible").style.color = "transparent";
+    document.getElementById("jumpRopeQuestionInvisible").style.height = "220px !important";
+
       this.setState({
         jumpRopeInput: false,
         count: this.state.count + 1,
@@ -120,7 +125,9 @@ setRandomNumber(operator){
         expression: [this.state.a, this.state.operator, this.state.b, "=", this.state.result]
 
       });
-   
+
+        this.setRandomNumber(this.state.operator);
+
     } else {
     this.setState({
       wrongAnswerIcon: true,
@@ -137,26 +144,25 @@ setRandomNumber(operator){
         jumpRopeAnswerButton: "col-2 jumpRopeAnswerButton"
       })
       }.bind(this), 2000);
-    }
-
-  event.preventDefault();
-   this.callFinishedGame();
- 
+    } 
  }
 
  nextJumpRopeQuestion(){
   if(this.state.index < 2){
-           this.setState({
-             index: this.state.index + 1,
-             value: "",
-             jumpRopeInput: true,
-             rightAnswerIcon: false,
-             AnswerIcon: true,
-             jumpRopeAnswerButton: "col-2 jumpRopeAnswerButton",
-           });
-     }
-  this.setRandomNumber(this.state.operator);
+     this.setState({
+       index: this.state.index + 1,
+       value: "",
+       jumpRopeInput: true,
+       rightAnswerIcon: false,
+       AnswerIcon: true,
+       jumpRopeAnswerButton: "col-2 jumpRopeAnswerButton",
+     });
+   document.getElementById("jumpRopeQuestionInvisible").style.color = "white";
+   document.getElementById("jumpRopeQuestionInvisible").style.height = "auto !important"; 
+  }
+
   this.calc(this.state.operator);
+  this.callFinishedGame();
  }
 
 callFinishedGame(){ 
@@ -167,8 +173,6 @@ callFinishedGame(){
 
 
   render(){
-    this.callFinishedGame();
-    
     let index = this.state.index;
     let operatorIndex = this.state.operatorIndex;
 
@@ -209,7 +213,7 @@ callFinishedGame(){
     return(
       <div className="row">
         <div className="jumpDiv offset-1 col-10">
-          <p className="jumpRope">{SectionOne} {a} {SectionTwo} {b} {SectionThree} </p>    
+          <p id="jumpRopeQuestionInvisible" className="jumpRope">{SectionOne} {a} {SectionTwo} {b} {SectionThree} </p>    
             {jumpRopeInput}          
             {correctMathExpression}
         </div>

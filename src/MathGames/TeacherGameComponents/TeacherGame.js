@@ -183,58 +183,83 @@ if(operator === "+"){
 /* Display answer for the 'Equals to' */
 
  correctAnswer(answerToCheck){
- 	this.setState({
- 		count: this.state.count + 1,
- 	})
 
   if(answerToCheck === 1){
     this.setState({
+      count: this.state.count + 1,
       checkedOne: <i class="fas fa-check fa-2x"></i>,
       styleShakeOne: "",
       rightAnswerStyleOne: "rightAnswerStyleOne",
-      wrongOne: "Fel"
+      wrongOne: "Fel",
     })
+
+    document.getElementById("correctAnswerOne").disabled = true;
+    document.getElementById("wrongAnswerOne").disabled = true;
+    document.getElementById("wrongAnswerOne").style.background = "rgba(257, 74, 216, 0.6)";
   }
 
     if(answerToCheck === 2){
     this.setState({
+      count: this.state.count + 1,
       checkedTwo: <i class="fas fa-check fa-2x"></i>,
       styleShakeTwo: "",
       rightAnswerStyleTwo: "rightAnswerStyleTwo",
       wrongTwo: "Rätt"
     })
+
+    document.getElementById("correctAnswerTwo").disabled = true;
+    document.getElementById("wrongAnswerTwo").disabled = true;
+    document.getElementById("wrongAnswerTwo").style.background = "rgba(257, 74, 216, 0.6)";
   }
 
     if(answerToCheck === 3){
     this.setState({
+      count: this.state.count + 1,
       checkedThree: <i class="fas fa-check fa-2x"></i>,
       styleShakeThree: "",
       rightAnswerStyleThree: "rightAnswerStyleThree",
       wrongThree: "Fel"
     })
+
+
+    document.getElementById("correctAnswerThree").disabled = true;
+    document.getElementById("wrongAnswerThree").disabled = true;
+    document.getElementById("wrongAnswerThree").style.background = "rgba(257, 74, 216, 0.6)";
   }
 
     if(answerToCheck === 4){
     this.setState({
+      count: this.state.count + 1,
       checkedFour: <i class="fas fa-check fa-2x"></i>,
       styleShakeFour: "",
       rightAnswerStyleFour: "rightAnswerStyleFour",
       wrongFour: "Fel"
     })
+
+
+    document.getElementById("correctAnswerFour").disabled = true;
+    document.getElementById("wrongAnswerFour").disabled = true;
+    document.getElementById("wrongAnswerFour").style.background = "rgba(257, 74, 216, 0.6)";
   }
 
     if(answerToCheck === 5){
     this.setState({
+      count: this.state.count + 1,
       checkedFive: <i class="fas fa-check fa-2x"></i>,
       styleShakeFive: "",
       rightAnswerStyleFive: "rightAnswerStyleFive",
       wrongFive: "Rätt"
     })
-  }
-	
-	const { finishedGameOfFive } = this.props;
 
-	finishedGameOfFive(this.state.count);
+
+    document.getElementById("correctAnswerFive").disabled = true;
+    document.getElementById("wrongAnswerFive").disabled = true;
+    document.getElementById("wrongAnswerFive").style.background = "rgba(257, 74, 216, 0.6)";
+  }
+  
+  const { finishedGameOfFive } = this.props;
+
+  finishedGameOfFive(this.state.count);
 }
 
 wrongAnswer(shakeWrongAnswer){
@@ -283,7 +308,7 @@ wrongAnswer(shakeWrongAnswer){
         rightAnswerStyleFive: ""
       })  
   }
-	
+  
 }
 
   render() {
@@ -296,11 +321,11 @@ wrongAnswer(shakeWrongAnswer){
            </div>
 
             <div id={this.state.rightAnswerStyleOne} className="col-sm-3 teacherBtn rightAnswerBtn">
-              <button onClick={() => this.correctAnswer(1)}>{this.state.checkedOne}</button>
+              <button id="correctAnswerOne" onClick={() => this.correctAnswer(1)}>{this.state.checkedOne}</button>
             </div>
 
             <div className="col-sm-3 teacherBtn">
-              <button className={this.state.styleShakeOne} onClick={() => this.wrongAnswer(1)}>{this.state.wrongOne}</button>
+              <button id="wrongAnswerOne" className={this.state.styleShakeOne} onClick={() => this.wrongAnswer(1)}>{this.state.wrongOne}</button>
             </div>
   
        </div>
@@ -312,11 +337,11 @@ wrongAnswer(shakeWrongAnswer){
            </div>
 
             <div className="col-sm-3 teacherBtn rightAnswerBtn">
-              <button className={this.state.styleShakeTwo} onClick={() => this.wrongAnswer(2)}>{this.state.wrongTwo}</button>
+              <button id="wrongAnswerTwo" className={this.state.styleShakeTwo} onClick={() => this.wrongAnswer(2)}>{this.state.wrongTwo}</button>
             </div>
 
             <div id={this.state.rightAnswerStyleTwo} className="col-sm-3 teacherBtn">
-              <button onClick={() => this.correctAnswer(2)}>{this.state.checkedTwo}</button>
+              <button id="correctAnswerTwo"  onClick={() => this.correctAnswer(2)}>{this.state.checkedTwo}</button>
             </div>
 
        </div>
@@ -328,11 +353,11 @@ wrongAnswer(shakeWrongAnswer){
            </div>
 
             <div id={this.state.rightAnswerStyleThree} className="col-sm-3 teacherBtn rightAnswerBtn">
-              <button onClick={() => this.correctAnswer(3)}>{this.state.checkedThree}</button>
+              <button id="correctAnswerThree" onClick={() => this.correctAnswer(3)}>{this.state.checkedThree}</button>
             </div>
 
             <div className="col-sm-3 teacherBtn">
-              <button className={this.state.styleShakeThree} onClick={() => this.wrongAnswer(3)}>{this.state.wrongThree}</button>
+              <button id="wrongAnswerThree" className={this.state.styleShakeThree} onClick={() => this.wrongAnswer(3)}>{this.state.wrongThree}</button>
             </div>
   
        </div>
@@ -344,11 +369,11 @@ wrongAnswer(shakeWrongAnswer){
            </div>
 
             <div id={this.state.rightAnswerStyleFour} className="col-sm-3 teacherBtn rightAnswerBtn">
-              <button onClick={() => this.correctAnswer(4)}>{this.state.checkedFour}</button>
+              <button id="correctAnswerFour" onClick={() => this.correctAnswer(4)}>{this.state.checkedFour}</button>
             </div>
 
             <div className="col-sm-3 teacherBtn">
-              <button className={this.state.styleShakeFour} onClick={() => this.wrongAnswer(4)}>{this.state.wrongFour}</button>
+              <button id="wrongAnswerFour" className={this.state.styleShakeFour} onClick={() => this.wrongAnswer(4)}>{this.state.wrongFour}</button>
             </div>
 
        </div>
@@ -360,15 +385,15 @@ wrongAnswer(shakeWrongAnswer){
            </div>
 
             <div className="col-sm-3 teacherBtn rightAnswerBtn">
-              <button className={this.state.styleShakeFive} onClick={() => this.wrongAnswer(5)}>{this.state.wrongFive}</button>
+              <button id="wrongAnswerFive" className={this.state.styleShakeFive} onClick={() => this.wrongAnswer(5)}>{this.state.wrongFive}</button>
             </div>
 
             <div id={this.state.rightAnswerStyleFive} className="col-sm-3 teacherBtn">
-              <button onClick={() => this.correctAnswer(5)}>{this.state.checkedFive}</button>
+              <button id="correctAnswerFive" onClick={() => this.correctAnswer(5)}>{this.state.checkedFive}</button>
             </div>
 
        </div>
-	</div>
+  </div>
       )
   }
 }

@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import TouchHandler from 'react-touch';
 
 class ThrowDice extends Component {
-	constructor(props){
+  constructor(props){
   super(props);
   this.state = {
-  	indexPlayerOne: 0,
-  	indexPlayerTwo: 0,
+    indexPlayerOne: 0,
+    indexPlayerTwo: 0,
 
     a: [0],
     resultPlayerOne: "",
@@ -19,8 +19,13 @@ class ThrowDice extends Component {
     winner: "Vem blir vinnaren?",
     operator: "",
     rollDiceResults: [],
-    diceShakeAnimation: "diceStyle",
-    wrongAnswerMsg: ""
+
+    winnerStyle: "",
+    scoreStylePlayerOne: "scoreStyleNone",
+    scoreStylePlayerTwo:  "scoreStyleNone",
+    diceShakeAnimation: "",
+    wrongAnswerMsg: "",
+    diceButtonTrigged: false
   }
 
   this.compareFinalScores = this.compareFinalScores.bind(this);
@@ -66,7 +71,6 @@ componentDidMount(){
 handleAplusBPlayerOne(b){
    this.setState({
         resultPlayerOne: this.state.a[this.state.indexPlayerOne] + b,
-        diceShakeAnimation: ""
       });
 
   if(this.state.operator === "+"){
@@ -91,26 +95,32 @@ handleAplusBPlayerOne(b){
 }
 
 compareAnswerWithResultPlayerOne(event){
-	let answer = parseInt(event.target.value); 
+   event.preventDefault();
+   this.setState({
+      diceShakeAnimation: ""
+    })
+
+  let answer = parseInt(event.target.value); 
   let inputID = event.target.id;
 
-	if(answer === this.state.resultPlayerOne){
+  if(answer === this.state.resultPlayerOne){
+    document.getElementById('rollDiceButton').disabled = false;
     event.target.style.background = '#42f4d9';
 
-		let a = this.state.a
-		a.push(this.state.resultPlayerOne);
+    let a = this.state.a
+    a.push(this.state.resultPlayerOne);
 
-		let score = this.state.scorePlayerOne;
-		score.push(this.state.resultPlayerOne);
-	
-		console.log('rätt');
-		this.setState({
-			a: a,
-			scorePlayerOne: score,
-      indexPlayerOne: this.state.indexPlayerOne + 1
-		});
-	
-		this.calcScorePlayerOne();
+    let score = this.state.scorePlayerOne;
+    score.push(this.state.resultPlayerOne);
+
+    this.setState({
+      a: a,
+      scorePlayerOne: score,
+      indexPlayerOne: this.state.indexPlayerOne + 1,
+      diceButtonTrigged: false
+    });
+  
+    this.calcScorePlayerOne();
 
     inputID = Number(inputID) + 1;
 
@@ -118,26 +128,15 @@ compareAnswerWithResultPlayerOne(event){
       document.getElementById(inputID).disabled = false;
     }
 
-	} else {
+  } else {
     let inputStyle = event.target;
     inputStyle.style.background = 'red';
-		this.setState({
-      wrongAnswerMsg: "Försök igen!"
-    })
-
-    setTimeout(function() { //Start the timer to get a new mathexpression after 1 second
-      this.setState({
-        wrongAnswerMsg: ""
-      });
-
-      inputStyle.style.background = "yellow";
-    }.bind(this), 1000)
-	}
+  }
 }
 
 handleCplusDPlayerTwo(d){
 
-	if(this.state.operator === "+"){
+  if(this.state.operator === "+"){
     this.setState({
         resultPlayerTwo: this.state.c[this.state.indexPlayerTwo] + d
       });
@@ -160,25 +159,33 @@ handleCplusDPlayerTwo(d){
 }
 
 compareAnswerWithResultPlayerTwo(event){
-	let answer = parseInt(event.target.value);
+  event.preventDefault();
+   this.setState({
+    diceShakeAnimation: ""
+  })
+
+  let answer = parseInt(event.target.value);
   let inputID = event.target.id;
 
-	if(answer === this.state.resultPlayerTwo){
+  if(answer === this.state.resultPlayerTwo){
+    document.getElementById('rollDiceButton').disabled = false;
+
     event.target.style.background = '#42f4d9';
 
-		let c = this.state.c
-		c.push(this.state.resultPlayerTwo);
+    let c = this.state.c
+    c.push(this.state.resultPlayerTwo);
 
-		let score = this.state.scorePlayerTwo;
-		score.push(this.state.resultPlayerTwo);
+    let score = this.state.scorePlayerTwo;
+    score.push(this.state.resultPlayerTwo);
 
-		this.setState({
-			c: c,
-			scorePlayerTwo: score,
-      indexPlayerTwo: this.state.indexPlayerTwo + 1
-		});
+    this.setState({
+      c: c,
+      scorePlayerTwo: score,
+      indexPlayerTwo: this.state.indexPlayerTwo + 1,
+      diceButtonTrigged: false
+    });
 
-		this.calcScorePlayerTwo();
+    this.calcScorePlayerTwo();
 
     inputID = Number(inputID) + 1;  
 
@@ -189,93 +196,106 @@ compareAnswerWithResultPlayerTwo(event){
     document.getElementById('dice').disabled = false;
     document.getElementById('rollDiceButton').disabled = false;
 
-	} else {
-    let inputStyle = event.target;
-    inputStyle.style.background = 'red';
-
-		this.setState({
-      wrongAnswerMsg: "Försök igen!"
-    });
-
-      setTimeout(function() { //Start the timer to get a new mathexpression after 1 second
-      this.setState({
-        wrongAnswerMsg: ""
-      });
-
-      inputStyle.style.background = 'yellow';
-
-    }.bind(this), 1000);
-	}
+  } else {
+      let inputStyle = event.target;
+      inputStyle.style.background = 'red';
+  }
 }
 
 calcScorePlayerOne(){
-	let scoreArray = this.state.scorePlayerOne;
-	let totalScore = 0;
+  let scoreArray = this.state.scorePlayerOne;
+  let totalScore = 0;
 
-	for(let i=0; i < scoreArray.length; i++){
-		totalScore += scoreArray[(i)];
-		this.setState({
-			totalResultPlayerOne: totalScore,
-		});
-	}
+  for(let i=0; i < scoreArray.length; i++){
+    totalScore += scoreArray[(i)];
+    this.setState({
+      totalResultPlayerOne: totalScore,
+      scoreStylePlayerOne: "scoreStylePlayerOne"
+    });
 
-	this.showTheWinner();
+    setTimeout(function(){
+      this.setState({
+        scoreStylePlayerOne: "scoreStyleNone"
+      });
+    }.bind(this), 1000);
+  }
+
+  this.showTheWinner();
 }
 
 calcScorePlayerTwo(){
-	let scoreArray = this.state.scorePlayerTwo;
-	let totalScore = 0;
+  let scoreArray = this.state.scorePlayerTwo;
+  let totalScore = 0;
 
-	for(let i=0; i < scoreArray.length; i++){
-		totalScore += scoreArray[(i)];
+  for(let i=0; i < scoreArray.length; i++){
+    totalScore += scoreArray[(i)];
 
-		this.setState({
-			totalResultPlayerTwo: totalScore,
-		});
-	}
+    this.setState({
+      totalResultPlayerTwo: totalScore,
+      scoreStylePlayerTwo: "scoreStylePlayerTwo"
+    });
 
-	this.showTheWinner();
+
+    setTimeout(function(){
+      this.setState({
+        scoreStylePlayerTwo: "scoreStyleNone"
+      });
+    }.bind(this), 1000);
+  }
+
+  this.showTheWinner();
 }
 
 
 showTheWinner(){
-	let scoreArrayPlayerOne = this.state.scorePlayerOne; 
-	let scoreArrayLengthPlayerOne = scoreArrayPlayerOne.length;
+  let scoreArrayPlayerOne = this.state.scorePlayerOne; 
+  let scoreArrayLengthPlayerOne = scoreArrayPlayerOne.length;
 
-	let scoreArrayPlayerTwo = this.state.scorePlayerTwo;
-	let scoreArrayLengthPlayerTwo = scoreArrayPlayerTwo.length;
+  let scoreArrayPlayerTwo = this.state.scorePlayerTwo;
+  let scoreArrayLengthPlayerTwo = scoreArrayPlayerTwo.length;
 
-	if(scoreArrayLengthPlayerOne && scoreArrayLengthPlayerTwo === 3){
-		 setTimeout(function() { 
-		 	this.compareFinalScores();
-		 }.bind(this), 2000)
-	}
+  if(scoreArrayLengthPlayerOne && scoreArrayLengthPlayerTwo === 3){
+     setTimeout(function() { 
+      this.compareFinalScores();
+     }.bind(this), 1500)
+  }
 }
 
 compareFinalScores(){
-	if(this.state.totalResultPlayerOne > this.state.totalResultPlayerTwo){
-		this.setState({
-			winner: "Vinnaren är Spelare 1"
-		});
-
-	} if(this.state.totalResultPlayerOne < this.state.totalResultPlayerTwo) {
-		this.setState({
-			winner: "Vinnaren är Spelare 2"
-		});
-
-	} if(this.state.totalResultPlayerOne === this.state.totalResultPlayerTwo) {
+  if(this.state.totalResultPlayerOne > this.state.totalResultPlayerTwo){
     this.setState({
+      winnerStyle: "winnerAnimation",
+      winner: "Vinnaren är Spelare 1"
+    });
+
+  } if(this.state.totalResultPlayerOne < this.state.totalResultPlayerTwo) {
+    this.setState({
+      winnerStyle: "winnerAnimation",
+      winner: "Vinnaren är Spelare 2"
+    });
+
+  } if(this.state.totalResultPlayerOne === this.state.totalResultPlayerTwo) {
+    this.setState({
+      winnerStyle: "winnerAnimation",
       winner: "Det är oavgjort"
     });
   }
 
-		const { finishedThrowDiceGame } = this.props;
-		finishedThrowDiceGame(); 
+    const { finishedThrowDiceGame } = this.props;
+    finishedThrowDiceGame(); 
 
 }
 
 rollTheDice() {
-  
+  this.setState({
+    diceShakeAnimation: "diceShake",
+  })
+    if(!this.state.diceButtonTrigged){
+      document.getElementById('rollDiceButton').disabled = true;
+      this.setState({
+        diceButtonTrigged: true,
+      });
+      
       let faceValue = Math.floor(Math.random() * 6);
       let output = "&#x268" + faceValue + "; ";
 
@@ -286,16 +306,27 @@ rollTheDice() {
       let d = faceValue + 1;
 
       this.setState({
-        rollDiceResults: rollDiceResultsArray,
-        diceShakeAnimation: "diceShake"
+        rollDiceResults: rollDiceResultsArray
       })
 
     document.getElementById('dice').innerHTML = output;
     document.getElementById('dice').disabled = true;
-    document.getElementById('rollDiceButton').disabled = true;
 
     this.handleAplusBPlayerOne(b);
     this.handleCplusDPlayerTwo(d);
+    } else {
+      this.setState({
+         wrongAnswerMsg: "För att rulla tärningen måste du fylla in rätt svar. Lycka till!",
+         diceShake: "diceStyle"
+
+      });
+
+       setTimeout(function() {
+         this.setState({
+            wrongAnswerMsg: ""
+          });
+      }.bind(this), 2000);
+    }   
 }
 
   render() {
@@ -304,15 +335,18 @@ rollTheDice() {
 
     return(
       <div>
-           <div className="row title">
-          <h1 className="col-5"> {this.state.winner} </h1>
+        <div className="row title">
+          <h1 id={this.state.winnerStyle} className="col-5"> {this.state.winner} </h1>
          </div>
  
       <div className="row diceGame">
      
           <div className="dice col-12 col-sm-4">
               <h1>Spelare 1</h1>
-              <h2>Resultat: <span>{this.state.totalResultPlayerOne}</span></h2>
+              <div className="row diceGameResult">
+                <h2 className="col-sm-6">Resultat:</h2>
+                <span className="col-sm-4" id={this.state.scoreStylePlayerOne}>{this.state.totalResultPlayerOne}</span>
+              </div>
             
             <div className="row">
               <form className="col-12">
@@ -350,9 +384,12 @@ rollTheDice() {
             </div>
             
          <div className="col-sm-3 diceButtons">  
-             <h3>{this.state.wrongAnswerMsg}</h3>       
-            <div id="dice" className={this.state.diceShakeAnimation} onClick={this.rollTheDice}>
+            <h3>{this.state.wrongAnswerMsg}</h3>  
+
+            <div id={this.state.diceShakeAnimation} onClick={this.rollTheDice}>
+                <div id="dice" onClick={this.rollTheDice}></div>
             </div>
+
             <div className="col-4 rollDice">
                <button id="rollDiceButton" className="diceBtn" onClick={this.rollTheDice}><i class="fas fa-dice fa-2x"></i><p>Kasta tärning</p></button>
             </div>
@@ -360,7 +397,10 @@ rollTheDice() {
 
           <div className="dice2 col-12 col-sm-4">
               <h1>Spelare 2</h1>
-              <h2>Resultat: {this.state.totalResultPlayerTwo}</h2>
+               <div className="row diceGameResult">
+                <h2 className="col-sm-6">Resultat:</h2>
+                <span className="col-sm-4" id={this.state.scoreStylePlayerTwo}>{this.state.totalResultPlayerTwo}</span>
+              </div>
 
                <div className="row">
               <form className="col-12">

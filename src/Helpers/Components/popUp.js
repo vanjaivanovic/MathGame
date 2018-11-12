@@ -6,13 +6,16 @@ class PopUp extends Component {
 
     this.callBackToChapter = this.callBackToChapter.bind(this);
   
-    this.callShowProfileFunction = this.callShowProfileFunction.bind(this);
+    this.callshowStartPageFunction = this.callshowStartPageFunction.bind(this);
   }
   
-  callShowProfileFunction(){
-    const { showProfile } = this.props;
+  callshowStartPageFunction(){
+    const { showStartPage } = this.props;
 
-    showProfile();
+    setTimeout(function(){
+      showStartPage();
+    }.bind(this), 1000);
+ 
   }
 
   callBackToChapter(){
@@ -30,7 +33,7 @@ class PopUp extends Component {
               <p className="popUpquestion">Vill du verkligen sluta?</p>
               <button className="popUpButton" onClick={this.callBackToChapter}>Nej, skojar bara!</button>
               <div>
-              <button className="popUpButton2" onClick={this.callShowProfileFunction}>Ja</button>
+              <button className="popUpButton2" onClick={this.callshowStartPageFunction}>Ja</button>
               </div>
          </div>
         </div>

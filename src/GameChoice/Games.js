@@ -26,16 +26,14 @@ class Games extends Component {
    this.state = { 
     startPageBackground: "startPageSleep",
     gameAndChapterBackground: 
-      [  
+      [
+
+      "teacherGameBackground", "chapterBackground", 
+      "dragAndDropGameBackground", "chapterBackground", 
       "bubbleGameBackground", "chapterBackground",
       "jumpRopeGameBackground", "chapterBackground",
       "diceGameBackground", "chapterBackground", 
-      "teacherGameBackground", "chapterBackground", 
-      "dragAndDropGameBackground", "chapterBackground",
-      "dragAndDropGameBackground", "chapterBackground",
-      "dragAndDropGameBackground", "chapterBackground",
-      "teacherGameBackground", "chapterBackground", 
-      "dragAndDropGameBackground", "chapterBackground",
+      
       ],
 
     operatorButton: false,
@@ -82,17 +80,13 @@ class Games extends Component {
 gameArray(chosenOperator){
    this.setState({
     games: [ 
+
       <TeacherGame finishedGameOfFive={this.finishedGameOfFive} operator={chosenOperator} showGameDescription={this.showGameDescription} />,
       <DragAndDropGame finishedGameDragAndDrop={this.finishedGameDragAndDrop} operator={chosenOperator} finishedGameOfFive={this.finishedGameOfFive} showGameDescription={this.showGameDescription} />,
       <BubbleGame finishedGame={this.finishedGame} operator={chosenOperator} showGameDescription={this.showGameDescription} />,
       <JumpRopeGame finishedGame={this.finishedGame} operator={chosenOperator} showGameDescription={this.showGameDescription} />,
-      <ThrowDice finishedThrowDiceGame={this.finishedThrowDiceGame} operator={chosenOperator} showGameDescription={this.showGameDescription}/>,      
-      
-      <DragAndDropGame finishedGameDragAndDrop={this.finishedGameDragAndDrop} operator={chosenOperator} finishedGame={this.finishedGame} showGameDescription={this.showGameDescription}/>,
-      <JumpRopeGame finishedGame={this.finishedGame} operator={chosenOperator} showGameDescription={this.showGameDescription} />,
-      <ThrowDice finishedThrowDiceGame={this.finishedThrowDiceGame} operator={chosenOperator} showGameDescription={this.showGameDescription} />,  
-      <BubbleGame finishedGame={this.finishedGame} operator={chosenOperator} showGameDescription={this.showGameDescription} />,
-      <TeacherGame finishedGameOfFive={this.finishedGameOfFive} operator={chosenOperator} showGameDescription={this.showGameDescription} />, 
+      <ThrowDice finishedThrowDiceGame={this.finishedThrowDiceGame} operator={chosenOperator} showGameDescription={this.showGameDescription}/>,
+
     ],
 
     hintButton: <HintButton showHint={this.showHint} closeHint={this.closeHint} />
@@ -201,8 +195,6 @@ newGameNewChapter(GameAndChapterIndex){
       this.setState({
         endOfGame: true
       });
-
-      console.log('end of game');
     }
   }
 
@@ -265,16 +257,18 @@ newGameNewChapter(GameAndChapterIndex){
       chapter: false,
       operatorButton: false,
       characterChoice: false,
+      startGameButton: false,
+      characterChosen: "",
       popUpDiv: false,
       endOfGame: false,
-      startPageBackground: "startPageSleep"
-
+      startPageBackground: "startPageSleep",
+      gameAndChapterBackgroundIndex: 0,
     });
   }
 
   popUp(){
     this.setState({
-      popUpDiv: <PopUp backToChapter={this.backToChapter} showProfile={this.showProfile}/>,
+      popUpDiv: <PopUp backToChapter={this.backToChapter} showStartPage={this.showStartPage}/>,
       chapter: false,
       games: false,
       hintButton: false,
@@ -289,18 +283,11 @@ newGameNewChapter(GameAndChapterIndex){
       chapter: true,
       hintButton:  <HintButton showHint={this.showHint} closeHint={this.closeHint} />,
       games: [  
-      <TeacherGame finishedGameOfFive={this.finishedGameOfFive} operator={chosenOperator} showGameDescription={this.showGameDescription} />,
-      <DragAndDropGame finishedGameDragAndDrop={this.finishedGameDragAndDrop} operator={chosenOperator} finishedGameOfFive={this.finishedGameOfFive} showGameDescription={this.showGameDescription} />,
-      <BubbleGame finishedGame={this.finishedGame} operator={chosenOperator} showGameDescription={this.showGameDescription} />,
-      <JumpRopeGame finishedGame={this.finishedGame} operator={chosenOperator} showGameDescription={this.showGameDescription} />,
-      <ThrowDice finishedThrowDiceGame={this.finishedThrowDiceGame} operator={chosenOperator} showGameDescription={this.showGameDescription}/>,     
-      
-      <DragAndDropGame finishedGameDragAndDrop={this.finishedGameDragAndDrop} operator={chosenOperator} finishedGame={this.finishedGame} showGameDescription={this.showGameDescription}/>,
-      <JumpRopeGame finishedGame={this.finishedGame} operator={chosenOperator} showGameDescription={this.showGameDescription} />,
-      <ThrowDice finishedThrowDiceGame={this.finishedThrowDiceGame} operator={chosenOperator} showGameDescription={this.showGameDescription} />,  
-      <BubbleGame finishedGame={this.finishedGame} operator={chosenOperator} showGameDescription={this.showGameDescription} />,
-      <TeacherGame finishedGameOfFive={this.finishedGameOfFive} operator={chosenOperator} showGameDescription={this.showGameDescription} />, 
-  
+        <TeacherGame finishedGameOfFive={this.finishedGameOfFive} operator={chosenOperator} showGameDescription={this.showGameDescription} />,
+        <DragAndDropGame finishedGameDragAndDrop={this.finishedGameDragAndDrop} operator={chosenOperator} finishedGameOfFive={this.finishedGameOfFive} showGameDescription={this.showGameDescription} />,
+        <BubbleGame finishedGame={this.finishedGame} operator={chosenOperator} showGameDescription={this.showGameDescription} />,
+        <JumpRopeGame finishedGame={this.finishedGame} operator={chosenOperator} showGameDescription={this.showGameDescription} />,
+        <ThrowDice finishedThrowDiceGame={this.finishedThrowDiceGame} operator={chosenOperator} showGameDescription={this.showGameDescription}/>,        
       ],
      
       

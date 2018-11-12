@@ -34,41 +34,6 @@
               "title": "",
               "storyTitle": "Visste du att",
               "chapter": "Dalai Lama lär om kärlek och fred på jorden"
-            },
-
-            {
-              "id":"6",
-              "title": "",
-              "storyTitle": "Visste du att",
-              "chapter": "Coco Chanel förändrade modevärlden genom att sy de första byxor för kvinnor"
-            },
-
-            {
-              "id":"7",
-              "title": "",
-              "storyTitle": "Visste du att",
-              "chapter": "Nelson Mandela kämpade för rättvisa"
-            },
-
-            {
-              "id":"8",
-              "title": "",
-              "storyTitle": "Visste du att",
-              "chapter": "Dalai Lama lär om kärlek och fred på jorden"
-            },
-
-            {
-              "id":"9",
-              "title": "",
-              "storyTitle": "Visste du att",
-              "chapter": "Coco Chanel förändrade modevärlden genom att sy de första byxor för kvinnor"
-            },
-
-             {
-              "id":"10",
-              "title": "",
-              "storyTitle": "Visste du att",
-              "chapter": "Coco Chanel förändrade modevärlden genom att sy de första byxor för kvinnor"
             }
          ],
 
@@ -77,62 +42,36 @@
             "id": "1",
             "title": "Kapitel 1",
             "storyTitle": "Mandelas barndom",
-            "chapter": "Nelson Mandela föddes den 18 juli 1918 i provinsen Transkei i södra Sydafrika. Mandelas pappa var hövding över byn och arbetade som kunglig rådgivare åt Jongintaba Dalindyebo. Hans pappa dog när Mandela var 12år och då blev Mandela tvungen att lämna byn för att flytta till regenten Dalindyebo. Han hade lovat att ta hand om Mandela som tack för det arbete Mandelas fars gjort åt honom. Mandela fick börja i en ny större skola och han lärde sig snart att trivas lika bra där som han hade gjort tidigare. Han lärde också känna Dalindyebos son Justice, trots att de var mycket olika blev de goda vänner och förblev det länge."
-            },
+            "chapter": "Som barn var Mandela lycklig och kunde leka hur mycket han ville så länge han gjorde det hans föräldrar bad honom att göra och respekterade deras traditioner. Men Mandelas liv förändrades när han var 9 år gammal. Hans pappa dog och hans mamma blev tvungen att lämna honom hos en annan familj. Han blev tvungen att hitta styrka för att klara sig utan hans mamma. "
+          },
+
          {
             "id": "2",
             "title": "Kapitel 2",
             "storyTitle": "Mandelas by",
-            "chapter": "Mandela hade en lycklig uppväxt. Han bodde i en liten by med ett par hundra människor, alla bodde i runda lerhyddor med grästak och odlade sin egen mat. Landskapet runt byn bestod av berg, åkrar, sjöar och floder. Träden var gröna året om och Nelson kunde leka fritt överallt."
-            },
+            "chapter": "Han började på en internatskola och där blev han utsatt för orättvisa. Det var då han började leda kampen mot orättvisa. Det ledde till att han blev tvungen att välja mellan att göra det han blev tillsagd, trots att det var orättvist, eller att bli reglerad från skolan. Han valde att bli reglerad. Hans nya familj blev inte glada över Mandelas beslut och ville att han skulle återvända till skolan. De ville också att Mandela och deras son skulle gifta sig med kvinnor de inte var förälskade i, så de bestämde sig för att fly till en annan stad som heter Johannesburg." 
+          },
+
          {
             "id": "3",
             "title": "Kapitel 3",
-            "storyTitle": "Mandelas herdepojke",
-            "chapter": "Mandela fick sitt första arbete när han var 5 år, då han blev herdepojke. Hans uppgift var att vakta familjens får och kalvar så de inte försvann ute bland fälten. När Mandela var sju fick han som första familjemedlem börja skolan. Där fick han sitt engelska namn Nelson av sin lärare. I byn hade han alltid haft det afrikanska namnet Rolihlahla. Det var i skolan som Nelson för första gången kom i kontakt med vita människor. De fick inte lära sig mycket om Afrika utan mest om England och om de vita. Mandela beundrade det han fick lära sig om England men samtidigt var han lite rädd och skeptisk mot dem."
-            },
+            "storyTitle": "Livet i den nya staden",
+            "chapter": "I Johannesburg träffade Mandela många nya vänner. En av de hjälpte honom att hitta ett arbete som administratör på ett kontor. På kvällarna studerade han med endast ett ljus bredvid sin bok. På den tiden var det inte lätt att leva som svart bland de vita för att mycket var orättvist för de svarta. Det var då Mandela blev mer intresserad av politik och makten av att protestera och kämpa för rättvisa. När han började på universitet såg han ännu mer orättvisor mot de svarta. Han fick inte bada i poolen som fanns där, inte heller använda universitets sporthall, äta på restauranger eller bo i universitetslägenheter som de vita fick. Han såg också att orättvisor mot de svarta och även indier fanns utanför skolan. Så han bestämde sig frivilligt för att vara med i en protestgrupp."
+          },
+
          {
             "id": "4",
             "title": "Kapitel 4",
-            "storyTitle": "Mandela lämnar sin by",
-            "chapter": "När Mandelas pappa dog blev Mandela tvungen att lämna byn och allt det som gjort hans uppväxt lycklig, för att flytta till regenten Dalindyebo. Han hade lovat att ta hand om Mandela som tack för det arbete Mandelas pappa gjort åt honom. Mandela fick börja i en ny större skola och han lärde sig snart att trivas lika bra där som han hade gjort tidigare. Han lärde också känna Dalindyebos son Justice, trots att de var mycket olika blev de goda vänner och förblev det länge."
-            },
+            "storyTitle": "Mandela och protestgruppen",
+            "chapter": "Protestgrupp bestämde sig för att bryta mot lagar som var orättvisa mot de svarta och då blev de och flera tusen andra arresterade. Efter många protester blev Mandela arresterad inte för vad han gjorde utan för vad han kämpade för. Politikerna var rädda för Mandelas mäktiga sätt att tala och få med sig folket att tillsammans med honom kämpa att för rättvisan. Därför skickades Mandela till Robben Islands fängelse och även hans vänner. När det var dags för rättegången sa Mandela att han kommer kämpa vidare för sin dröm om rättvisa för alla även om det skulle innebära att spendera resten av livet i fängelset eller att han skulle förlora sitt liv, eftersom han tyckte att det var viktigt att hjälpa och kämpa för andra som blev orättvist behandlade."
+        },
+
         {
             "id": "5",
             "title": "Kapitel 5",
             "storyTitle": "Mandela och hövdingar",
-            "chapter": "Mandela brukade se på och lyssna när alla hövdingar kom till byn för att ha möte med regenten. Hövdingarna samlades i byn och alla fick säga sina åsikter. Regenten satt tyst, även när hövdingarna kritiserade honom och först när alla fått säga sina åsikter talade han och försökte ena hövdingarna. Man slutade inte förens alla var överens och blev man inte det anordnade man ett nytt möte."
-            },
-        {
-            "id": "6",
-            "title": "Kapitel 6",
-            "storyTitle": "Mandela tonåring",
-            "chapter": "När Mandela var 16 gick ansågs man att man var vuxen och fick bestämma själv. Mandela hade hört av de andra pojkarna att de ville åka till städerna och arbeta i gruvorna. Detta intresserade även Mandela och Justice men regenten ville annat. Istället skickades Mandela till en internatskola för att studera vidare. På skolan intresserade sig Mandela för boxning och långdistanslöpning men han skötte också sina studier och fick bra betyg. Så bra betyg, att när han var 21, kom han in på Fort Hare-universitetet."
-             },
-        {
-            "id": "7",
-            "title": "Kapitel 7",
-            "storyTitle": "Mandela på universitet",
-            "chapter": "I Sydafrika på den här tiden var allt uppdelat för svarta och vita. De vita hade egna toaletter, parkbänkar och dörrar som de svarta inte fick använda. Så var det även på universitetet och Mandela hade bara svarta studiekamrater. Trots orättvisorna trivdes Mandela på universitetet, han gillade undervisningen och fick nya vänner. Han ansträngde sig hårt för att få bra betyg. Han ville kunna hitta ett välbetalt arbete för att göra regenten stolt och kunna bygga ett hus åt sin mor. Vid universitetet träffade han också Oliver Tambo som skulle komma att bli en nära vän och kollega."
-             }, 
-        {
-            "id": "8",
-            "title": "Kapitel 8",
-            "storyTitle": "Mandelas första demostration",
-            "chapter": "Mandelas vänner ville få honom intresserad av politik och lyckades övertala honom att följa med på ett av African National Congress (ANC) partimöten. Mandela tyckte mötena var intressanta, alla fick komma till tals och säga sin åsikt. Mandela lyssnade mest, precis som han lyssnat på hövdingarnas möten när han varit mindre. Det var när han följde med på en demonstration mot en prishöjning av bussbiljetterna som Mandela slutligen blev intresserad av politik. Mandela gillade känslan av att demonstrera och imponerades när han såg att bussbolaget fick ge vika till följd av demonstrationen. Han insåg då att om man kämpar för rättvisa och inte ger upp till slut vinner man. 1942 blev han medlem i ANC."
-             },
-        {
-            "id": "9",
-            "title": "Kapitel 9",
-            "storyTitle": "Mandela ser mer orättvisor",
-            "chapter": "De svarta hade inte samma rättigheter som de vita. Svarta fick inte gå på samma skolor och universitet, inte använda samma toaletter, dörrar eller parkbänkar, om en vit klev på en fullsatt buss så skulle en svart ge sin plats åt honom. Det fanns alltså många som var upprörda över engelsmännens styre. Mandela fortsatte arbeta på advokatkontoret och studera juridik. Men han blev mer och mer intresserad av politik för att han insåg att det var genom politik som han kunde göra en förändring. Han och vännerna Sisulu och Tambo bildade ANCs ungdomsförbund, African National Congress Youth League (ANCYL). 1948 vann Nationalistpartiet (Nasionale Party NP) valet i Sydafrika, där inga svarta fick rösta. De införde en ännu tuffare orättvisa mot svarta. Det innebar bl.a. vita och svarta inte fick gifta sig med varandra, att människor delades in i olika raser och att varje ras skulle leva åtskiljt från. Detta ledde till att familjer fick flytta och familjer där familjemedlemmarna tillhörde olika raser blev splittrade."
-              },
-        {
-            "id": "10",
-            "title": "Kapitel 10",
-            "storyTitle": "Mandela inspireras av Gandhi",
-            "chapter": "Mandela engagerade sig i kampen mot apartheid. Med inspiration från Indien och deras frihetshjälte Mahatma Gandhi försökte man förändra lagarna genom en icke-våld kampanj. Men det var svårt att organisera ett riktigt motstånd. Det fanns många personer och olika åsikter inom ANC, alla ville göra på olika sätt." 
-              }
+            "chapter": "Mandela spenderade 27 år av sitt liv i fängelset och det som höll hans hopp och dröm vid liv var den här dikten: Under natten som täcker mig, svart som hålet från pol till pol, tackar jag, må än vilken Gud det kan vara för min oövervinnerliga själ. Under tiden Mandela satt i fängelset kämpade folket för att Mandela skulle släppas fri, men politikerna vägrade släppa honom. Mandela hittade då ett sätt att nå politikerna och prata med dem och tillsammans med sitt folk lyckades Mandela bli fri. När han blev frigiven fortsatte han kämpa för rättvisa för alla. Han ville ha ett nytt val i landet där alla fick rösta, inte bara vita. Till slut lyckades han, 27 april 1994 valde folket honom som president och de svarta blev äntligen fria. Mandelas dröm förverkligades för att han aldrig gav upp. Han lovade folket att det kommer aldrig mer finnas orättvisor i Sydafrika."
+        }
     ],
         [
          {

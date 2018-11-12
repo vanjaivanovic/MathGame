@@ -15,7 +15,7 @@ class GameDescriptionPopUp extends Component {
      
         <div className="gameDescriptionPopUp col-sm-12">
           
-         <div className="gameDescriptionContent col-sm-8">
+         <div className="gameDescriptionContent col-sm-10">
           <div id="gameDescriptionContent" className="row">
             <img className="col-sm-3" src={require("../Images/dorisHint2.png")} alt="Babydoris" />
             <div className="offset-7 col-sm-2 closeGameDescription" onClick={() => closeGameDescription()}>

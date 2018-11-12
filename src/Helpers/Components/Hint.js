@@ -26,7 +26,11 @@ class Hint extends Component {
 
     return(
       <div className="hintBubble col-12 col-sm-8">
-        <span className="closeHint" onClick={() => closeHint()}>&times;</span>
+      <div id="hintDescriptionContent" className="row">
+            <img className="col-sm-2" src={require("../../Images/dorisHint2.png")} alt="Babydoris" />
+            <span className="closeHint" onClick={() => closeHint()}>&times;</span>
+      </div>
+        
         <p>{HintContent}</p>
       </div>
 

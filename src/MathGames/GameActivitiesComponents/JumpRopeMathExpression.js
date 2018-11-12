@@ -7,7 +7,7 @@ class CorrectMathExpression extends Component {
 
     return(
       <div className="fullMathExpressionDiv">
-        <p className="col-sm-5 fullMathExpression">
+        <p className="col-sm-7 fullMathExpression">
           <span className="a">{expression[0]}</span>
           <span className="operator">{expression[1]}</span>
           <span className="b">{expression[2]}</span>
