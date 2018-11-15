@@ -18,20 +18,19 @@ class Hint extends Component {
   const { closeHint } = this.props;
 
   let allHints = Hints.HintInfo;
-   
-    let operatorHintIndex = 0;
-
-   
-    let HintContent = allHints[operatorHintIndex][hintIndex].hint;
+  let operatorHintIndex = 0; 
+  let HintContent = allHints[operatorHintIndex][hintIndex].hint;
 
     return(
       <div className="hintBubble col-12 col-sm-8">
-      <div id="hintDescriptionContent" className="row">
-            <img className="col-sm-2" src={require("../../Images/dorisHint2.png")} alt="Babydoris" />
-            <span className="closeHint" onClick={() => closeHint()}>&times;</span>
-      </div>
-        
-        <p>{HintContent}</p>
+        <div className="row">
+              <img className="hintDescriptionImage col-sm-2" src={require("../../Images/dorisHint2.png")} alt="Babydoris" />
+              <span className="closeHint" onClick={() => closeHint()}>&times;</span>
+        </div> 
+
+         <div className="hintDescriptionContent row"> 
+          <p>{HintContent}</p>
+         </div>     
       </div>
 
       )

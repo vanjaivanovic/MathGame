@@ -21,23 +21,31 @@ class ThrowDice extends Component {
     rollDiceResults: [],
 
     winnerStyle: "",
+    winnerStylePlayerOne: "",
+    winnerStylePlayerTwo: "",
+    winnerAnimationPlayerResult: "",
     scoreStylePlayerOne: "scoreStyleNone",
     scoreStylePlayerTwo:  "scoreStyleNone",
     diceShakeAnimation: "",
     wrongAnswerMsg: "",
-    diceButtonTrigged: false
+    diceButtonTrigged: false,
+    shake: "diceBtn"
   }
 
   this.compareFinalScores = this.compareFinalScores.bind(this);
+  this.dice = this.dice.bind(this);
   this.rollTheDice = this.rollTheDice.bind(this);
   this.compareAnswerWithResultPlayerOne = this.compareAnswerWithResultPlayerOne.bind(this);
   this.compareAnswerWithResultPlayerTwo = this.compareAnswerWithResultPlayerTwo.bind(this);
+  this.correctAnswerSoundEffect = this.correctAnswerSoundEffect.bind(this);
+  this.wrongAnswerSoundEffect = this.wrongAnswerSoundEffect.bind(this);
 }
+
 
 componentDidMount(){
   const { showGameDescription } = this.props;
 
-  showGameDescription(4);
+  showGameDescription(5);
 
   const { operator } = this.props;
 
@@ -64,14 +72,11 @@ componentDidMount(){
     });
   }
 
-  this.rollTheDice();
-
+  this.dice();
 }
 
+
 handleAplusBPlayerOne(b){
-   this.setState({
-        resultPlayerOne: this.state.a[this.state.indexPlayerOne] + b,
-      });
 
   if(this.state.operator === "+"){
     this.setState({
@@ -98,12 +103,16 @@ compareAnswerWithResultPlayerOne(event){
    event.preventDefault();
    this.setState({
       diceShakeAnimation: ""
-    })
+  })
 
   let answer = parseInt(event.target.value); 
   let inputID = event.target.id;
 
+if(this.state.diceButtonTrigged){
+
   if(answer === this.state.resultPlayerOne){
+    this.correctAnswerSoundEffect();
+
     document.getElementById('rollDiceButton').disabled = false;
     event.target.style.background = '#42f4d9';
 
@@ -129,13 +138,33 @@ compareAnswerWithResultPlayerOne(event){
     }
 
   } else {
+    this.wrongAnswerSoundEffect();
+
     let inputStyle = event.target;
     inputStyle.style.background = 'red';
+
+    document.getElementById('rollDiceButton').disabled = false;
+    document.getElementById('dice').disabled = false;
+  }
+
+  } else {
+  
+      this.setState({
+         wrongAnswerMsg: "Kom ihåg att kasta tärningen först!",
+         shake: "shakeDiceButton"
+      });
+
+      setTimeout(function(){
+        this.setState({
+          wrongAnswerMsg: "",
+          shake: "diceBtn"
+        });
+      }.bind(this), 1500)
   }
 }
 
 handleCplusDPlayerTwo(d){
-
+console.log(d);
   if(this.state.operator === "+"){
     this.setState({
         resultPlayerTwo: this.state.c[this.state.indexPlayerTwo] + d
@@ -160,46 +189,69 @@ handleCplusDPlayerTwo(d){
 
 compareAnswerWithResultPlayerTwo(event){
   event.preventDefault();
-   this.setState({
-    diceShakeAnimation: ""
+  this.setState({
+      diceShakeAnimation: ""
   })
 
   let answer = parseInt(event.target.value);
   let inputID = event.target.id;
 
-  if(answer === this.state.resultPlayerTwo){
-    document.getElementById('rollDiceButton').disabled = false;
+  if(this.state.diceButtonTrigged){
 
-    event.target.style.background = '#42f4d9';
+    if(answer === this.state.resultPlayerTwo){
+       this.correctAnswerSoundEffect();
 
-    let c = this.state.c
-    c.push(this.state.resultPlayerTwo);
+        document.getElementById('rollDiceButton').disabled = false;
+        document.getElementById('dice').disabled = false;
 
-    let score = this.state.scorePlayerTwo;
-    score.push(this.state.resultPlayerTwo);
+        event.target.style.background = '#42f4d9';
 
-    this.setState({
-      c: c,
-      scorePlayerTwo: score,
-      indexPlayerTwo: this.state.indexPlayerTwo + 1,
-      diceButtonTrigged: false
-    });
+        let c = this.state.c
+        c.push(this.state.resultPlayerTwo);
 
-    this.calcScorePlayerTwo();
+        let score = this.state.scorePlayerTwo;
+        score.push(this.state.resultPlayerTwo);
 
-    inputID = Number(inputID) + 1;  
+        this.setState({
+          c: c,
+          scorePlayerTwo: score,
+          indexPlayerTwo: this.state.indexPlayerTwo + 1,
+          diceButtonTrigged: false
+        });
 
-    if(inputID < 6){
-      document.getElementById(inputID).disabled = false;
+        this.calcScorePlayerTwo();
+
+        inputID = Number(inputID) + 1;  
+
+        if(inputID < 6){
+          document.getElementById(inputID).disabled = false;
+        }
+
+     } else {
+        this.wrongAnswerSoundEffect();
+
+          let inputStyle = event.target;
+          inputStyle.style.background = 'red';
+
+          document.getElementById('rollDiceButton').disabled = false;
+          document.getElementById('dice').disabled = false;
+       }
+
+    } else {
+ 
+        this.setState({
+         wrongAnswerMsg: "Kom ihåg att kasta tärningen först!",
+         shake: "shakeDiceButton"
+      });
+
+      setTimeout(function(){
+        this.setState({
+          wrongAnswerMsg: "",
+          shake: "diceBtn"
+        });
+      }.bind(this), 1500);
     }
-
-    document.getElementById('dice').disabled = false;
-    document.getElementById('rollDiceButton').disabled = false;
-
-  } else {
-      let inputStyle = event.target;
-      inputStyle.style.background = 'red';
-  }
+ 
 }
 
 calcScorePlayerOne(){
@@ -257,26 +309,34 @@ showTheWinner(){
   if(scoreArrayLengthPlayerOne && scoreArrayLengthPlayerTwo === 3){
      setTimeout(function() { 
       this.compareFinalScores();
-     }.bind(this), 1500)
+     }.bind(this), 1300)
   }
 }
 
 compareFinalScores(){
   if(this.state.totalResultPlayerOne > this.state.totalResultPlayerTwo){
     this.setState({
+
       winnerStyle: "winnerAnimation",
+      winnerStylePlayerOne: "winnerAnimationPlayer",
+      winnerAnimationPlayerResult: "winnerAnimationPlayerResult",
       winner: "Vinnaren är Spelare 1"
     });
 
   } if(this.state.totalResultPlayerOne < this.state.totalResultPlayerTwo) {
     this.setState({
       winnerStyle: "winnerAnimation",
+      winnerStylePlayerTwo: "winnerAnimationPlayer",
+      winnerAnimationPlayerResult: "winnerAnimationPlayerResult",
       winner: "Vinnaren är Spelare 2"
     });
 
   } if(this.state.totalResultPlayerOne === this.state.totalResultPlayerTwo) {
     this.setState({
       winnerStyle: "winnerAnimation",
+      winnerStylePlayerOne: "winnerAnimationPlayer",
+      winnerStylePlayerTwo: "winnerAnimationPlayer",
+      winnerAnimationPlayerResult: "winnerAnimationPlayerResult",
       winner: "Det är oavgjort"
     });
   }
@@ -287,11 +347,18 @@ compareFinalScores(){
 }
 
 rollTheDice() {
-  this.setState({
-    diceShakeAnimation: "diceShake",
-  })
+    this.setState({
+      diceShakeAnimation: "diceShake"
+    });
+      
     if(!this.state.diceButtonTrigged){
+      let playAudio = new Audio();
+      playAudio.src = require('../../Audio/dice.mp3');
+      playAudio.play();
+
       document.getElementById('rollDiceButton').disabled = true;
+      document.getElementById('dice').disabled = true;
+
       this.setState({
         diceButtonTrigged: true,
       });
@@ -309,28 +376,50 @@ rollTheDice() {
         rollDiceResults: rollDiceResultsArray
       })
 
-    document.getElementById('dice').innerHTML = output;
-    document.getElementById('dice').disabled = true;
+      document.getElementById('dice').innerHTML = output;
 
-    this.handleAplusBPlayerOne(b);
-    this.handleCplusDPlayerTwo(d);
+    
+      if(this.state.onlyOnePlayer){
+        this.handleAplusBPlayerOne(b);
+      } else {    
+        this.handleAplusBPlayerOne(b);
+        this.handleCplusDPlayerTwo(d);
+      }
+   
     } else {
       this.setState({
-         wrongAnswerMsg: "För att rulla tärningen måste du fylla in rätt svar. Lycka till!",
-         diceShake: "diceStyle"
-
+         wrongAnswerMsg: "För att rulla tärningen måste du fylla i rätt svar. Lycka till!",
+         diceShakeAnimation: ""
       });
 
        setTimeout(function() {
          this.setState({
             wrongAnswerMsg: ""
           });
-      }.bind(this), 2000);
+      }.bind(this), 2300);
     }   
 }
 
-  render() {
+dice(){
+  let faceValue = Math.floor(Math.random() * 6);
+  let output = "&#x268" + faceValue + "; ";
 
+  document.getElementById('dice').innerHTML = output;
+}
+
+wrongAnswerSoundEffect(){
+   let playAudio = new Audio();
+        playAudio.src = require('../../Audio/wrong.mp3');
+        playAudio.play();
+}
+
+correctAnswerSoundEffect(){
+  let playAudio = new Audio();
+        playAudio.src = require('../../Audio/click.mp3');
+        playAudio.play();
+}
+
+  render() {
     const { showHint } = this.props;
 
     return(
@@ -338,21 +427,21 @@ rollTheDice() {
         <div className="row title">
           <h1 id={this.state.winnerStyle} className="col-5"> {this.state.winner} </h1>
          </div>
- 
+
       <div className="row diceGame">
      
           <div className="dice col-12 col-sm-4">
-              <h1>Spelare 1</h1>
+              <h1 id={this.state.winnerStylePlayerOne}>Spelare 1</h1>
               <div className="row diceGameResult">
-                <h2 className="col-sm-6">Resultat:</h2>
+                <h2 id={this.state.winnerAnimationPlayerResult} className="col-sm-6">Resultat:</h2>
                 <span className="col-sm-4" id={this.state.scoreStylePlayerOne}>{this.state.totalResultPlayerOne}</span>
               </div>
             
             <div className="row">
               <form className="col-12">
-                  <input className="inputDice" type="number" placeholder={this.state.a[0]} disabled /> 
+                  <input className="inputDice inputDiceDisabled" type="number" placeholder={this.state.a[0]} disabled /> 
                   <span className="operatorStyle">{this.state.operator}</span>
-                  <input className="inputDice" type="number" placeholder={this.state.rollDiceResults[0]} disabled />
+                  <input className="inputDice inputDiceDisabled" type="number" placeholder={this.state.rollDiceResults[0]} disabled />
                   <span className="operatorEquale">=</span>
                   <input id="0" className="inputDice correct" type="number" onChange={this.compareAnswerWithResultPlayerOne} />  
               </form>   
@@ -362,9 +451,9 @@ rollTheDice() {
 
             <div className="row">
                <form className="col-12">
-                  <input className="inputDice" type="number" placeholder={this.state.a[1]} disabled /> 
+                  <input className="inputDice inputDiceDisabled" type="number" placeholder={this.state.a[1]} disabled /> 
                   <span className="operatorStyle">{this.state.operator}</span>
-                  <input className="inputDice" type="number" placeholder={this.state.rollDiceResults[1]} disabled />
+                  <input className="inputDice inputDiceDisabled" type="number" placeholder={this.state.rollDiceResults[1]} disabled />
                   <span className="operatorEquale">=</span>
                   <input id="1" className="inputDice correct" type="number" onChange={this.compareAnswerWithResultPlayerOne} disabled />  
               </form>
@@ -373,9 +462,9 @@ rollTheDice() {
 
             <div className="row">
               <form className="col-12">
-                  <input className="inputDice" type="number" placeholder={this.state.a[2]} disabled /> 
+                  <input className="inputDice inputDiceDisabled" type="number" placeholder={this.state.a[2]} disabled /> 
                   <span className="operatorStyle">{this.state.operator}</span>
-                  <input className="inputDice" type="number" placeholder={this.state.rollDiceResults[2]} disabled />
+                  <input className="inputDice inputDiceDisabled" type="number" placeholder={this.state.rollDiceResults[2]} disabled />
                   <span className="operatorEquale">=</span>
                   <input id="2" className="inputDice correct" type="number" onChange={this.compareAnswerWithResultPlayerOne} disabled />  
               </form>
@@ -391,22 +480,22 @@ rollTheDice() {
             </div>
 
             <div className="col-4 rollDice">
-               <button id="rollDiceButton" className="diceBtn" onClick={this.rollTheDice}><i class="fas fa-dice fa-2x"></i><p>Kasta tärning</p></button>
+               <button id="rollDiceButton" className={this.state.shake} onClick={this.rollTheDice}><i className="fas fa-dice fa-2x"></i><p>Kasta tärning</p></button>
             </div>
          </div>
 
           <div className="dice2 col-12 col-sm-4">
-              <h1>Spelare 2</h1>
+              <h1 id={this.state.winnerStylePlayerTwo}>Spelare 2</h1>
                <div className="row diceGameResult">
-                <h2 className="col-sm-6">Resultat:</h2>
+                <h2 id={this.state.winnerAnimationPlayerResult} className="col-sm-6">Resultat:</h2>
                 <span className="col-sm-4" id={this.state.scoreStylePlayerTwo}>{this.state.totalResultPlayerTwo}</span>
               </div>
 
                <div className="row">
               <form className="col-12">
-                  <input className="inputDice" type="number" placeholder={this.state.c[0]} disabled /> 
+                  <input className="inputDice inputDiceDisabled" type="number" placeholder={this.state.c[0]} disabled /> 
                   <span className="operatorStyle">{this.state.operator}</span>
-                  <input className="inputDice" type="number" placeholder={this.state.rollDiceResults[3]} disabled  />
+                  <input className="inputDice inputDiceDisabled" type="number" placeholder={this.state.rollDiceResults[3]} disabled  />
                   <span className="operatorEquale">=</span>
                   <input id="3" className="inputDice correct" type="number" onChange={this.compareAnswerWithResultPlayerTwo}  />  
               </form>   
@@ -416,9 +505,9 @@ rollTheDice() {
 
             <div className="row">
                <form className="col-12">
-                  <input className="inputDice" type="number" placeholder={this.state.c[1]} disabled /> 
+                  <input className="inputDice inputDiceDisabled" type="number" placeholder={this.state.c[1]} disabled /> 
                   <span className="operatorStyle">{this.state.operator}</span>
-                  <input className="inputDice" type="number" placeholder={this.state.rollDiceResults[4]} disabled />
+                  <input className="inputDice inputDiceDisabled" type="number" placeholder={this.state.rollDiceResults[4]} disabled />
                   <span className="operatorEquale">=</span>
                   <input id="4" className="inputDice correct" type="number" onChange={this.compareAnswerWithResultPlayerTwo.bind(this)} disabled />  
               </form>
@@ -427,9 +516,9 @@ rollTheDice() {
 
             <div className="row">
               <form className="col-12">
-                  <input className="inputDice" type="number" placeholder={this.state.c[2]} disabled /> 
+                  <input className="inputDice inputDiceDisabled" type="number" placeholder={this.state.c[2]} disabled /> 
                   <span className="operatorStyle">{this.state.operator}</span>
-                  <input className="inputDice" type="number" placeholder={this.state.rollDiceResults[5]} disabled />
+                  <input className="inputDice inputDiceDisabled" type="number" placeholder={this.state.rollDiceResults[5]} disabled />
                   <span className="operatorEquale">=</span>
                   <input id="5" className="inputDice correct" type="number" onChange={this.compareAnswerWithResultPlayerTwo} disabled />  
               </form>

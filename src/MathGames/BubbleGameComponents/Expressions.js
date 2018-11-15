@@ -4,10 +4,7 @@ import BubbleAnswers from './Bubbles.js';
 class MathExpression extends Component {
 
 render(){
-   const { NumberOne } = this.props;
-   const { NumberTwo } = this.props;
-   const { AnswerBox } = this.props;
-   const { Operator } = this.props;
+   const { NumberOne, Operator, NumberTwo, AnswerBox, bubbleGamesAnswerBoxStyle } = this.props;
 
   return(
         <div id="q">
@@ -15,7 +12,7 @@ render(){
            <span className="operatorSign" style={{minWidth: "40px"}}>{Operator}</span>
            <span ref="num2">{NumberTwo}</span>
            <button className="btn" id="equal">=</button>
-           <span className="bubbleGamesAnswer">{AnswerBox}</span>
+           <span className={bubbleGamesAnswerBoxStyle}>{AnswerBox}</span>
 
         </div>
   )

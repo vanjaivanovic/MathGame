@@ -1,0 +1,34 @@
+[
+		 {
+			"id": "0",
+			"selected": false,
+			"name": "Lär dig om modiga personer",
+			"personImage": "moon.jpg",
+			"completed": false
+		},
+
+		 {
+			"id": "1",
+			"selected": false,
+			"name": "Nelson Mandela",
+			"personImage": "mandela.jpg",
+			"completed": false
+		},
+
+		{   
+			"id": "2",
+			"selected": false,
+			"name": "Dalai Lama",
+			"personImage": "dalaiLama.jpg",
+			"completed": false
+		},
+
+		{  
+			"id": "3",
+			"selected": false,
+			"name": "Coco Chanel",
+			"personImage": "coco_chanel.jpg",
+			"completed": false
+		}
+
+	]

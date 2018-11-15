@@ -2,96 +2,98 @@
     "QuoteInfo": [
           {
             "id": "1",
-            "quote": "Om du gör ett misstag så är det ett bevis att du försöker"
+            "quote": "Du är modigare än du tror, starkare än du vet och smartare än du förstår.",
+            "quoteAuthor": "- Nalle Puh"
           },
 
           {
             "id": "2",
-            "quote": "Du är modigare än du tror, starkare än du vet och smartare än du förstår"
-          },
-
-          {
-            "id": "3",
-            "quote": "Allt är svårt innan det är lätt"
+            "quote": "Allt är svårt innan det är lätt",
+            "quoteAuthor": "- Nalle Puh"
           },
 
             {
-            "id": "4",
-            "quote": "Allt stort som skedde i världen skedde först i någon människas fantasi."
+            "id": "3",
+            "quote": "Allt stort som skedde i världen skedde först i någon människas fantasi.",
+            "quoteAuthor": "- Astrid Lindgren "
 
+          },
+
+          {
+            "id": "4",
+            "quote": "Ibland måste man göra saker man inte vågar, annars vet man inte vad man missar.",
+            "quoteAuthor": "- Astrid Lindgren"
           },
 
           {
             "id": "5",
-            "quote": "Låt därför livet bära med sig vad det vill, och låt mig vara stark nog att ta emot vad det bjuder."
+            "quote": "För att visa att man inte alls blev rädd när man hoppade till, kan man hoppa upp och ner några gånger för att motionera sig.",
+            "quoteAuthor": "- Nalle Puh"
           },
 
           {
             "id": "6",
-            "quote": "Ibland måste man göra saker man inte vågar, annars vet man inte vad man missar."
+            "quote": "En vän är någon som hjälper en upp när man är nere och funkar inte det så lägger den sig ner och bara lyssnar...",
+            "quoteAuthor": "- Nalle Puh"
           },
 
-            {
+          {
             "id": "7",
-            "quote": "För att visa att man inte alls blev rädd när man hoppade till, kan man hoppa upp och ner några gånger för att motionera sig."
+            "quote": "Gå inte bakom mig, för jag kanske inte leder. Gå inte framför mig för jag kanske följer inte efter dig. Gå hellre bredvid mig och var min vän.",
+            "quoteAuthor": "- Albert Camus"
           },
-
+  
           {
             "id": "8",
-            "quote": "En vän är någon som hjälper en upp när man är nere och funkar inte det så lägger den sig ner och bara lyssnar..."
+            "quote": "Om en person inte tycks lyssna, var tålmodig. Det kan helt enkelt vara så att han eller hon har lite ludd i ena örat.",
+            "quoteAuthor": "- Nalle Puh"
           },
-
-          {
-            "id": "9",
-            "quote": "Gå inte bakom mig, för jag kanske inte leder. Gå inte framför mig för jag kanske följer inte efter dig. Gå hellre bredvid mig och var min vän."
-          },
+         
           {
             "id": "10",
-            "quote": "Var dig själv vad som än händer."
+            "quote": "Beaty begins the moment you decide to be your self.",
+            "quoteAuthor": "- Coco Chanel"
           },
           {
             "id": "11",
-            "quote": "Ju fler vänner vi lär känna desto bättre förstår vi vilka vänner är riktiga vänner."
+            "quote": "Det modigaste du kan göra är att tänka själv och inte som alla andra.",
+            "quoteAuthor": "- Coco Chanel"
           },
           {
             "id": "12",
-            "quote": "Om en person inte tycks lyssna, var tålmodig. Det kan helt enkelt vara så att han eller hon har lite ludd i ena örat."
+            "quote": "Var den du är och inte det andra vill att du ska vara.",
+            "quoteAuthor": "- Coco Chanel"
           },
           {
             "id": "13",
-            "quote": "Gå inte bakom mig..."
+            "quote": "Om du föddes utan vingar, gör ingenting som hindrar de att växa.",
+            "quoteAuthor": "- Coco Chanel"
           },
           {
             "id": "14",
-            "quote": "Beaty begins the moment you decide to be your self. Coco Chanel"
+            "quote": "Ibland tror du att det omöjligt tills du lyckas och förstår att ingenting är omöjligt.",
+            "quoteAuthor": "- Nelson Mandela"
           },
           {
             "id": "15",
-            "quote": "Det modigaste du kan göra är att tänka själv och inte som alla andra. Coco"
+            "quote": "Kunskap är väldigt viktig, den kan hjälpa dig att förändra världen.",
+            "quoteAuthor": "- Nelson Mandela"
           },
           {
             "id": "16",
-            "quote": "Var den du är och inte det andra vill att du ska vara. Coco"
+            "quote": "En vinnare är en drömmare som aldrig ger upp.",
+            "quoteAuthor": "- Nelson Mandela"
           },
           {
             "id": "17",
-            "quote": "Om du föddes utan vingar, gör ingenting som hindrar de att växa. Coco"
+            "quote": "En riktig hjälte är den som övervinner sin egen rädsla.",
+            "quoteAuthor": "- Dalai Lama"
           },
+
           {
             "id": "18",
-            "quote": "Ibland tror du att det omöjligt tills du lyckas och förstår att ingenting är omöjligt. N.M"
-          },
-          {
-            "id": "19",
-            "quote": "Kunskap är väldigt viktig, den kan hjälpa dig att förändra världen. N.M "
-          },
-          {
-            "id": "20",
-            "quote": "En vinnare är en drömmare som aldrig ger upp. N.M"
-          },
-          {
-            "id": "21",
-            "quote": "En riktig hjälte är den som övervinner sin egen rädsla. D.L"
+            "quote": "Om du var född utan vingar, hindrar aldrig de från att växa",
+             "quoteAuthor": "- Dalai Lama"
           }
 
          ]

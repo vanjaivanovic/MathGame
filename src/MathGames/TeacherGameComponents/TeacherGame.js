@@ -45,6 +45,9 @@ constructor(props) {
 
    this.setRandomNumber = this.setRandomNumber.bind(this);
    this.generateNumbers = this.generateNumbers.bind(this);
+   this.setRandomNumberForMultiplication = this.setRandomNumberForMultiplication.bind(this);
+   this.generateNumbersForMultiplication = this.generateNumbersForMultiplication.bind(this);
+
    this.calc = this.calc.bind(this);
    this.correctAnswer = this.correctAnswer.bind(this);
    this.wrongAnswer = this.wrongAnswer.bind(this);
@@ -53,7 +56,7 @@ constructor(props) {
 componentDidMount(){
   const { showGameDescription } = this.props;
 
-  showGameDescription(0);
+  showGameDescription(1);
   
   this.calc(this.state.operator);
 }
@@ -65,20 +68,26 @@ componentDidMount(){
     this.setState({
     operator: operator, 
     });
+
+    this.setRandomNumber();
   }
    if(operator === "-"){
     this.setState({
     operator: operator, 
     });
+
+    this.setRandomNumber();
   }
 
    if(operator === "*"){
     this.setState({
     operator: operator, 
     });
+
+     this.setRandomNumberForMultiplication();
   }
   
-   this.setRandomNumber();
+   
  }
 
  setRandomNumber(){
@@ -97,9 +106,29 @@ componentDidMount(){
    });
  }
 
+  setRandomNumberForMultiplication(){
+   this.setState({
+     a: this.generateNumbersForMultiplication(),
+     b: this.generateNumbersForMultiplication(),
+     c: this.generateNumbersForMultiplication(),
+     d: this.generateNumbersForMultiplication(),
+     e: this.generateNumbersForMultiplication(),
+     f: this.generateNumbersForMultiplication(),
+     g: this.generateNumbersForMultiplication(),
+     h: this.generateNumbersForMultiplication(),
+     i: this.generateNumbersForMultiplication(),
+     j: this.generateNumbersForMultiplication(),
+     answerBox: "",
+   });
+ }
+
 /*Generates random number between 0-10 to A*/
  generateNumbers(){
    return Math.floor(Math.random() * 15);
+ }
+
+ generateNumbersForMultiplication(){
+   return Math.floor(Math.random() * 5) + 1;
  }
 
  wrongAnswerNumber() {
@@ -183,11 +212,14 @@ if(operator === "+"){
 /* Display answer for the 'Equals to' */
 
  correctAnswer(answerToCheck){
+   let playAudio = new Audio();
+      playAudio.src = require('../../Audio/click.mp3');
+      playAudio.play();
 
   if(answerToCheck === 1){
     this.setState({
       count: this.state.count + 1,
-      checkedOne: <i class="fas fa-check fa-2x"></i>,
+      checkedOne: <i className="fas fa-check fa-2x"></i>,
       styleShakeOne: "",
       rightAnswerStyleOne: "rightAnswerStyleOne",
       wrongOne: "Fel",
@@ -201,7 +233,7 @@ if(operator === "+"){
     if(answerToCheck === 2){
     this.setState({
       count: this.state.count + 1,
-      checkedTwo: <i class="fas fa-check fa-2x"></i>,
+      checkedTwo: <i className="fas fa-check fa-2x"></i>,
       styleShakeTwo: "",
       rightAnswerStyleTwo: "rightAnswerStyleTwo",
       wrongTwo: "Rätt"
@@ -215,7 +247,7 @@ if(operator === "+"){
     if(answerToCheck === 3){
     this.setState({
       count: this.state.count + 1,
-      checkedThree: <i class="fas fa-check fa-2x"></i>,
+      checkedThree: <i className="fas fa-check fa-2x"></i>,
       styleShakeThree: "",
       rightAnswerStyleThree: "rightAnswerStyleThree",
       wrongThree: "Fel"
@@ -230,7 +262,7 @@ if(operator === "+"){
     if(answerToCheck === 4){
     this.setState({
       count: this.state.count + 1,
-      checkedFour: <i class="fas fa-check fa-2x"></i>,
+      checkedFour: <i className="fas fa-check fa-2x"></i>,
       styleShakeFour: "",
       rightAnswerStyleFour: "rightAnswerStyleFour",
       wrongFour: "Fel"
@@ -245,7 +277,7 @@ if(operator === "+"){
     if(answerToCheck === 5){
     this.setState({
       count: this.state.count + 1,
-      checkedFive: <i class="fas fa-check fa-2x"></i>,
+      checkedFive: <i className="fas fa-check fa-2x"></i>,
       styleShakeFive: "",
       rightAnswerStyleFive: "rightAnswerStyleFive",
       wrongFive: "Rätt"
@@ -263,10 +295,14 @@ if(operator === "+"){
 }
 
 wrongAnswer(shakeWrongAnswer){
+  let playAudio = new Audio();
+    playAudio.src = require('../../Audio/wrong.mp3');
+    playAudio.play();
+
   if(shakeWrongAnswer === 1){
     this.setState({
         styleShakeOne: "shake",
-        wrongOne: <i class="fas fa-times fa-2x"></i>,
+        wrongOne: <i className="fas fa-times fa-2x"></i>,
         checkedOne: "Rätt",
         rightAnswerStyleOne: ""
 
@@ -276,7 +312,7 @@ wrongAnswer(shakeWrongAnswer){
    if(shakeWrongAnswer === 2){
     this.setState({
         styleShakeTwo: "shake",
-        wrongTwo: <i class="fas fa-times fa-2x"></i>,
+        wrongTwo: <i className="fas fa-times fa-2x"></i>,
         checkedTwo: "Fel",
         rightAnswerStyleTwo: ""
       })  
@@ -285,7 +321,7 @@ wrongAnswer(shakeWrongAnswer){
    if(shakeWrongAnswer === 3){
     this.setState({
         styleShakeThree: "shake",
-        wrongThree: <i class="fas fa-times fa-2x"></i>,
+        wrongThree: <i className="fas fa-times fa-2x"></i>,
         checkedThree: "Rätt",
         rightAnswerStyleThree: ""
       })  
@@ -294,7 +330,7 @@ wrongAnswer(shakeWrongAnswer){
    if(shakeWrongAnswer === 4){
     this.setState({
         styleShakeFour: "shake",
-        wrongFour: <i class="fas fa-times fa-2x"></i>,
+        wrongFour: <i className="fas fa-times fa-2x"></i>,
         checkedFour: "Rätt",
         rightAnswerStyleFour: ""
       })  
@@ -303,7 +339,7 @@ wrongAnswer(shakeWrongAnswer){
    if(shakeWrongAnswer === 5){
     this.setState({
         styleShakeFive: "shake",
-        wrongFive: <i class="fas fa-times fa-2x"></i>,
+        wrongFive: <i className="fas fa-times fa-2x"></i>,
         checkedFive: "Fel",
         rightAnswerStyleFive: ""
       })  

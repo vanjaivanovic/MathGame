@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import JumpRope from '../../JSON/AdditionJumpRope.json';
+import JumpRope from '../../JSON/JumpRope.json';
 import JumpRopeInput from './JumpRopeInput.js';
 import CorrectMathExpression from './JumpRopeMathExpression.js';
 
@@ -31,7 +31,7 @@ constructor(props){
 componentDidMount(){
   const { showGameDescription } = this.props;
 
-  showGameDescription(3);
+  showGameDescription(4);
 
   const { operator } = this.props;
 
@@ -45,8 +45,15 @@ componentDidMount(){
       })
     }
 
+    if(operator === "*"){
+      this.setState({
+        operatorIndex: 2
+      })
+    }
+
   this.calc(operator);
 }
+
  componentWillMount(){
   const { operator } = this.props;
 
@@ -112,8 +119,12 @@ setRandomNumber(operator){
   event.preventDefault();
 
    if(this.state.result == this.state.value){
+      let playAudio = new Audio();
+      playAudio.src = require('../../Audio/click.mp3');
+      playAudio.play();
+
     document.getElementById("jumpRopeQuestionInvisible").style.color = "transparent";
-    document.getElementById("jumpRopeQuestionInvisible").style.height = "220px !important";
+    document.getElementById("jumpRopeQuestionInvisible").style.height = "220px";
 
       this.setState({
         jumpRopeInput: false,
@@ -147,7 +158,7 @@ setRandomNumber(operator){
     } 
  }
 
- nextJumpRopeQuestion(){
+ nextJumpRopeQuestion(){ 
   if(this.state.index < 2){
      this.setState({
        index: this.state.index + 1,
@@ -157,8 +168,9 @@ setRandomNumber(operator){
        AnswerIcon: true,
        jumpRopeAnswerButton: "col-2 jumpRopeAnswerButton",
      });
+
+   document.getElementById("jumpRopeQuestionInvisible").style.height = "auto"; 
    document.getElementById("jumpRopeQuestionInvisible").style.color = "white";
-   document.getElementById("jumpRopeQuestionInvisible").style.height = "auto !important"; 
   }
 
   this.calc(this.state.operator);

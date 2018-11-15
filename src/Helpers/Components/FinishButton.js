@@ -18,7 +18,7 @@ callpopUp(){
 
   render(){
     return(
-      <div className="offset-7 col-1">
+      <div className="col-8">
       <div className="FinishButtonCheck">
         <input id="FinishButtonCheck" type="checkbox" onClick={this.callpopUp} />
         <label htmlFor="FinishButtonCheck"></label>

@@ -21,11 +21,11 @@ render(){
 
           <button id={BubbleWrongThree} className="x4" onClick={() => ShakeHint(3)}>{WrongAnswer5}</button>
         
-          <button id={BubbleTwoCorrect} className="x5" onClick={() => Answer(2)}>{ResultTwo}</button>
+          <button id={BubbleTwoCorrect} className="x7" onClick={() => Answer(2)}>{ResultTwo}</button>
     
           <button id={BubbleWrongFour} className="x6" onClick={() => ShakeHint(4)}>{WrongAnswer4}</button>
 
-          <button id={BubbleWrongFive} className="x7" onClick={() => ShakeHint(5)}>{WrongAnswer4}</button>
+          <button id={BubbleWrongFive} className="x5" onClick={() => ShakeHint(5)}>{WrongAnswer3}</button>
           
 
       </div>

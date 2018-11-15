@@ -9,13 +9,21 @@ class ChooseCharacter extends Component {
 		super(props);
 		this.state = {
 		 condition: false,
-		 selected: []
+		 selected: [],
+		 characterCompletedIndex: ""
 		}
 
 		this.CharacterWasClicked = this.CharacterWasClicked.bind(this);
+		this.showCharacterBook = this.showCharacterBook.bind(this);
+	
 	}
 
 	CharacterWasClicked(characters, characterIndex) {
+		let playAudio = new Audio();
+		playAudio.src = require('../Audio/click.mp3');
+
+		playAudio.play();
+
 		const { characterChoiceIsClicked } = this.props
 		characterChoiceIsClicked(characterIndex);
 
@@ -26,11 +34,20 @@ class ChooseCharacter extends Component {
 		characters[characterIndex].selected = true ;
 	}
 
+	showCharacterBook(characterBook, characterCompleted){
+		const { showBookCompleted } = this.props;
+		
+		showBookCompleted(characterBook, characterCompleted);
+	}
+
 	render (){	
+
+		const { characterCompletedIndex } = this.props;
+		
 		return ( 
 			<ul className="characterContainer col-xs-12 sm-offset-2 col-sm-7">
 			<PerfectScrollbar ref = {(ref) => { this._scrollBarRef = ref; }}>
-				<CharacterList CharacterWasClicked={this.CharacterWasClicked} />
+				<CharacterList CharacterWasClicked={this.CharacterWasClicked} showCharacterBook={this.showCharacterBook} characterCompletedIndex={characterCompletedIndex} />
 			</PerfectScrollbar>
 			 </ul>
 			

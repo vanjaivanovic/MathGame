@@ -1,0 +1,146 @@
+{ 
+    "CharcterInfo": [
+         [
+            {
+              "id":"1",
+              "title": "",
+              "storyTitle": "Visste du att",
+              "chapter": "Nelson Mandela kämpade för rättvisa"
+            },
+
+            {
+              "id":"2",
+              "title": "",
+              "storyTitle": "Visste du att",
+              "chapter": "Dalai Lama lär om kärlek och fred på jorden"
+            },
+
+            {
+              "id":"3",
+              "title": "",
+              "storyTitle": "Visste du att",
+              "chapter": "Coco Chanel förändrade modevärlden genom att sy de första byxor för kvinnor"
+            },
+
+            {
+              "id":"4",
+              "title": "",
+              "storyTitle": "Visste du att",
+              "chapter": "Nelson Mandela kämpade för rättvisa"
+            },
+
+            {
+              "id":"5",
+              "title": "",
+              "storyTitle": "Visste du att",
+              "chapter": "Dalai Lama lär om kärlek och fred på jorden"
+            }
+         ],
+
+         [
+         {
+            "id": "1",
+            "title": "Kapitel 1",
+            "storyTitle": "Mandelas barndom",
+            "chapter": "Som barn var Mandela lycklig och kunde leka hur mycket han ville så länge han gjorde det hans föräldrar bad honom att göra och respekterade deras traditioner. Men Mandelas liv förändrades när han var 9 år gammal. Hans pappa dog och hans mamma blev tvungen att lämna honom hos en annan familj. Han blev tvungen att hitta styrka för att klara sig utan hans mamma. "
+          },
+
+         {
+            "id": "2",
+            "title": "Kapitel 2",
+            "storyTitle": "Mandelas by",
+            "chapter": "Han började på en internatskola och där blev han utsatt för orättvisa. Det var då han började leda kampen mot orättvisa. Det ledde till att han blev tvungen att välja mellan att göra det han blev tillsagd, trots att det var orättvist, eller att bli reglerad från skolan. Han valde att bli reglerad. Hans nya familj blev inte glada över Mandelas beslut och ville att han skulle återvända till skolan. De ville också att Mandela och deras son skulle gifta sig med kvinnor de inte var förälskade i, så de bestämde sig för att fly till en annan stad som heter Johannesburg." 
+          },
+
+         {
+            "id": "3",
+            "title": "Kapitel 3",
+            "storyTitle": "Livet i den nya staden",
+            "chapter": "I Johannesburg träffade Mandela många nya vänner. En av de hjälpte honom att hitta ett arbete som administratör på ett kontor. På kvällarna studerade han med endast ett ljus bredvid sin bok. På den tiden var det inte lätt att leva som svart bland de vita för att mycket var orättvist för de svarta. Det var då Mandela blev mer intresserad av politik och makten av att protestera och kämpa för rättvisa. När han började på universitet såg han ännu mer orättvisor mot de svarta. Han fick inte bada i poolen som fanns där, inte heller använda universitets sporthall, äta på restauranger eller bo i universitetslägenheter som de vita fick. Han såg också att orättvisor mot de svarta och även indier fanns utanför skolan. Så han bestämde sig frivilligt för att vara med i en protestgrupp."
+          },
+
+         {
+            "id": "4",
+            "title": "Kapitel 4",
+            "storyTitle": "Mandela och protestgruppen",
+            "chapter": "Protestgrupp bestämde sig för att bryta mot lagar som var orättvisa mot de svarta och då blev de och flera tusen andra arresterade. Efter många protester blev Mandela arresterad inte för vad han gjorde utan för vad han kämpade för. Politikerna var rädda för Mandelas mäktiga sätt att tala och få med sig folket att tillsammans med honom kämpa att för rättvisan. Därför skickades Mandela till Robben Islands fängelse och även hans vänner. När det var dags för rättegången sa Mandela att han kommer kämpa vidare för sin dröm om rättvisa för alla även om det skulle innebära att spendera resten av livet i fängelset eller att han skulle förlora sitt liv, eftersom han tyckte att det var viktigt att hjälpa och kämpa för andra som blev orättvist behandlade."
+        },
+
+        {
+            "id": "5",
+            "title": "Kapitel 5",
+            "storyTitle": "Mandela och hövdingar",
+            "chapter": "Mandela spenderade 27 år av sitt liv i fängelset och det som höll hans hopp och dröm vid liv var den här dikten: Under natten som täcker mig, svart som hålet från pol till pol, tackar jag, må än vilken Gud det kan vara för min oövervinnerliga själ. Under tiden Mandela satt i fängelset kämpade folket för att Mandela skulle släppas fri, men politikerna vägrade släppa honom. Mandela hittade då ett sätt att nå politikerna och prata med dem och tillsammans med sitt folk lyckades Mandela bli fri. När han blev frigiven fortsatte han kämpa för rättvisa för alla. Han ville ha ett nytt val i landet där alla fick rösta, inte bara vita. Till slut lyckades han, 27 april 1994 valde folket honom som president och de svarta blev äntligen fria. Mandelas dröm förverkligades för att han aldrig gav upp. Han lovade folket att det kommer aldrig mer finnas orättvisor i Sydafrika."
+        }
+    ],
+        [
+         {
+            "id": "1",
+            "title": "Kapitel 1",
+            "storyTitle": "Havets lärare",
+            "chapter": "Dalai Lama är en munk och en ledare från Tibet som delar sin visdom om fred och kärlek. Hans namn betyder Havets Lärare eller Spirituell lärare som är lika djup som havet. Han lär ut om sin religion Buddism. Buddism handlar om att människor borde hitta ett sätt som gör de lyckliga, inte bara genom saker de har och vill ha utan man måste hitta sitt lugn och lycka inom sig oberoende av andra saker."
+            },
+         {
+            "id": "2",
+            "title": "Kapitel 2",
+            "storyTitle": "Dalai Lamas visdom",
+            "chapter": "Dalai Lama vill lära oss att leva vårt liv med hjälp av livets visdom, med hjälp av moralisk beteende och disciplin. På så sätt kan varje människa uppnå sin egen lycka. Dalai Lama lär också ut om medkänsla för andra och hur viktigt det är att vi tar hand om djur och natur. Och 1989 vann Dalai Lama Nobels Fredspriset för sin visdom om fred och kamp för bättre global miljö."
+            },
+         {
+            "id": "3",
+            "title": "Kapitel 3",
+            "storyTitle": "Alla har lika värde",
+            "chapter": "Dalai Lama tycker att det är viktigt att alltid komma ihåg att alla människor har lika värde och att man aldrig ska se ner på någon annan, utan att man ska vara öppen för nya människor och vad de har att säga eller lära dig. Dalai Lama tror också på att man måste först älska, respektera och ta hand om sig själv för att sedan kunna älska, respektera och ta hand om andra. Var också dig själv och var inte rädd. Rädslan förhindrar dig från att prova nya saker, skaffa nya vänner och utmana dig sig. Det är bra att utmana sig själv för då blir du smartare, du vågar mer och du blir bättre på andra saker."
+          },
+         {
+            "id": "4",
+            "title": "Kapitel 4",
+            "storyTitle": "Våga att inte vara rädd",
+            "chapter": "Dalai Lama säger att rädsla beror på att vi inte vågar lära känna det som vi är rädda för och att vi skapar våra rädslor och gör de större än vad de är i vår fantasi. Därför är det viktigt att vara nyfiken, att våga söka svaret och vara öppen mot andra som vill lära dig om något. Det här kommer hjälpa dig att minska din rädsla. Dalai Lama säger att vara arg, att hata och att vara rädd är dåligt för vår kropp och vår hälsa. Därför är det viktigt att förlåta andra, att ha tålamod och tolerans i olika situationer. Att prata med varandra när ett problem uppstår och att man inte ska slåss, är en visdom han delar med sig ofta. Eftersom våld aldrig löser några problem utan skapar bara fler problem."
+          },
+
+          {
+            "id": "5",
+            "title": "Kapitel 5",
+            "storyTitle": "Ditt värde och dina drömmar",
+            "chapter": "Man ska alltid se det positiva i allt som händer, ibland är det inte så dåligt som du tror. Det kanske finns en annan bra möjlighet i just det som har hänt. Försök alltid att se möjligheter och inte problem, säger Dalai Lama. Det absolut viktigaste är att du alltid gör ditt bästa i alla situationer så att du kan känna dig stolt över det du har gjort. Låt aldrig någon ta ifrån dig ditt värde och dina drömmar. Var inte heller beroende av vad andra tycker om dig och det du vill göra. Dalai Lama säger att det viktigaste är vad du tycker om dig själv och de drömmar du har. Kom ihåg att alltid försöka hjälpa andra, för även det gör dig väl och lycklig."
+          }   
+        ],
+     [
+         {
+            "id": "1",
+            "title": "Kapitel 1",
+            "storyTitle": "Orädd fransk designer",
+            "chapter": "Gabrielle Chanel eller Coco Chanel, är en fransk designer och hon är känd för sina tidlösa kläder som är populära än i dag. Hon gjorde enkla och fina kläder och kombinerade de med vackra accessoarer, så som hattar, väskor, skor och smycken av pärlor. Hon är även känd för sina parfymer, bl.a Chanel No. 5 som är en av världens mest kända parfymer i världen och som många älskar än i dag."
+          },
+         {
+            "id": "2",
+            "title": "Kapitel 2",
+            "storyTitle": "Chanel lär sig att sy",
+            "chapter": "Chanel växte upp på ett barnhem och där blev hon lärd att sy, en färdighet som ledde henne till framgångsrik karriär. Chanel började att sy hattar och det blev en succé. Efter den succén ville hon skapa egen klädkollektion. Men hon fick inte göra det för att hon var inte lagligt berättigad designer så hon fick inte konkurrera med andra designers. Med rätt tankesätt hittade Chanel alltid en lösning. Hon brukade säga: Om du var född utan vingar, hindra aldrig de från att växa. Hon var ostoppbar. Chanel började sy kläder av jersey material, som är gjord av ylle. På den tiden använde man jersey bara för att sy underkläder för män. Chanel lyckades återigen. Trots att vissa försökte stoppa henne så vägrade hon ge upp sin dröm och hon vågade göra något som ingen annan har vågat göra förut och det blev hennes nästa succé."
+          },
+
+          {
+            "id": "3",
+            "title": "Kapitel 3",
+            "storyTitle": "Konsten att våga vara annorlunda",
+            "chapter": "Chanel sa en gång: Om man vill bli oersättlig, då måste man vara annorlunda. Hon var först med att skapa skjortklänningar, byxor för kvinnor och strandpyjamas. Hon skissade aldrig sina skisser på ett papper. Chanel tog tyget och la det på modellen och klippte och formade tyget på modellen tills hon var nöjd med siluetten och utseendet. Chanel vågade vara sig själv, hon vågade vara annorlunda och hon vågade säga vad hon tyckte. Hon tyckte om kort hår så hon bestämde sig för att klippa sig kort trots att ingen annan kvinna hade kort hår på den tiden. Hon var påhittig och sa till alla att det brann i hennes hus och att hennes lockar blev brända så hon var tvungen att klippa sig. Med den frisyren satte Chanel ännu en ny trend, alla kvinnor följde hennes mod och klippte sig kort."
+        },
+
+         {
+            "id": "4",
+            "title": "Kapitel 4",
+            "storyTitle": "Chanel blir förälskad",
+            "chapter": "Coco Chanel var förälskad i en man som hette Boy Capel men tyvärr dog han i en bilolycka. Chanel sa då: Antingen dör jag eller så avslutar jag det vi påbörjade tillsammans. Om det här hade inte hänt i Chanels liv då skulle Chanel aldrig börjat experimentera med svarta kläder. Vissa säger att det att hon tog in svarta färgen i sin kollektion så att alla kvinnor i Frankrike skulle sörja hennes älskade."
+          },
+
+         {
+            "id": "5",
+            "title": "Kapitel 5",
+            "storyTitle": "Chanel blir hyllad",
+            "chapter": "Chanel blev känd för att hon vågade förändra klädstilen för alla, speciellt för kvinnorna. Hon lyckades bryta den gamla trenden med klänningar med korsett som var obekväma. Alla kvinnor hyllade Chanel för den här mode förändringen. Hon designade en klänning som hon och hela världen kallade Den Lilla Svarta. Den var svart, enkel och chic. Hon visade världen att svart är en elegant färg och är inte en färg som man har endast vid begravning."
+          }   
+        ]
+    ] 
+}
+

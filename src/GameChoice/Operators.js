@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import StartGameButton from './StartGameButton.js';
+import FinishButton from '../Helpers/Components/FinishButton.js';
 
 class ChooseOperator extends Component {
   constructor(props) {
@@ -13,6 +14,10 @@ class ChooseOperator extends Component {
   }
 
   operatorIsChosen(operator) {
+    let playAudio = new Audio();
+    playAudio.src = require('../Audio/click.mp3');
+    playAudio.play();
+
     const { operatorButtonIsClicked } = this.props;
     operatorButtonIsClicked(operator);
 
@@ -49,7 +54,7 @@ class ChooseOperator extends Component {
   }
 
 render(){
-  const { startGameButtonIsClicked } = this.props;
+  const { startGameButtonIsClicked, popUp } = this.props;
 
   return(
       <div className="operatorsWrapper col-12 col-sm-5">
@@ -71,6 +76,7 @@ render(){
         <div className="row">
          <StartGameButton startGameButtonIsClicked={startGameButtonIsClicked} />
         </div>
+        
       </div>
     )
   }

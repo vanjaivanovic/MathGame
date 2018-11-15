@@ -1,18 +1,24 @@
 import React, { Component } from 'react';
-import MathExpression from './BubbleGameComponents/Expressions.js';
-import BubbleAnswers from './BubbleGameComponents/Bubbles.js';
+import MathExpression from './Expressions.js';
+import BubbleAnswers from './Bubbles.js';
+
 class BubbleGame extends Component {
 constructor(props) {
    super(props);
    this.state = {
      wrapperStyle: "wrapper",
+     bubbleGamesAnswerBoxStyle: "",
      a: 0,
      b: 0,
      operator: "",
      operatorIcon: "",
      resultOne: "?",
      resultTwo: "?",
-     wrongAnswer: [],
+     wrongAnswer1: "",
+     wrongAnswer2: "",
+     wrongAnswer3: "",
+     wrongAnswer4: "",
+     wrongAnswer5: "",
      count: 1,
      activeShakeCount: 1,
      bubbleOneCorrect: "bubble",
@@ -25,6 +31,14 @@ constructor(props) {
    };
    this.setRandomNumber = this.setRandomNumber.bind(this);
    this.generateNumbers = this.generateNumbers.bind(this);
+   this.setStateOnWrongAnswerNumbers = this.setStateOnWrongAnswerNumbers.bind(this);
+
+   this.wrongAnswerNumberOne = this.wrongAnswerNumberOne.bind(this);
+   this.wrongAnswerNumberTwo = this.wrongAnswerNumberTwo.bind(this);
+   this.wrongAnswerNumberThree = this.wrongAnswerNumberThree.bind(this);
+   this.wrongAnswerNumberFour = this.wrongAnswerNumberFour.bind(this);
+   this.wrongAnswerNumberFive = this.wrongAnswerNumberFive.bind(this);
+
    this.displayAnswer = this.displayAnswer.bind(this);
    this.activateShake = this.activateShake.bind(this);
  }
@@ -32,7 +46,7 @@ constructor(props) {
 componentDidMount(){
   const { showGameDescription } = this.props;
 
-  showGameDescription(2);
+  showGameDescription(3);
 
   this.calc(this.state.operator);
 }
@@ -59,45 +73,42 @@ componentDidMount(){
     });
   }
   
-   this.setRandomNumber();
+   this.setRandomNumber(operator);
  }
 
- setRandomNumber(){
-   this.setState({
-     
-     a: this.generateNumbers(),
-     b: this.generateNumbers(),
-     
+ setRandomNumber(operator){
+   this.setState({    
+     a: this.generateNumbers(operator),
+     b: this.generateNumbers(operator),  
      answerBox: "?",
    });
  }
 /*Generates random number between 0-10 to A*/
- generateNumbers(){
-   return Math.floor(Math.random() * 11);
+ generateNumbers(operator){
+  let randomNumber = Math.floor(Math.random() * 15);
+
+  if(operator === "*"){
+   randomNumber = Math.floor(Math.random() * 5) + 1;
+  }
+
+  return randomNumber;
  }
 
  calc(operator){
+  let result = "";
   if(operator === "+"){
+    result = this.state.a + this.state.b;
     this.setState({
      resultOne: this.state.a + this.state.b,
      resultTwo: this.state.a + this.state.b,
-     wrongAnswer1: this.wrongAnswerNumber(),
-     wrongAnswer2: this.wrongAnswerNumber(),
-     wrongAnswer3: this.wrongAnswerNumber(),
-     wrongAnswer4: this.wrongAnswerNumber(),
-     wrongAnswer5: this.wrongAnswerNumber(),
    });
   }
 
   if(operator === "*"){
+    result = this.state.a * this.state.b;
     this.setState({
      resultOne: this.state.a * this.state.b,
      resultTwo: this.state.a * this.state.b,
-     wrongAnswer1: this.wrongAnswerNumber(),
-     wrongAnswer2: this.wrongAnswerNumber(),
-     wrongAnswer3: this.wrongAnswerNumber(),
-     wrongAnswer4: this.wrongAnswerNumber(),
-     wrongAnswer5: this.wrongAnswerNumber(),
    });
   }  
 
@@ -107,49 +118,104 @@ componentDidMount(){
       this.state.a = this.state.b;
       this.state.b = a;
     }
+
+    result = this.state.a - this.state.b;
          this.setState({
            resultOne: this.state.a - this.state.b,
-           resultTwo: this.state.a - this.state.b
+           resultTwo: this.state.a - this.state.b,
          });
     } 
 
-    this.wrongAnswerNumber();
+
+  this.setStateOnWrongAnswerNumbers(result);
  }
 
-  wrongAnswerNumber() {
+ setStateOnWrongAnswerNumbers(result){
+  this.setState({
+     wrongAnswer1: this.wrongAnswerNumberOne(result),
+     wrongAnswer2: this.wrongAnswerNumberTwo(result),
+     wrongAnswer3: this.wrongAnswerNumberThree(result),
+     wrongAnswer4: this.wrongAnswerNumberFour(result),
+     wrongAnswer5: this.wrongAnswerNumberFive(result),
+  });
+ }
+
+  wrongAnswerNumberOne(result) {
   let wrongAnswerNumber1 = Math.floor(Math.random() * 15);
-  let wrongAnswerNumber2 = Math.floor(Math.random() * 15);
-  let wrongAnswerNumber3 = Math.floor(Math.random() * 15);
-  let wrongAnswerNumber4 = Math.floor(Math.random() * 15);
-  let wrongAnswerNumber5 = Math.floor(Math.random() * 15);
+
+  if(this.state.operator === "*"){
+      wrongAnswerNumber1 = Math.floor(Math.random() * 5) + 1;
+  }
   
-  if(wrongAnswerNumber1 === this.state.resultOne){
-    wrongAnswerNumber1 = wrongAnswerNumber1 + 1;
+  if(wrongAnswerNumber1 === result){
+    wrongAnswerNumber1 ++;
   }
 
-  if(wrongAnswerNumber2 === this.state.resultOne){
-    wrongAnswerNumber2 = wrongAnswerNumber2 + 1;
+  return wrongAnswerNumber1;
+ }
+
+  wrongAnswerNumberTwo(result) {
+  let wrongAnswerNumber2 = Math.floor(Math.random() * 15);
+
+  if(this.state.operator === "*"){
+      wrongAnswerNumber2 = Math.floor(Math.random() * 5) + 1;
+  }
+  
+  if(wrongAnswerNumber2 === result){
+    wrongAnswerNumber2 ++;
   }
 
-  if(wrongAnswerNumber3 === this.state.resultOne){
-    wrongAnswerNumber3 = wrongAnswerNumber3 + 1;
+  return wrongAnswerNumber2;
+ }
+
+  wrongAnswerNumberThree(result) {
+  let wrongAnswerNumber3 = Math.floor(Math.random() * 15);
+
+  if(this.state.operator === "*"){
+      wrongAnswerNumber3 = Math.floor(Math.random() * 5) + 1;
+  }
+  
+  if(wrongAnswerNumber3 === result){
+    wrongAnswerNumber3 ++;
   }
 
-  if(wrongAnswerNumber4 === this.state.resultOne){
-    wrongAnswerNumber4 = wrongAnswerNumber4 + 1;
+  return wrongAnswerNumber3;
+ }
+
+  wrongAnswerNumberFour(result) {
+  let wrongAnswerNumber4 = Math.floor(Math.random() * 15);
+
+  if(this.state.operator === "*"){
+      wrongAnswerNumber4 = Math.floor(Math.random() * 5) + 1;
+  }
+  
+  if(wrongAnswerNumber4 === result){
+    wrongAnswerNumber4 ++;
   }
 
-  if(wrongAnswerNumber5 === this.state.resultOne){
-    wrongAnswerNumber5 = wrongAnswerNumber5 + 1;
+  return wrongAnswerNumber4;
+ }
+
+  wrongAnswerNumberFive(result) {
+  let wrongAnswerNumber5 = Math.floor(Math.random() * 15);
+
+  if(this.state.operator === "*"){
+      wrongAnswerNumber5 = Math.floor(Math.random() * 5) + 1;
+  }
+  
+  if(wrongAnswerNumber5 === result){
+    wrongAnswerNumber5 ++;
   }
 
-   this.setState({
-     wrongAnswer: [wrongAnswerNumber1, wrongAnswerNumber2, wrongAnswerNumber3, wrongAnswerNumber4, wrongAnswerNumber5]
-   });
+  return wrongAnswerNumber5;
  }
 
 /* Display answer for the 'Equals to' */
  displayAnswer(correctBubble){
+    let playAudio = new Audio();
+    playAudio.src = require('../../Audio/bubbles.mp3');
+
+    playAudio.play();
   
    if(correctBubble === 1){
     this.setState({
@@ -160,7 +226,8 @@ componentDidMount(){
       bubbleWrongTwo: "bubbleDisapear",
       bubbleWrongThree: "bubbleDisapear",
       bubbleWrongFour: "bubbleDisapear",
-      bubbleWrongFive: "bubbleDisapear"
+      bubbleWrongFive: "bubbleDisapear",
+      bubbleGamesAnswerBoxStyle: "bubbleGamesAnswer"
     });
   }
 
@@ -173,7 +240,8 @@ componentDidMount(){
       bubbleWrongTwo: "bubbleDisapear",
       bubbleWrongThree: "bubbleDisapear",
       bubbleWrongFour: "bubbleDisapear",
-      bubbleWrongFive: "bubbleDisapear"
+      bubbleWrongFive: "bubbleDisapear",
+      bubbleGamesAnswerBoxStyle: "bubbleGamesAnswer"
     });
   }
 
@@ -183,7 +251,7 @@ componentDidMount(){
     count: this.state.count + 1,
   });
     setTimeout(function() { //Start the timer to get a new mathexpression after 2,5 seconds
-        this.setRandomNumber();
+        this.setRandomNumber(this.state.operator);
         this.calc(this.state.operator);
         this.setState({
           wrapperStyle: "wrapper",
@@ -193,9 +261,10 @@ componentDidMount(){
           bubbleWrongTwo: "bubble",
           bubbleWrongThree: "bubble",
           bubbleWrongFour: "bubble",
-          bubbleWrongFive: "bubble"
+          bubbleWrongFive: "bubble",
+          bubbleGamesAnswerBoxStyle: ""
         })
-  }.bind(this), 1000) 
+  }.bind(this), 1500) 
 
     this.callFinishedGame();
 }
@@ -206,6 +275,9 @@ callFinishedGame(){
 }
 
 activateShake(clickedBubble){
+    let playAudio = new Audio();
+    playAudio.src = require('../../Audio/wrong.mp3');
+    playAudio.play();
 
   if(clickedBubble === 1){
     this.setState({
@@ -273,7 +345,7 @@ activateShake(clickedBubble){
   render() {
    return (
     <div id={this.state.wrapperStyle}>
-       <MathExpression NumberOne={this.state.a} NumberTwo={this.state.b} Operator={this.state.operatorIcon} AnswerBox={this.state.answerBox} />
+       <MathExpression NumberOne={this.state.a} NumberTwo={this.state.b} Operator={this.state.operatorIcon} bubbleGamesAnswerBoxStyle={this.state.bubbleGamesAnswerBoxStyle} AnswerBox={this.state.answerBox} />
        <BubbleAnswers 
             Answer={this.displayAnswer} 
             ResultOne={this.state.resultOne}
@@ -286,11 +358,11 @@ activateShake(clickedBubble){
             BubbleWrongFive={this.state.bubbleWrongFive}
             BubbleOneCorrect={this.state.bubbleOneCorrect}
             BubbleTwoCorrect={this.state.bubbleTwoCorrect}
-            WrongAnswer1={this.state.wrongAnswer[0]} 
-            WrongAnswer2={this.state.wrongAnswer[1]} 
-            WrongAnswer3={this.state.wrongAnswer[2]} 
-            WrongAnswer4={this.state.wrongAnswer[3]} 
-            WrongAnswer5={this.state.wrongAnswer[4]} 
+            WrongAnswer1={this.state.wrongAnswer1} 
+            WrongAnswer2={this.state.wrongAnswer2} 
+            WrongAnswer3={this.state.wrongAnswer3} 
+            WrongAnswer4={this.state.wrongAnswer4} 
+            WrongAnswer5={this.state.wrongAnswer5} 
         /> 
     </div>
   )};

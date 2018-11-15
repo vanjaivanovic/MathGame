@@ -35,21 +35,24 @@ constructor(props) {
    this.generateNumbers = this.generateNumbers.bind(this);
    this.calc = this.calc.bind(this);
    this.correctAnswer = this.correctAnswer.bind(this);
+   this.wrongAnswerSoundEffect = this.wrongAnswerSoundEffect.bind(this);
 
  }
 
 
 dropedAnswerItem(draggedItemNumber, id){
+  console.log(draggedItemNumber, id);
   this.setState({
     draggedItemNumber: draggedItemNumber,
     draggedItemID: id
   })
 }
 
-targetAnswer(correctAnswer){
+targetAnswer(correctAnswer, id){
+
   if(this.state.draggedItemNumber === correctAnswer){
-       this.setState({
-      count: this.state.count + 1
+      this.setState({
+       count: this.state.count + 1
       })
 
       this.setState(prevState => {
@@ -58,14 +61,17 @@ targetAnswer(correctAnswer){
         const indexAnswerStyle = itemsToDrag.findIndex(item => item.result === this.state.draggedItemNumber);
         console.log("corrextanswer index:", indexAnswerStyle);
 
-        itemsToDrag[index].random = "";
-        itemsToDrag[indexAnswerStyle].correctAnswerStyle = "correctAnswerStyle";
+        delete itemsToDrag[index].random;
+        itemsToDrag[id].correctAnswerStyle = "correctAnswerStyle";
+        itemsToDrag[id].corrected = true;
 
         return { itemsToDrag };
 
       })
       
   } else {
+      this.wrongAnswerSoundEffect();
+
      this.setState(prevState => {
         let itemsToDrag = prevState.mathProblems;
         const indexAnswerStyle = itemsToDrag.findIndex(item => item.result === correctAnswer);
@@ -81,7 +87,13 @@ targetAnswer(correctAnswer){
             let itemsToDrag = prevState.mathProblems;
             const indexAnswerStyle = itemsToDrag.findIndex(item => item.result === correctAnswer);
 
-            itemsToDrag[indexAnswerStyle].correctAnswerStyle = "";
+            if(itemsToDrag[indexAnswerStyle].corrected){
+              itemsToDrag[indexAnswerStyle].correctAnswerStyle = "correctAnswerStyle";
+            } else {
+              itemsToDrag[indexAnswerStyle].correctAnswerStyle = "";
+            }
+            
+
             return { itemsToDrag };
           })
       }.bind(this), 1000);   
@@ -93,20 +105,20 @@ targetAnswer(correctAnswer){
 componentDidMount(){
   const { showGameDescription } = this.props;
 
-  showGameDescription(1);
+  showGameDescription(2);
 
   this.calc(this.state.operator);
 }
 
  componentWillMount(){
    const { operator } = this.props;
-   console.log(operator);
 
   if(operator === "+"){
     this.setState({
     operator: operator, 
     });
   }
+
    if(operator === "-"){
     this.setState({
     operator: operator, 
@@ -118,29 +130,35 @@ componentDidMount(){
     operator: operator, 
     });
   }
-  
-   this.setRandomNumber();
+
+   this.setRandomNumber(operator);
+
  }
 
- setRandomNumber(){
+ setRandomNumber(operator){
    this.setState({
-     a: this.generateNumbers(),
-     b: this.generateNumbers(),
-     c: this.generateNumbers(),
-     d: this.generateNumbers(),
-     e: this.generateNumbers(),
-     f: this.generateNumbers(),
-     g: this.generateNumbers(),
-     h: this.generateNumbers(),
-     i: this.generateNumbers(),
-     j: this.generateNumbers(),
+     a: this.generateNumbers(operator),
+     b: this.generateNumbers(operator),
+     c: this.generateNumbers(operator),
+     d: this.generateNumbers(operator),
+     e: this.generateNumbers(operator),
+     f: this.generateNumbers(operator),
+     g: this.generateNumbers(operator),
+     h: this.generateNumbers(operator),
+     i: this.generateNumbers(operator),
+     j: this.generateNumbers(operator),
      answerBox: "",
    });
  }
 
-/*Generates random number between 0-10 to A*/
- generateNumbers(){
-   return Math.floor(Math.random() * 11);
+/*Generates random number between 0-10 */
+ generateNumbers(operator){
+  let randomNumber = Math.floor(Math.random() * 11);
+
+  if(operator === "*"){
+    randomNumber = Math.floor(Math.random() * 5) + 1;  
+  }
+  return randomNumber;
  }
 
  wrongAnswerNumber() {
@@ -158,11 +176,11 @@ componentDidMount(){
   if(operator === "+"){
      this.setState({
     mathProblems: [
-      { id: 0, correctAnswerStyle: "", a: this.state.a, operator:this.state.operator, b:this.state.b, result: this.state.a + this.state.b, random: this.state.i + this.state.j},
-      { id: 1, correctAnswerStyle: "", a: this.state.c, operator:this.state.operator, b:this.state.d, result: this.state.c + this.state.d, random: this.state.a + this.state.b},
-      { id: 2, correctAnswerStyle: "", a: this.state.e, operator:this.state.operator, b:this.state.f, result: this.state.e + this.state.f, random: this.state.g + this.state.h},
-      { id: 3, correctAnswerStyle: "", a: this.state.g, operator:this.state.operator, b:this.state.h, result: this.state.g + this.state.h, random: this.state.e + this.state.f},
-      { id: 4, correctAnswerStyle: "", a: this.state.i, operator:this.state.operator, b:this.state.j, result: this.state.i + this.state.j, random: this.state.c + this.state.d}
+      { id: 0, corrected: false, correctAnswerStyle: "", a: this.state.a, operator:this.state.operator, b:this.state.b, result: this.state.a + this.state.b, random: this.state.i + this.state.j},
+      { id: 1, corrected: false, correctAnswerStyle: "", a: this.state.c, operator:this.state.operator, b:this.state.d, result: this.state.c + this.state.d, random: this.state.a + this.state.b},
+      { id: 2, corrected: false, correctAnswerStyle: "", a: this.state.e, operator:this.state.operator, b:this.state.f, result: this.state.e + this.state.f, random: this.state.g + this.state.h},
+      { id: 3, corrected: false, correctAnswerStyle: "", a: this.state.g, operator:this.state.operator, b:this.state.h, result: this.state.g + this.state.h, random: this.state.e + this.state.f},
+      { id: 4, corrected: false, correctAnswerStyle: "", a: this.state.i, operator:this.state.operator, b:this.state.j, result: this.state.i + this.state.j, random: this.state.c + this.state.d}
     ]
     })
   }
@@ -170,11 +188,11 @@ componentDidMount(){
   if(operator === "*"){
      this.setState({
     mathProblems: [
-      { id: 0, a: this.state.a, operator:this.state.operator, b:this.state.b, result: this.state.a * this.state.b, random: this.state.i * this.state.j},
-      { id: 1, a: this.state.c, operator:this.state.operator, b:this.state.d, result: this.state.c * this.state.d, random: this.state.a * this.state.b},
-      { id: 2, a: this.state.e, operator:this.state.operator, b:this.state.f, result: this.state.e * this.state.f, random: this.state.g * this.state.h},
-      { id: 3, a: this.state.g, operator:this.state.operator, b:this.state.h, result: this.state.g * this.state.h, random: this.state.e * this.state.f},
-      { id: 4, a: this.state.i, operator:this.state.operator, b:this.state.j, result: this.state.i * this.state.j, random: this.state.c * this.state.d}
+      { id: 0, corrected: false, correctAnswerStyle: "", a: this.state.a, operator:this.state.operator, b:this.state.b, result: this.state.a * this.state.b, random: this.state.i * this.state.j},
+      { id: 1, corrected: false, correctAnswerStyle: "", a: this.state.c, operator:this.state.operator, b:this.state.d, result: this.state.c * this.state.d, random: this.state.a * this.state.b},
+      { id: 2, corrected: false, corrected: false, correctAnswerStyle: "", a: this.state.e, operator:this.state.operator, b:this.state.f, result: this.state.e * this.state.f, random: this.state.g * this.state.h},
+      { id: 3, corrected: false, correctAnswerStyle: "", a: this.state.g, operator:this.state.operator, b:this.state.h, result: this.state.g * this.state.h, random: this.state.e * this.state.f},
+      { id: 4, corrected: false, correctAnswerStyle: "", a: this.state.i, operator:this.state.operator, b:this.state.j, result: this.state.i * this.state.j, random: this.state.c * this.state.d}
     ]
   })
   }
@@ -212,11 +230,11 @@ componentDidMount(){
 
     this.setState({
       mathProblems: [
-      { id: 0, a: this.state.a, operator:this.state.operator, b:this.state.b, result: this.state.a - this.state.b, random: this.state.i - this.state.j},
-      { id: 1, a: this.state.c, operator:this.state.operator, b:this.state.d, result: this.state.c - this.state.d, random: this.state.a - this.state.b},
-      { id: 2, a: this.state.e, operator:this.state.operator, b:this.state.f, result: this.state.e - this.state.f, random: this.state.g - this.state.h},
-      { id: 3, a: this.state.g, operator:this.state.operator, b:this.state.h, result: this.state.g - this.state.h, random: this.state.e - this.state.f},
-      { id: 4, a: this.state.i, operator:this.state.operator, b:this.state.j, result: this.state.i - this.state.j, random: this.state.c - this.state.d}
+      { id: 0, corrected: false, correctAnswerStyle: "", a: this.state.a, operator:this.state.operator, b:this.state.b, result: this.state.a - this.state.b, random: this.state.i - this.state.j},
+      { id: 1, corrected: false, correctAnswerStyle: "", a: this.state.c, operator:this.state.operator, b:this.state.d, result: this.state.c - this.state.d, random: this.state.a - this.state.b},
+      { id: 2, corrected: false, correctAnswerStyle: "", a: this.state.e, operator:this.state.operator, b:this.state.f, result: this.state.e - this.state.f, random: this.state.g - this.state.h},
+      { id: 3, corrected: false, correctAnswerStyle: "", a: this.state.g, operator:this.state.operator, b:this.state.h, result: this.state.g - this.state.h, random: this.state.e - this.state.f},
+      { id: 4, corrected: false, correctAnswerStyle: "", a: this.state.i, operator:this.state.operator, b:this.state.j, result: this.state.i - this.state.j, random: this.state.c - this.state.d}
     ]
      
    });
@@ -227,9 +245,19 @@ componentDidMount(){
 
 /* Display answer for the 'Equals to' */
 correctAnswer(correctAnswer){
+   let playAudio = new Audio();
+      playAudio.src = require('../../Audio/click.mp3');
+      playAudio.play();
+
   const { finishedGameOfFive } = this.props;
 
   finishedGameOfFive(correctAnswer);
+}
+
+wrongAnswerSoundEffect(){
+   let playAudio = new Audio();
+      playAudio.src = require('../../Audio/wrong.mp3');
+      playAudio.play();
 }
 
 
@@ -238,7 +266,7 @@ correctAnswer(correctAnswer){
         <div className="offset-1 col-sm-9 items">
           {this.state.mathProblems.map((mathProblem, index) => (
             <div className="row dragAndDropExpression">
-              <Drop mathProblem={mathProblem} result={mathProblem} handleDrop={(correctAnswer) => this.targetAnswer(correctAnswer)}/>
+              <Drop mathProblem={mathProblem} result={mathProblem} handleDrop={(correctAnswer, id) => this.targetAnswer(correctAnswer, id)}/>
               <Drag key={index} mathProblem={mathProblem} 
               drag={(draggedItem, id) => this.dropedAnswerItem(draggedItem, id)} />
             </div>

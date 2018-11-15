@@ -3,17 +3,17 @@
          [
          	{
          		"id": "1",
-         		"hint": "linjal.jpg"
+         		"hint": "Har du en linjal i närheten? Du kan använda den som hjälp, likt en matematisk tallinje."
          	},
 
          	{
          		"id": "2",
-         		"hint": "Fråga mamma eller pappa"
+         		"hint": "Ibland är det bra att ta hjälp utav andra. Fråga någon som kan hjälpa dig på traven."
          	},
 
          	{
          		"id": "3",
-         		"hint": "Ring mormor"
+         		"hint": "Du kan alltid använda dig av en räknetabell om du har fastnat."
          	}
 
          ]

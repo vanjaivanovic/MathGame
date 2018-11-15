@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Characters from '../GameChoice/Stories.json';
+import Characters from '../JSON/Stories.json';
 import PerfectScrollbar from 'react-perfect-scrollbar'
 import PropTypes from 'prop-types';
 import 'react-perfect-scrollbar/dist/css/styles.css';
@@ -28,11 +28,15 @@ constructor(props) {
 
   }
      callNewGame(){
+        let playAudio = new Audio();
+        playAudio.src = require('../Audio/next.mp3');
+        playAudio.play();
+        
       const { newGameNewChapter } = this.props
 
       setTimeout(function() {
         newGameNewChapter(this.state.chapterIndex);
-      }.bind(this), 1000);  
+      }.bind(this), 500);  
   }
 
   render () {
@@ -52,7 +56,7 @@ constructor(props) {
             <h2>{StoryTitle}</h2>
           </div>
           <div className="chapterContainer">
-          <PerfectScrollbar ref = {(ref) => { this._scrollBarRef = ref; }}>
+          <PerfectScrollbar ref = {(ref) => { this._scrollBarRef = ref; }}  className="chapterScroll">
           <p>{CharacterStory}</p>
           <button className="next" onClick={this.callNewGame}><span>Nästa</span></button>
           </PerfectScrollbar>

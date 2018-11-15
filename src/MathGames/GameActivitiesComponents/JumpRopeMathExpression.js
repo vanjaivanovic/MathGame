@@ -1,9 +1,28 @@
 import React, { Component } from 'react';
 
 class CorrectMathExpression extends Component {
+ constructor(props){
+    super(props);
+
+    this.callNextJumpRopeQuestion = this.callNextJumpRopeQuestion.bind(this);
+ }
+
+
+ callNextJumpRopeQuestion(){
+  let playAudio = new Audio();
+      playAudio.src = require('../../Audio/next.mp3');
+      playAudio.play();
+
+   const { nextJumpRopeQuestion } = this.props; 
+
+    setTimeout(function(){
+      nextJumpRopeQuestion();
+    }.bind(this), 600);  
+ }
+
   render(){
 
-    const { expression, nextJumpRopeQuestion } = this.props; 
+    const { expression } = this.props; 
 
     return(
       <div className="fullMathExpressionDiv">
@@ -14,7 +33,7 @@ class CorrectMathExpression extends Component {
           <span className="equalSign">{expression[3]}</span>
           <span className="result">{expression[4]}</span>
         </p>
-        <button className="offset-9 col-sm-2 next" onClick={nextJumpRopeQuestion}>Nästa</button>
+        <button className="offset-9 col-sm-2 next" onClick={this.callNextJumpRopeQuestion}><span>Nästa</span></button>
       </div>
       )
   }

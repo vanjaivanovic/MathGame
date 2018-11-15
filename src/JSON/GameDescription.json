@@ -1,5 +1,9 @@
 {
 	"GameDescription": [
+			{
+				"gameTitle" : "Matte som gör dig glad med skrivna blad.",
+				"gameDescription" : "Det här spelet är till en lekfull knatte, för att lära sig matte. Det kommer bli lekande lätt och inspirerande på olika sätt. Genom olika lekar kommer du på matte bli bra och det är så det ska va. Du kommer lära dig om modiga personer med olika passioner. De har påverkat världen och människor på ett bra sätt, med hjälp av deras tankesätt. Du ska rätta och spräcka, dra och släppa, kasta och hoppa och vi hoppas att du inte vill spelet stoppa."
+			},
 
 			{
 				"gameTitle" : "Rätta Svaren",
@@ -25,7 +29,7 @@
 
 			{
 				"gameTitle" : "Kasta Tärning",
-				"gameDescription" : "Kasta tärning ska du först göra, den siffra du får ska du skriva in där sträcket står. Räkna ut vad det blir och fortsätt sedan till nästa gula färgfält och skriv in den nya siffran och räkna. "
+				"gameDescription" : "Kasta tärning ska du först göra. Räkna ut vad det blir och i det gula fältet fyller du svaret med stil. Kasta igen för att fortsätt till nästa gula färgfält och skriv in den nya svaret innan glassen har smält."
 			}
 
 		]

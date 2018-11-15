@@ -4,7 +4,7 @@ import { DropTarget } from 'react-dnd';
 
 const droppedItemSource = {
     canDrop(props) {
-    return props.handleDrop(props.mathProblem.result);
+    return props.handleDrop(props.mathProblem.result, props.mathProblem.id);
     }
  }
 function collect(connect, monitor){
@@ -23,7 +23,7 @@ class Drop extends Component {
     return connectDropTarget(
       <div className="col-sm-6 dropArea">
       <div className="row">
-        <p className="offset-sm-1 col-sm-6"> {mathProblem.a} <span className="operatorStyleDrop">{mathProblem.operator}</span> {mathProblem.b} <span className="operatorEqualeDrop">=</span> </p> 
+        <p className="offset-sm-1 col-sm-7"> {mathProblem.a} <span className="operatorStyleDrop">{mathProblem.operator}</span> {mathProblem.b} <span className="operatorEqualeDrop">=</span> </p> 
         <div id={mathProblem.correctAnswerStyle} className="col-sm-3 dropBox" style={{ background: backgroundColor }}>{mathProblem.result}</div> 
         </div>
       </div>

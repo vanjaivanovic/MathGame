@@ -4,7 +4,7 @@ class JumpRopeInput extends Component {
   constructor(props){
     super(props);
   }
-
+  
 render(){
 
   const { value, placeholder, onChange, jumpRopeAnswerButton, AnswerIcon, handleSubmit } = this.props;

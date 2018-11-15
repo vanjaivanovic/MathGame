@@ -1,30 +1,39 @@
 import React, { Component } from 'react';
-import BubbleGame from '../MathGames/BubbleGame.js';
+import { Container, Row, Col } from 'reactstrap';
+import Characters from '../JSON/Stories.json';
+
+import BubbleGame from '../MathGames/BubbleGameComponents/BubbleGame.js';
 import CharacterList from './CharacterList.js';
 import ChooseCharacter from './Characters.js';
 import ChooseOperator from './Operators.js';
 import Chapter from '../Chapters/Chapter.js';
-import { Container, Row, Col } from 'reactstrap';
+
 import TeacherGame from '../MathGames/TeacherGameComponents/TeacherGame.js';
 import DragAndDropGame from '../MathGames/DragAndDropGameComponents/DragAndDropGame.js';
 import Hint from '../Helpers/Components/Hint.js';
 import HintButton from '../Helpers/Components/HintButton.js';
 import ProfileButton from '../Helpers/Components/ProfileButton.js';
-import EndOfGame from '../Helpers/Components/EndOfGame/EndOfGame.js';
-import FinishButton from '../Helpers/Components/FinishButton.js';
-import PopUp from '../Helpers/Components/popUp.js';
+import EndOfGame from '../Helpers/Components/EndOfGame.js';
+
+import PopUp from '../PopUp/popUp.js';
 import StartPage from '../StartPage/StartPage.js';
 import JumpRopeGame from '../MathGames/GameActivitiesComponents/JumpRope.js';
 import ThrowDice from '../MathGames/GameActivitiesComponents/ThrowDice.js';
 import HeaderTitle from '../Helpers/Components/HeaderTitle.js';
 import GameChoiceTitle from './GameChoiceTitle.js';
 import GameDescriptionPopUp from '../PopUp/GameDescriptionPopUp.js';
+import WholeGameDescriptionPopUp from '../PopUp/WholeGameDescriptionPopUp.js';
+
+import CharacterBook from '../Chapters/CharacterBook.js';
+import GoBackButton from '../Helpers/Components/GoBackButton.js';
+import QuitGameButton from './QuitGameButton.js';
 
 class Games extends Component {
   constructor(props){
    super(props);
    this.state = { 
     startPageBackground: "startPageSleep",
+    wholeGameDescription: false,
     gameAndChapterBackground: 
       [
 
@@ -54,7 +63,11 @@ class Games extends Component {
     endOfGame: false,
     popUpDiv: "",
     bubblegame: false,
-    startPage: true
+    startPage: true,
+
+    characterBook: false,
+    characterCompleted: "",
+    localStorage: [],
    }
 
    this.changeStartPageBackground = this.changeStartPageBackground.bind(this);
@@ -75,22 +88,39 @@ class Games extends Component {
    this.backToChapter = this.backToChapter.bind(this);
    this.showGameDescription = this.showGameDescription.bind(this);
    this.closeGameDescription = this.closeGameDescription.bind(this);
+   this.closeWholeGameDescription = this.closeWholeGameDescription.bind(this);
+   this.beginingOfGame = this.beginingOfGame.bind(this);
+   this.showBookCompleted = this.showBookCompleted.bind(this);
+   this.setlocalStorage = this.setlocalStorage.bind(this);
+}
+
+setlocalStorage(){
+  let chaptersCompleted = this.state.nextChapter;
+  let character = this.state.characterChosen;
+
+  let storyCompleted = {chaptersCompleted: chaptersCompleted, character: character};
+
+  let localStorageArray = this.state.localStorage;
+  localStorageArray.push(storyCompleted);
+ 
+
+  localStorage.setItem( 'storyCompleted',  JSON.stringify(localStorageArray) );
 }
 
 gameArray(chosenOperator){
    this.setState({
-    games: [ 
-
+    games: [
+ 
       <TeacherGame finishedGameOfFive={this.finishedGameOfFive} operator={chosenOperator} showGameDescription={this.showGameDescription} />,
       <DragAndDropGame finishedGameDragAndDrop={this.finishedGameDragAndDrop} operator={chosenOperator} finishedGameOfFive={this.finishedGameOfFive} showGameDescription={this.showGameDescription} />,
       <BubbleGame finishedGame={this.finishedGame} operator={chosenOperator} showGameDescription={this.showGameDescription} />,
       <JumpRopeGame finishedGame={this.finishedGame} operator={chosenOperator} showGameDescription={this.showGameDescription} />,
       <ThrowDice finishedThrowDiceGame={this.finishedThrowDiceGame} operator={chosenOperator} showGameDescription={this.showGameDescription}/>,
-
+    
     ],
 
     hintButton: <HintButton showHint={this.showHint} closeHint={this.closeHint} />
-   }) 
+   }); 
 }
 
 operatorButtonIsClicked(operator){
@@ -126,6 +156,11 @@ characterChoiceIsClicked(character){
 }
 
 startGameButtonIsClicked(){
+   let playAudio = new Audio();
+    playAudio.src = require('../Audio/click.mp3');
+
+    playAudio.play();
+  
   this.setState({
     startGameButton: true
   });
@@ -151,7 +186,7 @@ finishedGame(count){
         hint: "",
         gameAndChapterBackgroundIndex : this.state.gameAndChapterBackgroundIndex + 1,
       });
-    }.bind(this), 1000)  
+    }.bind(this), 1500)  
   }
 }
 
@@ -164,7 +199,7 @@ finishedGameOfFive(correctAnswer){
         hint: "",
         gameAndChapterBackgroundIndex : this.state.gameAndChapterBackgroundIndex + 1,
       });
-    }.bind(this), 1000)  
+    }.bind(this), 2000)  
   }
 }
 
@@ -177,12 +212,12 @@ finishedGameDragAndDrop(correctAnswer){
         hint: "",
         gameAndChapterBackgroundIndex : this.state.gameAndChapterBackgroundIndex + 1,
       });
-    }.bind(this), 1000)  
+    }.bind(this), 2000)  
   }
 }
 
 newGameNewChapter(GameAndChapterIndex){
-    if(this.state.nextChapter < 5){
+    if(this.state.nextChapter < 4){
         this.setState({
           chapter: false,
           newGame : true,
@@ -192,8 +227,10 @@ newGameNewChapter(GameAndChapterIndex){
         });
 
     } else {
+      this.setlocalStorage();
       this.setState({
-        endOfGame: true
+        endOfGame: true,
+        gameAndChapterBackgroundIndex : this.state.gameAndChapterBackgroundIndex
       });
     }
   }
@@ -218,7 +255,15 @@ newGameNewChapter(GameAndChapterIndex){
 
   closeGameDescription(){
      this.setState({
-      gameDescriptionPopUp: ""
+      gameDescriptionPopUp: "",
+    });
+  }
+
+  closeWholeGameDescription(){
+    this.setState({
+      startPageBackground: "",
+      wholeGameDescription: false,
+      gameChoice: true
     });
   }
 
@@ -228,11 +273,21 @@ newGameNewChapter(GameAndChapterIndex){
     })
   }
 
+  beginingOfGame(){
+    this.setState({
+      startPageBackground: "",
+      wholeGameDescription: true,
+      startPage: false
+    });
+  }
+
+
   gameOfChoice(){
     this.setState({
       startPage: false,
       gameChoice: true,
-      startPageBackground: false
+      startPageBackground: false,
+      wholeGameDescription: true
     });
   }
 
@@ -245,7 +300,11 @@ newGameNewChapter(GameAndChapterIndex){
       startGameButton: false,
       popUpDiv: false,
       endOfGame: false,
-      gameAndChapterBackgroundIndex: 0
+      gameAndChapterBackgroundIndex: 0,
+      endOfGame: false,
+      game: 0,
+      nextChapter: 0,
+      startPageBackground: ""
 
     });
   }
@@ -263,16 +322,23 @@ newGameNewChapter(GameAndChapterIndex){
       endOfGame: false,
       startPageBackground: "startPageSleep",
       gameAndChapterBackgroundIndex: 0,
+      endOfGame: false,
+      game: 0,
+      nextChapter: 0,
+
+      characterBook: false
     });
   }
 
   popUp(){
     this.setState({
-      popUpDiv: <PopUp backToChapter={this.backToChapter} showStartPage={this.showStartPage}/>,
+      popUpDiv: <PopUp showProfile={this.showProfile} showStartPage={this.showStartPage}/>,
       chapter: false,
       games: false,
       hintButton: false,
-      hint: false
+      hint: false,
+      gameChoice: false,
+      startPageBackground: "startPageSleep"
     });
   }
 
@@ -294,6 +360,19 @@ newGameNewChapter(GameAndChapterIndex){
     });
   }
 
+  showBookCompleted(characterBook, characterCompleted){
+      let playAudio = new Audio();
+        playAudio.src = require('../Audio/book.mp3');
+        playAudio.play();
+
+    this.setState({
+      characterBook: characterBook,
+      characterCompleted: characterCompleted,
+      gameChoice: false,
+      startPageBackground: "completedBookPage"
+    })
+  }
+
   render(){
    let allGamesArray = this.state.games;
    let allGameAndChapterBackgrounds = this.state.gameAndChapterBackground;
@@ -304,27 +383,46 @@ newGameNewChapter(GameAndChapterIndex){
    let chapter = "";
    let hintButton = "";
    let profileButton = "";
-   let finishButton =  "";
    let endOfGame = "";
    let startPage = "";
    let headerTitleGameChoice = "";
    let gameChoiceTitle = "";
    let gameDescriptionPopUp = this.state.gameDescriptionPopUp;
+   let wholeGameDescription = "";
+   let quitGameButton = "";
+
+  let characterBookPage = "";
+  let goBackButton = "";
+
+    if(this.state.characterBook){
+     characterBookPage = <CharacterBook characterCompleted={this.state.characterCompleted} showProfile={this.showProfile} />;
+     goBackButton = <GoBackButton showProfile={this.showProfile} />;
+  }
 
 
   if(this.state.startPage){
-    startPage = <StartPage gameOfChoice={this.gameOfChoice} changeStartPageBackground={this.changeStartPageBackground} />;
+    startPage = <StartPage gameOfChoice={this.beginingOfGame} changeStartPageBackground={this.changeStartPageBackground} />;
+    goBackButton = "";
   } else {
     startPage = "";
   }
 
+  if(this.state.wholeGameDescription){
+    wholeGameDescription = <WholeGameDescriptionPopUp closeWholeGameDescription={this.closeWholeGameDescription} gameDescriptionIndex="0" />;
+  }   
+
   if(this.state.gameChoice){
-    character = <ChooseCharacter characterChoiceIsClicked={this.characterChoiceIsClicked} characterButtonIsClickedStyle={this.state.characterButtonIsClickedStyle} />;
-    operator = <ChooseOperator operatorButtonIsClicked={this.operatorButtonIsClicked} startGameButtonIsClicked={this.startGameButtonIsClicked} />;
+    character = <ChooseCharacter characterChoiceIsClicked={this.characterChoiceIsClicked} characterButtonIsClickedStyle={this.state.characterButtonIsClickedStyle} showBookCompleted={this.showBookCompleted} />;
+    operator = <ChooseOperator operatorButtonIsClicked={this.operatorButtonIsClicked} startGameButtonIsClicked={this.startGameButtonIsClicked} popUp={this.popUp} showGameDescription={this.showGameDescription} />;
+    wholeGameDescription = "";
     Game = "";
     hintButton = "";
     headerTitleGameChoice = <HeaderTitle />;
     gameChoiceTitle = <GameChoiceTitle />;
+    characterBookPage = "";
+    goBackButton = "";
+    quitGameButton = <QuitGameButton showStartPage={this.showStartPage} />
+
   }   
 
    if(this.state.operatorButton && this.state.characterChoice && this.state.startGameButton){
@@ -335,13 +433,14 @@ newGameNewChapter(GameAndChapterIndex){
     headerTitleGameChoice = "";
     gameChoiceTitle = "";
     gameAndChapterBackground= allGameAndChapterBackgrounds[this.state.gameAndChapterBackgroundIndex];
+    wholeGameDescription = "";
+    quitGameButton = "";
   }
 
   if(this.state.chapter){
     chapter = <Chapter newGameNewChapter={this.newGameNewChapter} chapter={this.state.nextChapter} storyToTell={this.state.characterChosen} />;
     Game= "";
     profileButton = <ProfileButton showProfile={this.showProfile} />;
-    finishButton = <FinishButton popUp={this.popUp} />;
     hintButton = "";
     gameDescriptionPopUp = "";
 
@@ -359,26 +458,28 @@ newGameNewChapter(GameAndChapterIndex){
     endOfGame = <EndOfGame showProfile={this.showProfile} showStartPage={this.showStartPage} />;
     chapter = ""; 
     profileButton = "";
-    finishButton = "";
   }
 
 
   return(
     <div id={gameAndChapterBackground} className={this.state.startPageBackground}>
     <main>
-       <div className="row header">  
+       <div className="row header">
         {gameChoiceTitle}
+        {quitGameButton}
         {headerTitleGameChoice}
         {hintButton}
         {gameDescriptionPopUp}
+        {wholeGameDescription}
         {profileButton}
-        {finishButton}      
+        {goBackButton}     
         {this.state.hint}
         </div>  
 
 
         <div className="row">  
-          {this.state.popUpDiv}     
+          {this.state.popUpDiv} 
+          {characterBookPage}    
           {character}
           {operator}
           {Game}

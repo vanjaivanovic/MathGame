@@ -10,6 +10,10 @@
 body {
   color: #2c3e50;
   font-family: 'Mali', cursive !important;
+  position: fixed;
+  width: 100%;
+  margin:0;
+  padding: 0;
 }
 
 .container-fluid {
@@ -26,6 +30,16 @@ main {
 
 input {
   background: yellow;
+  border-color: transparent;
+}
+
+input[disabled]{
+  opacity: 1;
+  -webkit-text-fill-color: black;
+}
+
+button {
+  border-color: transparent;
 }
 
 .gameChoiceTitle {
@@ -40,25 +54,10 @@ ul {
   text-align: center; 
 }
 
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
 .header {
   max-height: 130px;
 }
+
 
 /*****************************************/
 /************* Animations ****************/
@@ -113,11 +112,19 @@ ul {
   margin-top: -10%;
 }
 
+.wholeGameDescriptionPopUp {
+  z-index: 2;
+  background-image: url("./Images/bubbles.jpg"); 
+  height: 800px;
+  margin-top: -10%;
+}
+
 .gameDescriptionContent{
   background-color: #f19af3;
-  height: 420px;
+  min-height: 420px;
+  height: 450px;
   margin: 0 auto;
-  top: 22%;
+  top: 18%;
 }
 
 #gameDescriptionContent img {
@@ -141,6 +148,31 @@ ul {
   text-transform: uppercase;
 }
 
+.wholeGameDescriptionContent{
+  background-color: #f19af3;
+  min-height: 420px;
+  height: 550px;
+  margin: 0 auto;
+  top: 22%;
+}
+
+.aboutWholeGameDescription{
+  text-align: center;
+  margin-top: -7%;
+  font-size: 1.4em;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.aboutWholeGameDescription h1{
+  font-size: 1.5em;
+  padding-left: 9%;
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 7%;
+  font-weight: bold;
+  text-transform: uppercase;
+}
 
 .closeGameDescription span{
     color: blue;
@@ -150,7 +182,7 @@ ul {
 
 
 .quotes {
-  margin-top: -12%;
+  margin-top: -16.2%;
 }
 
 .finalQuestion{
@@ -168,9 +200,8 @@ ul {
   margin: 5% auto; 
   background-color: #faf78c;
   border-radius: 50px;
-  padding: 40px;
-  padding-top: 55px;
-  font-size: 1.6em;
+  padding: 6%;
+  font-size: 1.3em;
 }
 
 .popUpMessage {
@@ -195,6 +226,37 @@ ul {
   height: 35%;
 }
 
+.throwDicePlayerAmount {
+    background: yellow;
+    margin-left: 25%;
+    margin-top: -7%;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: -5%;
+}
+
+.throwDicePlayerAmount p {
+    font-size: 1.3em;
+}
+
+.choosePlayerAmount {
+  background: #1FFFCB;
+  color: black;
+  border: 1px solid black;
+  text-align: center;
+  transition: all 0.5s;
+  cursor: pointer;
+  border-radius: 70px;
+   -webkit-box-shadow: -3px 5px 10px rgba(0,0,0,0.5);
+  border-bottom: 1px solid black;
+  text-shadow: -3px 2px 3px rgba(0,0,0,0.3);
+  text-transform: uppercase;
+  margin-right: 5px; 
+  padding: 10px;
+}
+
 /*****************************************/
 /**************** Scroll ****************/
 /******************************************/
@@ -211,6 +273,8 @@ ul {
 /************* Page Backgrounds *************/
 /******************************************/
 .startPageSleep {
+  position: fixed;
+  width: 100%;
   background-image: url("./Images/moonAndButterflies.jpg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -218,6 +282,8 @@ ul {
 }
 
 .startPageAwake {
+  position: fixed;
+  width: 100%;
   transition: background-image 0.7s ease-in-out ;
   background-image: url("./Images/bubbles.jpg");
   background-repeat: no-repeat;
@@ -225,7 +291,18 @@ ul {
   height: 700px;
 }
 
+.completedBookPage { 
+  position: fixed;
+  width: 100%;
+  background-image: url("./Images/night.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 700px;
+}
+
 #teacherGameBackground {
+  position: fixed;
+  width: 100%;
   background-image: url("./Images/bubbles.jpg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -234,6 +311,8 @@ ul {
 }
 
 #diceGameBackground {
+  position: fixed;
+  width: 100%;
   background-image: url("./Images/bubbles.jpg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -242,6 +321,8 @@ ul {
 }
 
 #jumpRopeGameBackground {
+  position: fixed;
+  width: 100%;
   background-image: url("./Images/bubbles.jpg");
   background-color: #063261;
   background-repeat: no-repeat;
@@ -250,6 +331,8 @@ ul {
 }
 
 #bubbleGameBackground {
+  position: fixed;
+  width: 100%;
   background-image: url("./Images/bubbles.jpg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -258,6 +341,8 @@ ul {
 }
 
 #chapterBackground {
+  position: fixed;
+  width: 100%;
   background-image: url("./Images/moonAndButterflies.jpg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -265,6 +350,8 @@ ul {
 }
 
 #dragAndDropGameBackground {
+  position: fixed;
+  width: 100%;
   background-image: url("./Images/bubbles.jpg");
   margin-right: -2%;
   margin-left: -2%;
@@ -281,8 +368,8 @@ ul {
 
 .operatorButton {
   width: 100%;
-  height: 76px;
-  margin-bottom: 5%;
+  height: 80px;
+  margin-bottom: 7%;
   outline-style: none;
   border: none;
  -webkit-box-shadow: -3px 5px 10px rgba(0,0,0,0.5);
@@ -312,7 +399,7 @@ ul {
   overflow: hidden;
 }
 
-.hintButton, .profileButton  {
+.hintButton, .profileButton {
     background-color: #f19af3;
     border-radius: 20px;
     margin-left: 50px;
@@ -330,8 +417,23 @@ ul {
   margin-top: 3%;
 }
 
+.quitGameButton {
+    background-color: #f19af3;
+    border-radius: 5px;
+    margin-left: 40px;
+    margin-top: -15%;
+    text-transform: uppercase;
+    height: 3rem;
+    font-size: 12px;
+    font-weight: bold;
+    -webkit-box-shadow: -3px 5px 10px rgba(0,0,0,0.7);
+    border-bottom: 1px solid rgba(0,0,0,0.5);
+    text-shadow: -3px 2px 3px rgba(0,0,0,0.3);
+    z-index: 1;
+}
+
 .hintBubble {
-  position: relative;
+    position: relative;
     background: yellow;
     border-radius: 20px;
     height: 100px;
@@ -340,10 +442,17 @@ ul {
     margin-left: -43px;
 }
 
-.hintBubble p {
-  font-size: 2em;
+.hintDescriptionContent {
+  font-size: 1.2em;
   text-align: center;
-  margin-top: -9%;
+  margin-top: -9% !important;
+  width: 75%;
+  margin-left: 15% !important;
+}
+
+.hintDescriptionImage {
+  width:  80%;
+  height: 100%;
 }
 
 .closeHint {
@@ -359,10 +468,6 @@ ul {
   margin-top: 15px;
 }
 
-.hintButton img {
-  width:  80%;
-  height: 100%;
-}
 
 .next {
   border-radius: 70px;
@@ -487,7 +592,7 @@ ul {
   border: 1px solid black;
   text-align: center;
   font-size: 30px;
-  margin-top: 15%;
+  margin-top: 9%;
   transition: all 0.5s;
   cursor: pointer;
   border-radius: 70px;
@@ -664,10 +769,10 @@ ul {
  #wrapperCorrect {
   color: black;
   border-radius: 35px;
-  width: 570px;
+  width: 600px;
   text-align: center;
   margin: 90px auto;
-  padding: 20px 20px;
+  padding: 20px 30px;
   background-color: rgba(66,244,214,0.6);
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22); 
 }
@@ -694,6 +799,8 @@ ul {
 
 .bubbleGamesAnswer{ 
   color: #fffe01;
+  transform: scale(1.3);
+  transition: 0.2s;
  }
 
 .operatorSign {
@@ -752,92 +859,97 @@ KEYFRAMES */
     }
 }
 /* ANIMATIONS */
+
 .x1 {
-    -webkit-animation: animateBubble 11s linear infinite, sideWays 2s ease-in-out infinite alternate;
-  -moz-animation: animateBubble 11s linear infinite, sideWays 2s ease-in-out infinite alternate;
-  animation: animateBubble 11s linear infinite, sideWays 2s ease-in-out infinite alternate;
+    -webkit-animation: animateBubble 20s linear infinite, sideWays 2s ease-in-out infinite alternate;
+  -moz-animation: animateBubble 20s linear infinite, sideWays 2s ease-in-out infinite alternate;
+  animation: animateBubble 20s linear infinite, sideWays 2s ease-in-out infinite alternate;
   
-  left: 20%;
-  top: 85%;
+  left: -5%;
+  top: 55%;
   
   -webkit-transform: scale(0.6);
   -moz-transform: scale(0.6);
   transform: scale(0.6);
 }
+
 .x2 {
     -webkit-animation: animateBubble 15s linear infinite, sideWays 4s ease-in-out infinite alternate;
   -moz-animation: animateBubble 15s linear infinite, sideWays 4s ease-in-out infinite alternate;
   animation: animateBubble 15s linear infinite, sideWays 4s ease-in-out infinite alternate;
   
   left: 5%;
-  top: 30%;
+  top: 80%;
   
-  -webkit-transform: scale(0.8);
-  -moz-transform: scale(0.8);
-  transform: scale(0.8);
+  -webkit-transform: scale(0.6);
+  -moz-transform: scale(0.6);
+  transform: scale(0.6);
 }
+
 .x3 {
-    -webkit-animation: animateBubble 13s linear infinite, sideWays 2s ease-in-out infinite alternate;
-  -moz-animation: animateBubble 13s linear infinite, sideWays 2s ease-in-out infinite alternate;
-  animation: animateBubble 13s linear infinite, sideWays 2s ease-in-out infinite alternate;
+    -webkit-animation: animateBubble 23s linear infinite, sideWays 2s ease-in-out infinite alternate;
+  -moz-animation: animateBubble 23s linear infinite, sideWays 2s ease-in-out infinite alternate;
+  animation: animateBubble 23s linear infinite, sideWays 2s ease-in-out infinite alternate;
   
-  left: 58%;
-  top: 85%;
-  
-  -webkit-transform: scale(0.7);
-  -moz-transform: scale(0.7);
-  transform: scale(0.7);
-}
-.x4 {
-    -webkit-animation: animateBubble 15s linear infinite, sideWays 3s ease-in-out infinite alternate;
-  -moz-animation: animateBubble 15s linear infinite, sideWays 3s ease-in-out infinite alternate;
-  animation: animateBubble 15s linear infinite, sideWays 3s ease-in-out infinite alternate;
-  
-  left: 46%;
-  top: 30%;
-  
-  -webkit-transform: scale(0.7);
-  -moz-transform: scale(0.7);
-  transform: scale(0.7);
-}
-.x5 {
-    -webkit-animation: animateBubble 12s linear infinite, sideWays 4s ease-in-out infinite alternate;
-  -moz-animation: animateBubble 12s linear infinite, sideWays 4s ease-in-out infinite alternate;
-  animation: animateBubble 12s linear infinite, sideWays 4s ease-in-out infinite alternate;
-  
-  left: 45%;
-  top: 75%;
-  
-  -webkit-transform: scale(0.7);
-  -moz-transform: scale(0.7);
-  transform: scale(0.7);
-}
-.x6 {
-    -webkit-animation: animateBubble 13s linear infinite, sideWays 6s ease-in-out infinite alternate;
-  -moz-animation: animateBubble 13s linear infinite, sideWays 6s ease-in-out infinite alternate;
-  animation: animateBubble 13s linear infinite, sideWays 6s ease-in-out infinite alternate; 
-  
-  left: 75%;
+  left: 10%;
   top: 40%;
   
+  -webkit-transform: scale(0.7);
+  -moz-transform: scale(0.7);
+  transform: scale(0.7);
+}
+
+.x4 {
+    -webkit-animation: animateBubble 17s linear infinite, sideWays 3s ease-in-out infinite alternate;
+  -moz-animation: animateBubble 17s linear infinite, sideWays 3s ease-in-out infinite alternate;
+  animation: animateBubble 17s linear infinite, sideWays 3s ease-in-out infinite alternate;
+  
+  left: 20%;
+  top: 80;
+  
+  -webkit-transform: scale(0.7);
+  -moz-transform: scale(0.7);
+  transform: scale(0.7);
+}
+
+.x5 {
+    -webkit-animation: animateBubble 24s linear infinite, sideWays 4s ease-in-out infinite alternate;
+  -moz-animation: animateBubble 24s linear infinite, sideWays 4s ease-in-out infinite alternate;
+  animation: animateBubble 24s linear infinite, sideWays 4s ease-in-out infinite alternate;
+  
+  left: 30%;
+  top: 50%;
+  
+  -webkit-transform: scale(0.7);
+  -moz-transform: scale(0.7);
+  transform: scale(0.7);
+}
+
+.x6 {
+    -webkit-animation: animateBubble 16s linear infinite, sideWays 2s ease-in-out infinite alternate;
+  -moz-animation: animateBubble 16s linear infinite, sideWays 2s ease-in-out infinite alternate;
+  animation: animateBubble 16s linear infinite, sideWays 2s ease-in-out infinite alternate;
+  
+  left: 50%;
+  top: 60%;
+  
   -webkit-transform: scale(0.8);
   -moz-transform: scale(0.8);
   transform: scale(0.8);
 }
+
 .x7 {
     -webkit-animation: animateBubble 15s linear infinite, sideWays 2s ease-in-out infinite alternate;
   -moz-animation: animateBubble 15s linear infinite, sideWays 2s ease-in-out infinite alternate;
   animation: animateBubble 15s linear infinite, sideWays 2s ease-in-out infinite alternate;
   
-  left: 35%;
-  top: 35%;
+  left: 65%;
+  top: 70%;
   
-  -webkit-transform: scale(0.7);
-  -moz-transform: scale(0.7);
-  transform: scale(0.7);
+  -webkit-transform: scale(0.6);
+  -moz-transform: scale(0.6);
+  transform: scale(0.6);
 }
-
-
 
 .x1:focus, .x2:focus, .x3:focus, .x4:focus, .x5:focus, .x6:focus, .x7:focus, .x8:focus, .x9:focus, .x10:focus {
     outline-style: none;
@@ -1109,7 +1221,7 @@ KEYFRAMES */
 }
 
 .fullMathExpressionDiv {
-   margin-top: -6% !important;
+   margin-top: -13% !important;
    z-index: 99 !important;
 }
 
@@ -1223,7 +1335,7 @@ KEYFRAMES */
   color: #f70cd6;
 }
 
-.diceBtn{
+.diceBtn, .shakeDiceButton{
   padding-top: 10px;
   background: rgba(252, 74, 216, 1);  
   outline-style: none;
@@ -1236,6 +1348,10 @@ KEYFRAMES */
   border: 1.5px solid black;
   line-height: 15px;
   margin-left: 100%;
+}
+
+.shakeDiceButton {
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both !important;
 }
 
 .diceBtn i {
@@ -1269,12 +1385,32 @@ KEYFRAMES */
 
 
 .correct {
-  background: #fc4ad8;
+  background: yellow;
+}
+
+.inputDiceDisabled::placeholder {
+  color: white !important;
+}
+
+.inputDice:disabled {
+   background-color: rgba(252, 74, 216, 1);
 }
 
 #winnerAnimation {
-  transform: scale(1.3);
+  transform: scale(1.2);
   transition: all .2s ease-in-out;
+  z-index: 99;
+}
+
+#winnerAnimationPlayer { 
+  transform: scale(1.2);
+  transition: all .2s ease-in-out;
+  z-index: 99;
+  color: yellow;
+}
+
+#winnerAnimationPlayerResult {
+  color: yellow;
 }
 
 #scoreStylePlayerOne, #scoreStylePlayerTwo {
@@ -1293,6 +1429,7 @@ KEYFRAMES */
 #shake {
   animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
 }
+
 /*****************************************/
 /************* DragAndDropGame *************/
 /******************************************/
@@ -1376,15 +1513,25 @@ KEYFRAMES */
   width: 100%;
 }
 
+.characterNameBox {
+  background: white;
+  height: 120px;
+}
+
+.fa-book {
+  color:rgba(252, 74, 216, 0.2);
+}
+
+.fa-bookCompleted {
+  color:rgba(252, 74, 216, 1);
+}
+
 .characterNames {
   font-size: 20px;
   font-weight: bold;
   padding-top: 5%;
   text-align: center; 
-  background-color: white;
-  min-height: 70px;
-  height: 100%;
-  margin-bottom: -5px;
+  margin-bottom: 15px;
 }
 
 .characterName {
@@ -1408,7 +1555,7 @@ KEYFRAMES */
   margin-bottom: 15px;
   font-weight: bold; 
   color: black;
-  padding-top: 75px;
+  padding-top: 60px;
   top: -53px;
   padding-left: 5% !important;
   font-size: 2.4em;
@@ -1418,6 +1565,14 @@ KEYFRAMES */
   margin-top: 4%;
   width: 90%;
   padding-left: 22%;
+}
+
+.scrollbar-container {
+   height: 480px !important;
+}
+
+.chapterScroll {
+  height: 230px !important;
 }
 
 /*****************************************/
@@ -1458,6 +1613,7 @@ KEYFRAMES */
 
 .storyTitle h1 {
   font-size: 1.2em;
+  margin-bottom: 5%;
 }
 
 .storyTitle h2 {
@@ -1476,7 +1632,7 @@ KEYFRAMES */
   line-height: 0;
   perspective: 400px;
   height: 5rem;
-  margin-top: 30px;
+  margin-top: 10px;
   -webkit-box-shadow: -3px 5px 10px rgba(0,0,0,0.7);
   border-bottom: 1px solid rgba(0,0,0,0.5);
 }
