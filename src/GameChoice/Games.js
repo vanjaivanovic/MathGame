@@ -97,20 +97,17 @@ class Games extends Component {
 setlocalStorage(){
   let chaptersCompleted = this.state.nextChapter;
   let character = this.state.characterChosen;
-
   let storyCompleted = {chaptersCompleted: chaptersCompleted, character: character};
-
+  
   let localStorageArray = this.state.localStorage;
   localStorageArray.push(storyCompleted);
- 
-
   localStorage.setItem( 'storyCompleted',  JSON.stringify(localStorageArray) );
 }
 
 gameArray(chosenOperator){
    this.setState({
     games: [
- 
+
       <TeacherGame finishedGameOfFive={this.finishedGameOfFive} operator={chosenOperator} showGameDescription={this.showGameDescription} />,
       <DragAndDropGame finishedGameDragAndDrop={this.finishedGameDragAndDrop} operator={chosenOperator} finishedGameOfFive={this.finishedGameOfFive} showGameDescription={this.showGameDescription} />,
       <BubbleGame finishedGame={this.finishedGame} operator={chosenOperator} showGameDescription={this.showGameDescription} />,
@@ -120,6 +117,7 @@ gameArray(chosenOperator){
     ],
 
     hintButton: <HintButton showHint={this.showHint} closeHint={this.closeHint} />
+    
    }); 
 }
 
@@ -178,7 +176,7 @@ finishedThrowDiceGame(){
 }
 
 finishedGame(count){
-  if(count === 3){
+  if(count === 10){
     setTimeout(function() { //Start the timer to get a new mathexpression after 1 second
       this.setState({
         chapter : true,
@@ -394,7 +392,7 @@ newGameNewChapter(GameAndChapterIndex){
   let characterBookPage = "";
   let goBackButton = "";
 
-    if(this.state.characterBook){
+  if(this.state.characterBook){
      characterBookPage = <CharacterBook characterCompleted={this.state.characterCompleted} showProfile={this.showProfile} />;
      goBackButton = <GoBackButton showProfile={this.showProfile} />;
   }
@@ -421,7 +419,7 @@ newGameNewChapter(GameAndChapterIndex){
     gameChoiceTitle = <GameChoiceTitle />;
     characterBookPage = "";
     goBackButton = "";
-    quitGameButton = <QuitGameButton showStartPage={this.showStartPage} />
+    quitGameButton = <QuitGameButton popUp={this.popUp} />
 
   }   
 
@@ -463,30 +461,30 @@ newGameNewChapter(GameAndChapterIndex){
 
   return(
     <div id={gameAndChapterBackground} className={this.state.startPageBackground}>
-    <main>
-       <div className="row header">
-        {gameChoiceTitle}
-        {quitGameButton}
-        {headerTitleGameChoice}
-        {hintButton}
-        {gameDescriptionPopUp}
-        {wholeGameDescription}
-        {profileButton}
-        {goBackButton}     
-        {this.state.hint}
-        </div>  
+      <main>
+          <div className="row header">
+            {gameChoiceTitle}
+            {quitGameButton}
+            {headerTitleGameChoice}
+            {hintButton}
+            {gameDescriptionPopUp}
+            {wholeGameDescription}
+            {profileButton}
+            {goBackButton}     
+            {this.state.hint}
+          </div>  
 
 
-        <div className="row">  
-          {this.state.popUpDiv} 
-          {characterBookPage}    
-          {character}
-          {operator}
-          {Game}
-          {chapter}   
-          {endOfGame}  
-          {startPage}
-         </div>           
+          <div className="row">  
+            {this.state.popUpDiv} 
+            {characterBookPage}    
+            {character}
+            {operator}
+            {Game}
+            {chapter}   
+            {endOfGame}  
+            {startPage}
+          </div>           
       </main>
     </div>
     )

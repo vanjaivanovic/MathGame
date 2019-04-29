@@ -8,8 +8,7 @@ class CharacterList extends Component {
        CharacterCompletedIndex: ""
      }
 
-
-    this.storyCompleted = this.storyCompleted.bind(this);
+   this.storyCompleted = this.storyCompleted.bind(this);
   }
 
   componentWillMount(){
@@ -27,26 +26,22 @@ class CharacterList extends Component {
 
     localStorage.getItem('storyCompleted');
     let storyCompleted = JSON.parse( localStorage.getItem('storyCompleted') );
-    
     let characterCompletedIndexArray = array;
 
         characterCompletedIndexArray.map((characterID, index) => {
-
           let characterCompletedIndex = Number(characterID);
 
           if (!storyCompleted) {
             console.log('no books');
 
           } else if(storyCompleted){
+            let characterCompleted = "";
+            storyCompleted.map((completedBook, index) => {
+            characterCompleted = completedBook.character; 
 
-              let characterCompleted = "";
-              storyCompleted.map((completedBook, index) => {
-              characterCompleted = completedBook.character; 
-
-                  if(characterCompletedIndex === characterCompleted){
-          
-              let CharactersArray = CharacterInfoJson;
-              CharactersArray[characterCompleted].completed = true;
+          if(characterCompletedIndex === characterCompleted){
+            let CharactersArray = CharacterInfoJson;
+            CharactersArray[characterCompleted].completed = true;
          //uptadera array som loopas igenom i render
           }
         });
@@ -56,29 +51,42 @@ class CharacterList extends Component {
 
 
   storyCompleted(index, CharacterDetail){
-
-
+    let array = [];
+    let characterID = CharacterDetail.id;
+    array.push(characterID);
+  
     localStorage.getItem('storyCompleted');
     let storyCompleted = JSON.parse( localStorage.getItem('storyCompleted') );
-    
-    if (!storyCompleted || (storyCompleted && !storyCompleted[index] )){
-      console.log('no book');
-      
-    } else if(index === storyCompleted[index].character && storyCompleted[index].chaptersCompleted === 4){
-        let playAudio = new Audio();
-        playAudio.src = require('../Audio/book.mp3');
-        playAudio.play();
-        console.log('get book');
-        let characterBook = true;
-        let characterCompleted = storyCompleted[index].character;
+    let characterCompletedIndexArray = array;
 
-         const { showCharacterBook } = this.props;
-      showCharacterBook(characterBook, characterCompleted);   
-    } 
+    characterCompletedIndexArray.map((characterID, index) => {
+      let characterCompletedIndex = Number(characterID);
+
+          if (!storyCompleted) {
+              console.log("No books yet");
+
+          } else if(storyCompleted){
+              let characterCompleted = "";
+              storyCompleted.map((completedBook, index) => {
+              characterCompleted = completedBook.character; 
+
+          if(characterCompletedIndex === characterCompleted){
+              let playAudio = new Audio();
+              playAudio.src = require('../Audio/book.mp3');
+              playAudio.play();
+              console.log('get book');
+              let characterBook = true;
+              let character = characterCompleted;
+
+              const { showCharacterBook } = this.props;
+              showCharacterBook(characterBook, character);    
+          }
+        });
+      }
+    });
   }
 
   render(){
- 
     const { CharacterWasClicked } = this.props;
     const { CharacterClass } = this.props;
 
@@ -87,13 +95,16 @@ class CharacterList extends Component {
         {this.state.Character.map((CharacterDetail, index) => {
           return (
             <li key={CharacterDetail.id}>
+            
               <div className={CharacterDetail.selected ? 'characterIsSelected characterList col-12 col-sm-10' : 'characterList col-12 col-sm-10' }>
-                    <img src={require(`../Images/${CharacterDetail.personImage}`)}
-                     alt={CharacterDetail.name} onClick={() => CharacterWasClicked(this.state.Character, index)}/>
-                    <div className="characterNameBox"><p className="characterNames" onClick={() => CharacterWasClicked(this.state.Character, index)}>{CharacterDetail.name}</p> 
-                    <i className={CharacterDetail.completed ? 'fas fa-book fa-3x fa-bookCompleted' : 'fas fa-book fa-3x' } onClick={() => this.storyCompleted(index, CharacterDetail)}></i></div>    
-                </div>
-              </li>
+                  <img src={require(`../Images/${CharacterDetail.personImage}`)}
+                  alt={CharacterDetail.name} onClick={() => CharacterWasClicked(this.state.Character, index)}/>
+                
+                <div className="characterNameBox"><p className="characterNames" onClick={() => CharacterWasClicked(this.state.Character, index)}>{CharacterDetail.name}</p>
+                  <i className={CharacterDetail.completed ? 'fas fa-book fa-3x fa-bookCompleted' : 'fas fa-book fa-3x' } onClick={() => this.storyCompleted(index, CharacterDetail)}></i>
+                </div>    
+              </div>
+            </li>
           )
         })}
       </div>

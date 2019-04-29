@@ -18,29 +18,27 @@ constructor(props) {
 
   componentWillMount(){
     const { chapter } = this.props;
-
     const { storyToTell } = this.props;
-
-      this.setState({
+    
+    this.setState({
         chapterIndex: chapter,
         storyToTell: storyToTell
       })
-
   }
      callNewGame(){
         let playAudio = new Audio();
         playAudio.src = require('../Audio/next.mp3');
+        playAudio.volume = 0.2;
         playAudio.play();
         
-      const { newGameNewChapter } = this.props
+        const { newGameNewChapter } = this.props
 
-      setTimeout(function() {
-        newGameNewChapter(this.state.chapterIndex);
-      }.bind(this), 500);  
+        setTimeout(function() {
+          newGameNewChapter(this.state.chapterIndex);
+        }.bind(this), 500);  
   }
 
   render () {
-
     let index = this.state.chapterIndex;
     let characterIndex = this.state.storyToTell;
 
@@ -55,13 +53,13 @@ constructor(props) {
             <h1>{ChapterTitle}</h1>
             <h2>{StoryTitle}</h2>
           </div>
+
           <div className="chapterContainer">
-          <PerfectScrollbar ref = {(ref) => { this._scrollBarRef = ref; }}  className="chapterScroll">
-          <p>{CharacterStory}</p>
-          <button className="next" onClick={this.callNewGame}><span>Nästa</span></button>
-          </PerfectScrollbar>
+            <PerfectScrollbar ref = {(ref) => { this._scrollBarRef = ref; }}  className="chapterScroll">
+              <p>{CharacterStory}</p>
+              <button className="next" onClick={this.callNewGame}><span>Nästa</span></button>
+            </PerfectScrollbar>
           </div>
-          
         </div>  
     )
   }

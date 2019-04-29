@@ -34,8 +34,6 @@ constructor(props) {
    this.setRandomNumber = this.setRandomNumber.bind(this);
    this.generateNumbers = this.generateNumbers.bind(this);
    this.calc = this.calc.bind(this);
-   this.correctAnswer = this.correctAnswer.bind(this);
-   this.wrongAnswerSoundEffect = this.wrongAnswerSoundEffect.bind(this);
 
  }
 
@@ -70,7 +68,6 @@ targetAnswer(correctAnswer, id){
       })
       
   } else {
-      this.wrongAnswerSoundEffect();
 
      this.setState(prevState => {
         let itemsToDrag = prevState.mathProblems;
@@ -245,20 +242,12 @@ componentDidMount(){
 
 /* Display answer for the 'Equals to' */
 correctAnswer(correctAnswer){
-   let playAudio = new Audio();
-      playAudio.src = require('../../Audio/click.mp3');
-      playAudio.play();
 
   const { finishedGameOfFive } = this.props;
 
   finishedGameOfFive(correctAnswer);
 }
 
-wrongAnswerSoundEffect(){
-   let playAudio = new Audio();
-      playAudio.src = require('../../Audio/wrong.mp3');
-      playAudio.play();
-}
 
 
   render(){

@@ -27,7 +27,14 @@ constructor(props) {
      bubbleWrongTwo: "bubble",
      bubbleWrongThree: "bubble",
      bubbleWrongFour: "bubble",
-     bubbleWrongFive: "bubble"
+     bubbleWrongFive: "bubble",
+     x1: "x1",
+     x2: "x2",
+     x3: "x3",
+     x4: "x4",
+     x5: "x5",
+     x6: "x6",
+     x7: "x7"
    };
    this.setRandomNumber = this.setRandomNumber.bind(this);
    this.generateNumbers = this.generateNumbers.bind(this);
@@ -227,7 +234,14 @@ componentDidMount(){
       bubbleWrongThree: "bubbleDisapear",
       bubbleWrongFour: "bubbleDisapear",
       bubbleWrongFive: "bubbleDisapear",
-      bubbleGamesAnswerBoxStyle: "bubbleGamesAnswer"
+      bubbleGamesAnswerBoxStyle: "bubbleGamesAnswer",
+       x1: "",
+       x2: "",
+       x3: "",
+       x4: "",
+       x5: "",
+       x6: "",
+       x7: ""
     });
   }
 
@@ -241,7 +255,14 @@ componentDidMount(){
       bubbleWrongThree: "bubbleDisapear",
       bubbleWrongFour: "bubbleDisapear",
       bubbleWrongFive: "bubbleDisapear",
-      bubbleGamesAnswerBoxStyle: "bubbleGamesAnswer"
+      bubbleGamesAnswerBoxStyle: "bubbleGamesAnswer",
+       x1: "",
+       x2: "",
+       x3: "",
+       x4: "",
+       x5: "",
+       x6: "",
+       x7: ""
     });
   }
 
@@ -262,7 +283,14 @@ componentDidMount(){
           bubbleWrongThree: "bubble",
           bubbleWrongFour: "bubble",
           bubbleWrongFive: "bubble",
-          bubbleGamesAnswerBoxStyle: ""
+          bubbleGamesAnswerBoxStyle: "",
+           x1: "x1",
+           x2: "x2",
+           x3: "x3",
+           x4: "x4",
+           x5: "x5",
+           x6: "x6",
+           x7: "x7"
         })
   }.bind(this), 1500) 
 
@@ -363,6 +391,13 @@ activateShake(clickedBubble){
             WrongAnswer3={this.state.wrongAnswer3} 
             WrongAnswer4={this.state.wrongAnswer4} 
             WrongAnswer5={this.state.wrongAnswer5} 
+            x1={this.state.x1}
+            x2={this.state.x2}
+            x3={this.state.x3}
+            x4={this.state.x4}
+            x5={this.state.x5}
+            x6={this.state.x6}
+            x7={this.state.x7}
         /> 
     </div>
   )};

@@ -121,6 +121,7 @@ setRandomNumber(operator){
    if(this.state.result == this.state.value){
       let playAudio = new Audio();
       playAudio.src = require('../../Audio/click.mp3');
+      playAudio.volume = 0.2;
       playAudio.play();
 
     document.getElementById("jumpRopeQuestionInvisible").style.color = "transparent";

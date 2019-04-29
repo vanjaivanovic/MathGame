@@ -19,36 +19,42 @@ constructor(props) {
 
   componentWillMount(){
     const { characterCompleted } = this.props;
-
-      this.setState({
+    
+    this.setState({
         storyToTell: characterCompleted
       })
 
   }
 
   nextChapter(){
-    if (this.state.chapterIndex === 3) {
-      this.setState({
-        lastChapter: true
-      });
-    }
+    return 
+    (this.state.chapterIndex === 3) ? this.setState({ lastChapter: true }) : 
+    (this.state.chapterIndex < 4) ? this.setState({ chapterIndex: this.state.chapterIndex + 1 }) :
+    this.setState({ chapterIndex: this.state.chapterIndex + 1, lastChapter: false });
+    
+    // ---- Same code as above ----
 
-    if(this.state.chapterIndex < 4){
-      this.setState({
-        chapterIndex: this.state.chapterIndex + 1
-      });
+    // if (this.state.chapterIndex === 3) {
+    //   this.setState({
+    //     lastChapter: true
+    //   });
+    // }
 
-    } else {
-      this.setState({
-        chapterIndex: this.state.chapterIndex + 1,
-        lastChapter: false
-      });
-    }
+    // if(this.state.chapterIndex < 4){
+    //   this.setState({
+    //     chapterIndex: this.state.chapterIndex + 1
+    //   });
+
+    // } else {
+    //   this.setState({
+    //     chapterIndex: this.state.chapterIndex + 1,
+    //     lastChapter: false
+    //   });
+    // }
   }
 
   goBackToGameChoice(){
     const { showProfile } = this.props;
-
     showProfile();
   }
 
@@ -72,19 +78,18 @@ constructor(props) {
    
     return(
 
-
         <div className="chapter col-12 col-sm-8">
           <div className="storyTitle col-8 offset-2">
             <h1>{ChapterTitle}</h1>
             <h2>{StoryTitle}</h2>
           </div>
+
           <div className="chapterContainer">
-          <PerfectScrollbar ref = {(ref) => { this._scrollBarRef = ref; }} className="chapterScroll">
-          <p>{CharacterStory}</p>
-          {nextChapterButton}
-          </PerfectScrollbar>
+            <PerfectScrollbar ref = {(ref) => { this._scrollBarRef = ref; }} className="chapterScroll">
+              <p>{CharacterStory}</p>
+              {nextChapterButton}
+            </PerfectScrollbar>
           </div>
-          
         </div>  
     )
   }

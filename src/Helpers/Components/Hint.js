@@ -25,12 +25,9 @@ class Hint extends Component {
       <div className="hintBubble col-12 col-sm-8">
         <div className="row">
               <img className="hintDescriptionImage col-sm-2" src={require("../../Images/dorisHint2.png")} alt="Babydoris" />
+               <p className="col-sm-8 hintDescriptionContent">{HintContent}</p>
               <span className="closeHint" onClick={() => closeHint()}>&times;</span>
         </div> 
-
-         <div className="hintDescriptionContent row"> 
-          <p>{HintContent}</p>
-         </div>     
       </div>
 
       )

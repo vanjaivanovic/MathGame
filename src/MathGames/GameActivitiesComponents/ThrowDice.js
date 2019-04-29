@@ -37,8 +37,6 @@ class ThrowDice extends Component {
   this.rollTheDice = this.rollTheDice.bind(this);
   this.compareAnswerWithResultPlayerOne = this.compareAnswerWithResultPlayerOne.bind(this);
   this.compareAnswerWithResultPlayerTwo = this.compareAnswerWithResultPlayerTwo.bind(this);
-  this.correctAnswerSoundEffect = this.correctAnswerSoundEffect.bind(this);
-  this.wrongAnswerSoundEffect = this.wrongAnswerSoundEffect.bind(this);
 }
 
 
@@ -111,8 +109,7 @@ compareAnswerWithResultPlayerOne(event){
 if(this.state.diceButtonTrigged){
 
   if(answer === this.state.resultPlayerOne){
-    this.correctAnswerSoundEffect();
-
+  
     document.getElementById('rollDiceButton').disabled = false;
     event.target.style.background = '#42f4d9';
 
@@ -138,7 +135,6 @@ if(this.state.diceButtonTrigged){
     }
 
   } else {
-    this.wrongAnswerSoundEffect();
 
     let inputStyle = event.target;
     inputStyle.style.background = 'red';
@@ -163,8 +159,9 @@ if(this.state.diceButtonTrigged){
   }
 }
 
+
 handleCplusDPlayerTwo(d){
-console.log(d);
+
   if(this.state.operator === "+"){
     this.setState({
         resultPlayerTwo: this.state.c[this.state.indexPlayerTwo] + d
@@ -199,8 +196,7 @@ compareAnswerWithResultPlayerTwo(event){
   if(this.state.diceButtonTrigged){
 
     if(answer === this.state.resultPlayerTwo){
-       this.correctAnswerSoundEffect();
-
+      
         document.getElementById('rollDiceButton').disabled = false;
         document.getElementById('dice').disabled = false;
 
@@ -222,14 +218,13 @@ compareAnswerWithResultPlayerTwo(event){
         this.calcScorePlayerTwo();
 
         inputID = Number(inputID) + 1;  
-
+      
         if(inputID < 6){
           document.getElementById(inputID).disabled = false;
         }
 
      } else {
-        this.wrongAnswerSoundEffect();
-
+          
           let inputStyle = event.target;
           inputStyle.style.background = 'red';
 
@@ -407,18 +402,6 @@ dice(){
   document.getElementById('dice').innerHTML = output;
 }
 
-wrongAnswerSoundEffect(){
-   let playAudio = new Audio();
-        playAudio.src = require('../../Audio/wrong.mp3');
-        playAudio.play();
-}
-
-correctAnswerSoundEffect(){
-  let playAudio = new Audio();
-        playAudio.src = require('../../Audio/click.mp3');
-        playAudio.play();
-}
-
   render() {
     const { showHint } = this.props;
 
@@ -475,7 +458,7 @@ correctAnswerSoundEffect(){
          <div className="col-sm-3 diceButtons">  
             <h3>{this.state.wrongAnswerMsg}</h3>  
 
-            <div id={this.state.diceShakeAnimation} onClick={this.rollTheDice}>
+            <div id={this.state.diceShakeAnimation}>
                 <div id="dice" onClick={this.rollTheDice}></div>
             </div>
 

@@ -212,9 +212,9 @@ if(operator === "+"){
 /* Display answer for the 'Equals to' */
 
  correctAnswer(answerToCheck){
-   let playAudio = new Audio();
+    let playAudio = new Audio();
       playAudio.src = require('../../Audio/click.mp3');
-      playAudio.play();
+      playAudio.play();   
 
   if(answerToCheck === 1){
     this.setState({

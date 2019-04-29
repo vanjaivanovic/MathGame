@@ -12,8 +12,6 @@ body {
   font-family: 'Mali', cursive !important;
   position: fixed;
   width: 100%;
-  margin:0;
-  padding: 0;
 }
 
 .container-fluid {
@@ -113,6 +111,8 @@ ul {
 }
 
 .wholeGameDescriptionPopUp {
+  position: fixed;
+  width: 100%;
   z-index: 2;
   background-image: url("./Images/bubbles.jpg"); 
   height: 800px;
@@ -132,44 +132,49 @@ ul {
   height: 150px;
 }
 
-.aboutGameContent {
+.aboutGameContent p {
   text-align: center;
-  margin-top: -7%;
   font-size: 1.8em;
-  padding-left: 5%;
-  padding-right: 5%;
+  width: 130%;
+  margin-left: -20%;
 }
 
 .aboutGameContent h1{
-  width: 60%;
-  margin: 0 auto;
-  margin-bottom: 7%;
+  text-align: center;
+  width: 100%;
+  margin-top: 20% !important;
+  margin-bottom: 13%;
   font-weight: bold;
   text-transform: uppercase;
+  margin-left: -25px;
+}
+
+.aboutWholeGame {
+  text-align: left;
 }
 
 .wholeGameDescriptionContent{
   background-color: #f19af3;
   min-height: 420px;
-  height: 550px;
+  height: 520px;
   margin: 0 auto;
-  top: 22%;
+  top: 21%;
 }
 
 .aboutWholeGameDescription{
   text-align: center;
-  margin-top: -7%;
-  font-size: 1.4em;
+  font-size: 1.2em;
   padding-left: 5%;
-  padding-right: 5%;
-}
-
-.aboutWholeGameDescription h1{
-  font-size: 1.5em;
-  padding-left: 9%;
   width: 80%;
   margin: 0 auto;
-  margin-bottom: 7%;
+}
+
+.aboutWholeGameDescriptionTitle h1{
+  font-size: 1.8em;
+  text-align: center;
+  margin-left: -25px;
+  margin-top: 15%;
+  margin-bottom: 12%;
   font-weight: bold;
   text-transform: uppercase;
 }
@@ -177,7 +182,7 @@ ul {
 .closeGameDescription span{
     color: blue;
     font-size: 4em;
-    padding-left: 65px;  
+    padding-left: 60px; 
 }
 
 
@@ -353,12 +358,8 @@ ul {
   position: fixed;
   width: 100%;
   background-image: url("./Images/bubbles.jpg");
-  margin-right: -2%;
-  margin-left: -2%;
-  background-color: pink;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center center;
   height: 700px;
 }
 
@@ -445,9 +446,7 @@ ul {
 .hintDescriptionContent {
   font-size: 1.2em;
   text-align: center;
-  margin-top: -9% !important;
-  width: 75%;
-  margin-left: 15% !important;
+  margin-top: 3%;
 }
 
 .hintDescriptionImage {
@@ -459,7 +458,7 @@ ul {
   font-size: 2.5em;
   color: black;
   margin-left: 95%;
-  margin-top: -13%;
+  margin-top: -15%;
 }
 
 .hintBtnTitle {
@@ -616,6 +615,22 @@ ul {
   width: 250px;
 }
 
+.wakeUpMessage{
+  color: white;
+  width: 18em;
+  background: rgba(0,0,0,0.5);
+  font-weight: bold !important;
+  text-align: center;
+  font-size: 1.3em;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.wakeUpMessage span {
+  font-size: 1.7em;
+  margin-left: 10%;
+}
+
 .start {
   background-color: #67ebf7;
   color: black;
@@ -649,6 +664,7 @@ ul {
   height: 5rem;
    -webkit-box-shadow: -3px 5px 10px rgba(0,0,0,0.7);
     border-bottom: 1px solid rgba(0,0,0,0.5);
+  margin-left: 40px;
 }
 
 .check input[type="checkbox"],
@@ -666,7 +682,7 @@ ul {
 }
 
 .check label {
-  width: 15rem;
+  width: 15.7rem;
   height: 5rem;
   background: linear-gradient(90deg, #f19af3, #f099b5);
   overflow: hidden;
@@ -746,6 +762,9 @@ ul {
 .happy h1 {
   text-align: center;
   color: white;
+  font-weight: bold;
+  font-size: 3.4em;
+  margin-left: 15% !important;
 }
 
 /********************************* ALL MATHGAMES **********************************/
@@ -787,7 +806,7 @@ ul {
   justify-content: space-around;
   font-size: 100px;
   & > span {
-    min-width: 78px;
+    min-width: 100px;
   }
 }
 #equal {
@@ -861,12 +880,12 @@ KEYFRAMES */
 /* ANIMATIONS */
 
 .x1 {
-    -webkit-animation: animateBubble 20s linear infinite, sideWays 2s ease-in-out infinite alternate;
-  -moz-animation: animateBubble 20s linear infinite, sideWays 2s ease-in-out infinite alternate;
-  animation: animateBubble 20s linear infinite, sideWays 2s ease-in-out infinite alternate;
+    -webkit-animation: animateBubble 20s linear infinite, sideWays 5s ease-in-out infinite alternate;
+  -moz-animation: animateBubble 20s linear infinite, sideWays 5s ease-in-out infinite alternate;
+  animation: animateBubble 20s linear infinite, sideWays 5s ease-in-out infinite alternate;
   
-  left: -5%;
-  top: 55%;
+  left: 1%;
+  top: 100%;
   
   -webkit-transform: scale(0.6);
   -moz-transform: scale(0.6);
@@ -874,12 +893,12 @@ KEYFRAMES */
 }
 
 .x2 {
-    -webkit-animation: animateBubble 15s linear infinite, sideWays 4s ease-in-out infinite alternate;
-  -moz-animation: animateBubble 15s linear infinite, sideWays 4s ease-in-out infinite alternate;
-  animation: animateBubble 15s linear infinite, sideWays 4s ease-in-out infinite alternate;
+    -webkit-animation: animateBubble 23s linear infinite, sideWays 3s ease-in-out infinite alternate;
+  -moz-animation: animateBubble 23s linear infinite, sideWays 3s ease-in-out infinite alternate;
+  animation: animateBubble 23s linear infinite, sideWays 3s ease-in-out infinite alternate;
   
-  left: 5%;
-  top: 80%;
+  left: 15%;
+  top: 90%;
   
   -webkit-transform: scale(0.6);
   -moz-transform: scale(0.6);
@@ -887,12 +906,12 @@ KEYFRAMES */
 }
 
 .x3 {
-    -webkit-animation: animateBubble 23s linear infinite, sideWays 2s ease-in-out infinite alternate;
-  -moz-animation: animateBubble 23s linear infinite, sideWays 2s ease-in-out infinite alternate;
-  animation: animateBubble 23s linear infinite, sideWays 2s ease-in-out infinite alternate;
+    -webkit-animation: animateBubble 23s linear infinite, sideWays 4s ease-in-out infinite alternate;
+  -moz-animation: animateBubble 23s linear infinite, sideWays 4s ease-in-out infinite alternate;
+  animation: animateBubble 23s linear infinite, sideWays 4s ease-in-out infinite alternate;
   
-  left: 10%;
-  top: 40%;
+  left: 5%;
+  top: 80%;
   
   -webkit-transform: scale(0.7);
   -moz-transform: scale(0.7);
@@ -904,8 +923,8 @@ KEYFRAMES */
   -moz-animation: animateBubble 17s linear infinite, sideWays 3s ease-in-out infinite alternate;
   animation: animateBubble 17s linear infinite, sideWays 3s ease-in-out infinite alternate;
   
-  left: 20%;
-  top: 80;
+  left: 75%;
+  top: 70;
   
   -webkit-transform: scale(0.7);
   -moz-transform: scale(0.7);
@@ -917,8 +936,8 @@ KEYFRAMES */
   -moz-animation: animateBubble 24s linear infinite, sideWays 4s ease-in-out infinite alternate;
   animation: animateBubble 24s linear infinite, sideWays 4s ease-in-out infinite alternate;
   
-  left: 30%;
-  top: 50%;
+  left: 70%;
+  top: 75%;
   
   -webkit-transform: scale(0.7);
   -moz-transform: scale(0.7);
@@ -930,8 +949,8 @@ KEYFRAMES */
   -moz-animation: animateBubble 16s linear infinite, sideWays 2s ease-in-out infinite alternate;
   animation: animateBubble 16s linear infinite, sideWays 2s ease-in-out infinite alternate;
   
-  left: 50%;
-  top: 60%;
+  left: 65%;
+  top: 80%;
   
   -webkit-transform: scale(0.8);
   -moz-transform: scale(0.8);
@@ -943,8 +962,8 @@ KEYFRAMES */
   -moz-animation: animateBubble 15s linear infinite, sideWays 2s ease-in-out infinite alternate;
   animation: animateBubble 15s linear infinite, sideWays 2s ease-in-out infinite alternate;
   
-  left: 65%;
-  top: 70%;
+  left: 85%;
+  top: 85%;
   
   -webkit-transform: scale(0.6);
   -moz-transform: scale(0.6);
@@ -1021,7 +1040,6 @@ KEYFRAMES */
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
-  
   height: 200px;
   position: absolute;
   width: 200px;
@@ -1442,7 +1460,7 @@ KEYFRAMES */
   margin-top: 8%;
   padding: 40px;
   border-radius: 20px;
-  margin-left: 13% !important;
+  margin-left: 12% !important;
 }
 .dragBtn {
   background-color: #42f4d9;
