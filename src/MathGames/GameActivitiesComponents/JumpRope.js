@@ -179,9 +179,9 @@ setRandomNumber(operator){
  }
 
 callFinishedGame(){ 
-   const { finishedGame } = this.props;
+   const { finishedJumpRopeGame } = this.props;
       let count = this.state.count;
-      finishedGame(count);
+      finishedJumpRopeGame(count);
 }
 
 

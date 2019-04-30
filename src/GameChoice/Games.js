@@ -77,6 +77,7 @@ class Games extends Component {
    this.finishedGame = this.finishedGame.bind(this);
    this.finishedGameOfFive = this.finishedGameOfFive.bind(this);
    this.finishedThrowDiceGame = this.finishedThrowDiceGame.bind(this);
+   this.finishedJumpRopeGame = this.finishedJumpRopeGame.bind(this);
    this.finishedGameDragAndDrop = this.finishedGameDragAndDrop.bind(this);
    this.newGameNewChapter = this.newGameNewChapter.bind(this);
    this.showHint = this.showHint.bind(this);
@@ -111,7 +112,7 @@ gameArray(chosenOperator){
       <TeacherGame finishedGameOfFive={this.finishedGameOfFive} operator={chosenOperator} showGameDescription={this.showGameDescription} />,
       <DragAndDropGame finishedGameDragAndDrop={this.finishedGameDragAndDrop} operator={chosenOperator} finishedGameOfFive={this.finishedGameOfFive} showGameDescription={this.showGameDescription} />,
       <BubbleGame finishedGame={this.finishedGame} operator={chosenOperator} showGameDescription={this.showGameDescription} />,
-      <JumpRopeGame finishedGame={this.finishedGame} operator={chosenOperator} showGameDescription={this.showGameDescription} />,
+      <JumpRopeGame finishedJumpRopeGame={this.finishedJumpRopeGame} operator={chosenOperator} showGameDescription={this.showGameDescription} />,
       <ThrowDice finishedThrowDiceGame={this.finishedThrowDiceGame} operator={chosenOperator} showGameDescription={this.showGameDescription}/>,
     
     ],
@@ -176,7 +177,20 @@ finishedThrowDiceGame(){
 }
 
 finishedGame(count){
-  if(count === 10){
+  if(count === 7){
+    setTimeout(function() { //Start the timer to get a new mathexpression after 1 second
+      this.setState({
+        chapter : true,
+        newGame: false,
+        hint: "",
+        gameAndChapterBackgroundIndex : this.state.gameAndChapterBackgroundIndex + 1,
+      });
+    }.bind(this), 1500)  
+  }
+}
+
+finishedJumpRopeGame(count){
+  if(count === 3){
     setTimeout(function() { //Start the timer to get a new mathexpression after 1 second
       this.setState({
         chapter : true,
